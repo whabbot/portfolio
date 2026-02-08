@@ -1,0 +1,23 @@
+---
+description: Astro-first component conventions and when to use React islands
+globs: *.astro
+alwaysApply: false
+---
+
+# Astro conventions
+
+## Astro-first
+
+- Prefer `.astro` components for pages and presentational UI.
+- Use React only for interactive islands; keep islands small and isolated.
+
+## Accessibility + UX
+
+- Use semantic HTML (headings in order, buttons for actions, links for navigation).
+- Ensure keyboard navigation and visible focus states.
+- Avoid CLS: always size images and reserve space for dynamic content.
+
+## Data boundaries
+
+- Fetch Sanity content at build time for static pages when possible.
+- Keep data-shaping logic in TS helpers so it can be unit tested.
