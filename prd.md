@@ -52,3 +52,7 @@
 - **Experience list** shows all roles in a consistent order (by date/order); each role links to its deep dive.
 - **Experience detail** exists for every experience slug and renders STAR-like content when present.
 - **Contact** provides at least one working contact method and social links.
+- **SEO + performance + a11y**:
+  - Each page has a sensible title/description and social sharing metadata.
+  - Images have intrinsic dimensions to avoid layout shift.
+  - Site is keyboard navigable with visible focus states and respects reduced motion.
