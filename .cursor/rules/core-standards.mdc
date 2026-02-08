@@ -1,0 +1,29 @@
+---
+description: Core engineering process and context hygiene
+alwaysApply: true
+---
+
+# Core standards
+
+## TDD (default)
+
+- For behavior/logic changes: write a failing test first (Vitest), implement, refactor.
+- Exception: pure layout/styling work (Astro/Tailwind) may iterate visually first; add unit tests for any new logic and/or add/extend Playwright smoke tests if risk is high.
+
+## Definition of done
+
+- Lint and tests pass.
+- No unused code, dead files, or TODOs without a tracking note.
+- New/changed behavior has tests (unit or e2e) OR a short documented reason why not.
+
+## Context optimization
+
+- Prefer small, composable modules; avoid huge files.
+- Keep docs short and structured; update `prd.md`/`design.md` when changing product/design intent.
+
+## Parallel work policy (agents + worktrees)
+
+- Parallelize only when tasks are independent and can be merged cleanly.
+- Use a separate git worktree per parallel task when multiple areas will be edited.
+- Assign clear file ownership per agent/worktree; avoid overlapping edits.
+- If a shared file must change (layouts, nav, shared config), coordinate by doing it in the integration worktree first or serializing that part of the work.

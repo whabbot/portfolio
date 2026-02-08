@@ -1,0 +1,22 @@
+---
+description: TS/JS coding, linting (oxlint), and unit testing (vitest)
+globs: *.ts,*.tsx,*.js,*.jsx
+alwaysApply: false
+---
+
+# TS/JS rules (oxlint + vitest)
+
+## Linting
+
+- Use **oxlint** as the primary linter for TS/JS.
+- Keep imports tidy; no unused vars/exports; prefer explicit types where it clarifies intent.
+
+## Unit tests (Vitest)
+
+- Test pure functions and data transforms (Sanity query helpers, mapping, sorting/filtering, formatting).
+- Keep tests deterministic: avoid real network; mock time/IDs when needed.
+- Prefer clear test names: `it('returnsFeaturedProjectsSortedByOrder', ...)`.
+
+## React (only when needed)
+
+- If interactive UI is required, use React islands; keep logic testable and covered with Vitest with react testing library.
