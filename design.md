@@ -36,6 +36,13 @@
 - Visible focus states; keyboard navigable nav
 - Headings in order; sufficient contrast
 
+## SEO + performance
+
+- Astro-first rendering; keep client JS minimal (React islands only when needed).
+- Always size images (Sanity CDN URLs with explicit dimensions) to avoid CLS.
+- Provide per-page metadata (title/description/OG) and generate a sitemap.
+- Respect reduced motion; keep transitions subtle and non-essential.
+
 ## Content presentation rules
 
 - Projects: emphasize impact (what/why), then implementation (how), then links.
