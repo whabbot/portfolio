@@ -5,6 +5,10 @@ alwaysApply: true
 
 # Core standards
 
+## State any rules being used
+
+Before any reply, first state any cursor rules that have been read while performing the current task, even if you decided the contents weren't relevant.
+
 ## TDD (default)
 
 - For behavior/logic changes: write a failing test first (Vitest), implement, refactor.
@@ -16,10 +20,19 @@ alwaysApply: true
 - No unused code, dead files, or TODOs without a tracking note.
 - New/changed behavior has tests (unit or e2e) OR a short documented reason why not.
 
+## Every-task checklist
+
+- **Lint on save**: run `oxlint` + Prettier after every file change. Fix issues before moving on.
+- **Semantic HTML**: use appropriate elements; headings in order; landmarks in place.
+- **Both themes**: verify every visual change in both light and dark mode.
+- **Accessibility**: visible focus states, WCAG AA contrast, ARIA labels on icon-only controls.
+- **No dead code**: remove unused imports, components, or files as you go.
+- **Docs**: if a task changes scope or a design decision, update the relevant planning doc.
+
 ## Context optimization
 
 - Prefer small, composable modules; avoid huge files.
-- Keep docs short and structured; update `prd.md`/`design.md` when changing product/design intent.
+- Keep docs short and structured; update `masterplan.md`/`design-guidelines.md`/`app-flow-pages-and-roles.md`/`implementation-plan.md` when changing product/design intent.
 
 ## Parallel work policy (agents + worktrees)
 
@@ -27,3 +40,4 @@ alwaysApply: true
 - Use a separate git worktree per parallel task when multiple areas will be edited.
 - Assign clear file ownership per agent/worktree; avoid overlapping edits.
 - If a shared file must change (layouts, nav, shared config), coordinate by doing it in the integration worktree first or serializing that part of the work.
+- Within any phase, tasks are sequential unless the agent determines there are no file-ownership conflicts.
