@@ -12,6 +12,7 @@ The site should feel like a **product engineer's workspace** — calm, structure
 - **Signal over decoration.** Every visual element earns its place by clarifying hierarchy or guiding attention.
 - **Warm restraint.** Subtle expressiveness (slight asymmetry, gentle accents) but never loud or trendy.
 - **Precision without rigidity.** Clean grids with occasional rhythm variation; never chaotic.
+- **Mobile-first design.**
 
 If it doesn't help the visitor understand judgment, impact, or decision quality within 60 seconds, reconsider it.
 

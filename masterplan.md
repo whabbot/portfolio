@@ -79,6 +79,7 @@ Explicit non-feature: **No “Now” section**.
 - **Controlled motion**: subtle transitions (200–250ms, ease-in-out), no spectacle.
 - **Color accents as hierarchy**: one accent per section; avoid “color chaos.”
 - **Light & dark mode**: both themes supported; respect `prefers-color-scheme`, allow manual toggle, persist preference.
+- **Mobile-first design**: follow mobile-first design.
 
 ## Technical posture (constraints + stack)
 
