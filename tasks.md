@@ -8,12 +8,14 @@
 
 ## Phase 0 — Project bootstrap
 
-### 0.1 Scaffold Astro project
+### 0.1 Scaffold Astro project ✅
 
-- Run `npm create astro@latest` in the repo root (use the "empty" template, strict TypeScript).
-- Add the React integration: `npx astro add react`.
-- Add Tailwind CSS v4 integration: `npx astro add tailwind`.
-- Verify the dev server starts (`npm run dev`) and a blank page renders.
+- ~~Run `npm create astro@latest` in the repo root (use the "empty" template, strict TypeScript).~~
+- ~~Add the React integration: `npx astro add react`.~~
+- ~~Add Tailwind CSS v4 integration: `npx astro add tailwind`.~~
+- ~~Verify the dev server starts (`npm run dev`) and a blank page renders.~~
+
+> Completed: Astro 5.17, React 19, Tailwind CSS v4.1 scaffolded in `site/` subdirectory. Dev server and production build verified.
 
 ### 0.2 Configure design tokens in Tailwind / CSS
 
