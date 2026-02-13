@@ -14,6 +14,10 @@ Before any reply, first state any cursor rules that have been read while perform
 - For behavior/logic changes: write a failing test first (Vitest), implement, refactor.
 - Exception: pure layout/styling work (Astro/Tailwind) may iterate visually first; add unit tests for any new logic and/or add/extend Playwright smoke tests if risk is high.
 
+## Mobile-first design
+
+- Follow mobile-first design when styling pages to ensure reactivity and good styling across a range of media.
+
 ## Definition of done
 
 - Lint and tests pass.
