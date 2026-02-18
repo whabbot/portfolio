@@ -1,6 +1,6 @@
 ---
-import "../styles/global.css";
-import { Button } from "@/components/ui/button";
+import '../styles/global.css';
+import { Button } from '@/components/ui/button';
 import {
   Card,
   CardHeader,
@@ -8,7 +8,7 @@ import {
   CardDescription,
   CardContent,
   CardFooter,
-} from "@/components/ui/card";
+} from '@/components/ui/card';
 ---
 
 <html lang="en">
@@ -17,12 +17,10 @@ import {
     <meta name="viewport" content="width=device-width" />
     <title>Theme Test — Clearcraft</title>
     <script is:inline>
-      const stored = localStorage.getItem("theme");
-      const prefersDark = window.matchMedia(
-        "(prefers-color-scheme: dark)",
-      ).matches;
-      if (stored === "dark" || (!stored && prefersDark)) {
-        document.documentElement.classList.add("dark");
+      const stored = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (stored === 'dark' || (!stored && prefersDark)) {
+        document.documentElement.classList.add('dark');
       }
     </script>
   </head>
@@ -47,13 +45,11 @@ import {
         <h2>Colour Tokens</h2>
         <div class="grid grid-cols-2 gap-4 sm:grid-cols-4">
           <div class="space-y-2">
-            <div class="h-16 rounded-md bg-background border border-default">
-            </div>
+            <div class="h-16 rounded-md bg-background border border-default"></div>
             <p class="text-sm text-muted-foreground">bg-background</p>
           </div>
           <div class="space-y-2">
-            <div class="h-16 rounded-md bg-surface border border-default">
-            </div>
+            <div class="h-16 rounded-md bg-surface border border-default"></div>
             <p class="text-sm text-muted-foreground">bg-surface</p>
           </div>
           <div class="space-y-2">
@@ -69,8 +65,7 @@ import {
             <p class="text-sm text-muted-foreground">bg-accent-creative</p>
           </div>
           <div class="space-y-2">
-            <div class="h-16 rounded-md bg-default border border-default">
-            </div>
+            <div class="h-16 rounded-md bg-default border border-default"></div>
             <p class="text-sm text-muted-foreground">border-default</p>
           </div>
           <div class="space-y-2">
@@ -89,16 +84,10 @@ import {
         <h2>Text Colours</h2>
         <div class="space-y-2 rounded-md bg-surface p-6 border border-default">
           <p class="text-foreground">text-foreground — Primary text colour</p>
-          <p class="text-muted-foreground">
-            text-muted-foreground — Secondary / caption text
-          </p>
-          <p class="text-primary">
-            text-primary — Links, CTAs, active indicators
-          </p>
+          <p class="text-muted-foreground">text-muted-foreground — Secondary / caption text</p>
+          <p class="text-primary">text-primary — Links, CTAs, active indicators</p>
           <p class="text-accent-warm">text-accent-warm — Experience sections</p>
-          <p class="text-accent-creative">
-            text-accent-creative — Project sections
-          </p>
+          <p class="text-accent-creative">text-accent-creative — Project sections</p>
         </div>
       </section>
 
@@ -121,38 +110,26 @@ import {
           <div>
             <p class="text-sm text-muted-foreground mb-1">Body — 1rem / 400</p>
             <p>
-              The quick brown fox jumps over the lazy dog. This is body text at
-              the default reading size with 1.6 line-height for comfortable
-              reading.
+              The quick brown fox jumps over the lazy dog. This is body text at the default reading
+              size with 1.6 line-height for comfortable reading.
             </p>
           </div>
           <div>
-            <p class="text-sm text-muted-foreground mb-1">
-              Small — 0.875rem / 400
-            </p>
+            <p class="text-sm text-muted-foreground mb-1">Small — 0.875rem / 400</p>
             <p class="text-sm">
-              The quick brown fox jumps over the lazy dog. Meta info, tags,
-              timestamps.
+              The quick brown fox jumps over the lazy dog. Meta info, tags, timestamps.
             </p>
           </div>
           <div>
-            <p class="text-sm text-muted-foreground mb-1">
-              Nav links — 0.875rem / 500
-            </p>
-            <p class="text-sm font-medium">
-              CV &nbsp; Projects &nbsp; Theme Toggle
-            </p>
+            <p class="text-sm text-muted-foreground mb-1">Nav links — 0.875rem / 500</p>
+            <p class="text-sm font-medium">CV &nbsp; Projects &nbsp; Theme Toggle</p>
           </div>
           <div>
-            <p class="text-sm text-muted-foreground mb-1">
-              Name (navbar) — 1.125rem / 500
-            </p>
+            <p class="text-sm text-muted-foreground mb-1">Name (navbar) — 1.125rem / 500</p>
             <p class="text-lg font-medium">Clearcraft</p>
           </div>
           <div>
-            <p class="text-sm text-muted-foreground mb-1">
-              Monospace — JetBrains Mono
-            </p>
+            <p class="text-sm text-muted-foreground mb-1">Monospace — JetBrains Mono</p>
             <code class="font-mono text-sm bg-background rounded px-2 py-1"
               >const result = await fetchData();</code
             >
@@ -165,19 +142,16 @@ import {
         <h2>Paragraph Spacing</h2>
         <div class="rounded-md bg-surface p-6 border border-default">
           <p>
-            This is the first paragraph. It demonstrates the default body text
-            styling with Inter as the primary font and 1.6 line-height for
-            comfortable reading.
+            This is the first paragraph. It demonstrates the default body text styling with Inter as
+            the primary font and 1.6 line-height for comfortable reading.
           </p>
           <p>
-            This is the second paragraph. Notice the 1.5em spacing between
-            consecutive paragraphs, providing clear visual separation without
-            excessive gaps.
+            This is the second paragraph. Notice the 1.5em spacing between consecutive paragraphs,
+            providing clear visual separation without excessive gaps.
           </p>
           <p>
-            This is the third paragraph. The rhythm should feel calm and
-            scannable, supporting the design philosophy of signal over
-            decoration.
+            This is the third paragraph. The rhythm should feel calm and scannable, supporting the
+            design philosophy of signal over decoration.
           </p>
         </div>
       </section>
@@ -225,17 +199,13 @@ import {
             class="border-l-4 border-accent-warm bg-surface p-4 rounded-r-md border-t border-r border-b border-t-default border-r-default border-b-default"
           >
             <p class="font-medium">Experience section</p>
-            <p class="text-sm text-muted-foreground">
-              Uses warm accent for left stripe
-            </p>
+            <p class="text-sm text-muted-foreground">Uses warm accent for left stripe</p>
           </div>
           <div
             class="border-l-4 border-accent-creative bg-surface p-4 rounded-r-md border-t border-r border-b border-t-default border-r-default border-b-default"
           >
             <p class="font-medium">Project section</p>
-            <p class="text-sm text-muted-foreground">
-              Uses creative accent for left stripe
-            </p>
+            <p class="text-sm text-muted-foreground">Uses creative accent for left stripe</p>
           </div>
         </div>
       </section>
@@ -273,8 +243,8 @@ import {
             <CardContent>
               <p class="text-sm">
                 This card uses <code class="font-mono text-xs">bg-card</code>
-                and <code class="font-mono text-xs">text-card-foreground</code>,
-                both mapped to our design tokens.
+                and <code class="font-mono text-xs">text-card-foreground</code>, both mapped to our
+                design tokens.
               </p>
             </CardContent>
             <CardFooter>
@@ -338,10 +308,10 @@ import {
     </div>
 
     <script is:inline>
-      document.getElementById("theme-toggle")?.addEventListener("click", () => {
-        document.documentElement.classList.toggle("dark");
-        const isDark = document.documentElement.classList.contains("dark");
-        localStorage.setItem("theme", isDark ? "dark" : "light");
+      document.getElementById('theme-toggle')?.addEventListener('click', () => {
+        document.documentElement.classList.toggle('dark');
+        const isDark = document.documentElement.classList.contains('dark');
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
       });
     </script>
   </body>
