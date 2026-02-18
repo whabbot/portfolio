@@ -17,15 +17,17 @@
 
 > Completed: Astro 5.17, React 19, Tailwind CSS v4.1 scaffolded in `site/` subdirectory. Dev server and production build verified.
 
-### 0.2 Configure design tokens in Tailwind / CSS
+### 0.2 Configure design tokens in Tailwind / CSS ✅
 
-- Create a global CSS file (e.g. `src/styles/global.css`) imported in the base layout.
-- Define CSS custom properties on `:root` (light) and `.dark` (dark) for every colour token from the design guidelines (`--color-bg`, `--color-bg-surface`, `--color-text`, `--color-text-muted`, `--color-primary`, `--color-accent-warm`, `--color-accent-creative`, `--color-border`).
-- Extend the Tailwind theme to map these tokens to utility classes (e.g. `bg-surface`, `text-primary`, `text-muted`, `border-default`, `accent-warm`, `accent-creative`).
-- Configure dark mode to use the `class` strategy (`.dark` on `<html>`).
-- Set up the typography scale: Inter (via Google Fonts or `@fontsource/inter`) for body, JetBrains Mono for code. Define the font-size / weight scale from the design guidelines (H1 through small/caption).
-- Set base spacing to the 8pt grid (`0.5rem` increments).
-- Verify: both themes render correct colours via a temporary test page.
+- ~~Create a global CSS file (e.g. `src/styles/global.css`) imported in the base layout.~~
+- ~~Define CSS custom properties on `:root` (light) and `.dark` (dark) for every colour token from the design guidelines (`--color-bg`, `--color-bg-surface`, `--color-text`, `--color-text-muted`, `--color-primary`, `--color-accent-warm`, `--color-accent-creative`, `--color-border`).~~
+- ~~Extend the Tailwind theme to map these tokens to utility classes (e.g. `bg-surface`, `text-primary`, `text-muted`, `border-default`, `accent-warm`, `accent-creative`).~~
+- ~~Configure dark mode to use the `class` strategy (`.dark` on `<html>`).~~
+- ~~Set up the typography scale: Inter (via Google Fonts or `@fontsource/inter`) for body, JetBrains Mono for code. Define the font-size / weight scale from the design guidelines (H1 through small/caption).~~
+- ~~Set base spacing to the 8pt grid (`0.5rem` increments).~~
+- ~~Verify: both themes render correct colours via a temporary test page.~~
+
+> Completed: Tokens in `site/src/styles/global.css` with `@theme inline` for Tailwind v4. Inter Variable + JetBrains Mono Variable via `@fontsource-variable`. Dark mode via `@custom-variant dark`. Theme test page at `/theme-test`.
 
 ### 0.3 Set up shadcn/ui
 

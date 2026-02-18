@@ -1,1 +1,115 @@
+/* ── Fonts ── */
+@import "@fontsource-variable/inter";
+@import "@fontsource-variable/jetbrains-mono";
+
+/* ── Tailwind ── */
 @import "tailwindcss";
+
+/* ── Dark mode: class strategy (.dark on <html>) ── */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ═══════════════════════════════════════════════════
+   Design tokens — CSS custom properties
+   Light theme on :root, dark overrides on .dark
+   ═══════════════════════════════════════════════════ */
+
+:root {
+  --color-bg: #fafaf9;
+  --color-bg-surface: #ffffff;
+  --color-text: #1f2937;
+  --color-text-muted: #6b7280;
+  --color-primary: #4f46e5;
+  --color-accent-warm: #f59e0b;
+  --color-accent-creative: #14b8a6;
+  --color-border: #e5e7eb;
+}
+
+.dark {
+  --color-bg: #111111;
+  --color-bg-surface: #1a1a1a;
+  --color-text: #e5e7eb;
+  --color-text-muted: #9ca3af;
+  --color-primary: #818cf8;
+  --color-accent-warm: #fbbf24;
+  --color-accent-creative: #2dd4bf;
+  --color-border: #2a2a2a;
+}
+
+/* ═══════════════════════════════════════════════════
+   Tailwind theme — map tokens to utility classes
+   Using @theme inline so Tailwind doesn't re-emit
+   the CSS variables (our :root/.dark block owns them)
+   ═══════════════════════════════════════════════════ */
+
+@theme inline {
+  --color-background: var(--color-bg);
+  --color-surface: var(--color-bg-surface);
+  --color-foreground: var(--color-text);
+  --color-muted: var(--color-text-muted);
+  --color-primary: var(--color-primary);
+  --color-accent-warm: var(--color-accent-warm);
+  --color-accent-creative: var(--color-accent-creative);
+  --color-default: var(--color-border);
+
+  --font-sans: "Inter Variable", "Inter", ui-sans-serif, system-ui,
+    -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono Variable", "JetBrains Mono", ui-monospace,
+    SFMono-Regular, monospace;
+}
+
+/* ═══════════════════════════════════════════════════
+   Base styles
+   ═══════════════════════════════════════════════════ */
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    color: var(--color-text);
+    background-color: var(--color-bg);
+    line-height: 1.6;
+  }
+
+  /* Heading typography */
+  h1 {
+    font-size: 2.25rem;
+    font-weight: 500;
+    line-height: 1.3;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 1.3;
+  }
+
+  h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: 1.3;
+  }
+
+  /* Paragraph spacing */
+  p + p {
+    margin-top: 1.5em;
+  }
+
+  /* Smooth theme transitions */
+  *,
+  *::before,
+  *::after {
+    transition: color 200ms ease-in-out, background-color 200ms ease-in-out,
+      border-color 200ms ease-in-out;
+  }
+
+  /* Disable transitions on page load to prevent flash */
+  .no-transitions *,
+  .no-transitions *::before,
+  .no-transitions *::after {
+    transition: none !important;
+  }
+}

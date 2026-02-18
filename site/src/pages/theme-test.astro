@@ -1,0 +1,253 @@
+---
+import "../styles/global.css";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Theme Test — Clearcraft</title>
+    <script is:inline>
+      // Apply theme before paint (prevents flash)
+      const stored = localStorage.getItem("theme");
+      const prefersDark = window.matchMedia(
+        "(prefers-color-scheme: dark)",
+      ).matches;
+      if (stored === "dark" || (!stored && prefersDark)) {
+        document.documentElement.classList.add("dark");
+      }
+    </script>
+  </head>
+  <body class="min-h-screen bg-background text-foreground p-8">
+    <div class="mx-auto max-w-3xl space-y-12">
+      <!-- Theme toggle -->
+      <div class="flex items-center justify-between">
+        <h1>Design Token Test</h1>
+        <button
+          id="theme-toggle"
+          class="rounded-md border border-default bg-surface px-4 py-2 text-sm font-medium
+                 hover:bg-muted/20 focus-visible:outline-2 focus-visible:outline-offset-2
+                 focus-visible:outline-primary cursor-pointer"
+          aria-label="Toggle theme"
+        >
+          Toggle theme
+        </button>
+      </div>
+
+      <!-- Colour swatches -->
+      <section class="space-y-4">
+        <h2>Colour Tokens</h2>
+        <div class="grid grid-cols-2 gap-4 sm:grid-cols-4">
+          <div class="space-y-2">
+            <div class="h-16 rounded-md bg-background border border-default">
+            </div>
+            <p class="text-sm text-muted">bg-background</p>
+          </div>
+          <div class="space-y-2">
+            <div class="h-16 rounded-md bg-surface border border-default"></div>
+            <p class="text-sm text-muted">bg-surface</p>
+          </div>
+          <div class="space-y-2">
+            <div class="h-16 rounded-md bg-primary"></div>
+            <p class="text-sm text-muted">bg-primary</p>
+          </div>
+          <div class="space-y-2">
+            <div class="h-16 rounded-md bg-accent-warm"></div>
+            <p class="text-sm text-muted">bg-accent-warm</p>
+          </div>
+          <div class="space-y-2">
+            <div class="h-16 rounded-md bg-accent-creative"></div>
+            <p class="text-sm text-muted">bg-accent-creative</p>
+          </div>
+          <div class="space-y-2">
+            <div class="h-16 rounded-md bg-default border border-default"></div>
+            <p class="text-sm text-muted">border-default</p>
+          </div>
+          <div class="space-y-2">
+            <div class="h-16 rounded-md bg-foreground"></div>
+            <p class="text-sm text-muted">bg-foreground (text)</p>
+          </div>
+          <div class="space-y-2">
+            <div class="h-16 rounded-md bg-muted"></div>
+            <p class="text-sm text-muted">bg-muted (text-muted)</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Text colours -->
+      <section class="space-y-4">
+        <h2>Text Colours</h2>
+        <div class="space-y-2 rounded-md bg-surface p-6 border border-default">
+          <p class="text-foreground">text-foreground — Primary text colour</p>
+          <p class="text-muted">text-muted — Secondary / caption text</p>
+          <p class="text-primary">
+            text-primary — Links, CTAs, active indicators
+          </p>
+          <p class="text-accent-warm">text-accent-warm — Experience sections</p>
+          <p class="text-accent-creative">
+            text-accent-creative — Project sections
+          </p>
+        </div>
+      </section>
+
+      <!-- Typography scale -->
+      <section class="space-y-4">
+        <h2>Typography Scale</h2>
+        <div class="space-y-6 rounded-md bg-surface p-6 border border-default">
+          <div>
+            <p class="text-sm text-muted mb-1">H1 — 2.25rem / 500</p>
+            <h1>The quick brown fox jumps over the lazy dog</h1>
+          </div>
+          <div>
+            <p class="text-sm text-muted mb-1">H2 — 1.5rem / 600</p>
+            <h2>The quick brown fox jumps over the lazy dog</h2>
+          </div>
+          <div>
+            <p class="text-sm text-muted mb-1">H3 — 1.25rem / 600</p>
+            <h3>The quick brown fox jumps over the lazy dog</h3>
+          </div>
+          <div>
+            <p class="text-sm text-muted mb-1">Body — 1rem / 400</p>
+            <p>
+              The quick brown fox jumps over the lazy dog. This is body text at
+              the default reading size with 1.6 line-height for comfortable
+              reading.
+            </p>
+          </div>
+          <div>
+            <p class="text-sm text-muted mb-1">Small — 0.875rem / 400</p>
+            <p class="text-sm">
+              The quick brown fox jumps over the lazy dog. Meta info, tags,
+              timestamps.
+            </p>
+          </div>
+          <div>
+            <p class="text-sm text-muted mb-1">Nav links — 0.875rem / 500</p>
+            <p class="text-sm font-medium">
+              CV &nbsp; Projects &nbsp; Theme Toggle
+            </p>
+          </div>
+          <div>
+            <p class="text-sm text-muted mb-1">
+              Name (navbar) — 1.125rem / 500
+            </p>
+            <p class="text-lg font-medium">Clearcraft</p>
+          </div>
+          <div>
+            <p class="text-sm text-muted mb-1">Monospace — JetBrains Mono</p>
+            <code class="font-mono text-sm bg-background rounded px-2 py-1"
+              >const result = await fetchData();</code
+            >
+          </div>
+        </div>
+      </section>
+
+      <!-- Paragraph spacing -->
+      <section class="space-y-4">
+        <h2>Paragraph Spacing</h2>
+        <div class="rounded-md bg-surface p-6 border border-default">
+          <p>
+            This is the first paragraph. It demonstrates the default body text
+            styling with Inter as the primary font and 1.6 line-height for
+            comfortable reading.
+          </p>
+          <p>
+            This is the second paragraph. Notice the 1.5em spacing between
+            consecutive paragraphs, providing clear visual separation without
+            excessive gaps.
+          </p>
+          <p>
+            This is the third paragraph. The rhythm should feel calm and
+            scannable, supporting the design philosophy of signal over
+            decoration.
+          </p>
+        </div>
+      </section>
+
+      <!-- Spacing grid -->
+      <section class="space-y-4">
+        <h2>8pt Spacing Grid</h2>
+        <div class="space-y-2 rounded-md bg-surface p-6 border border-default">
+          <div class="flex items-center gap-4">
+            <div class="w-2 h-4 bg-primary rounded-sm"></div>
+            <p class="text-sm text-muted">8px (p-2)</p>
+          </div>
+          <div class="flex items-center gap-4">
+            <div class="w-4 h-4 bg-primary rounded-sm"></div>
+            <p class="text-sm text-muted">16px (p-4)</p>
+          </div>
+          <div class="flex items-center gap-4">
+            <div class="w-6 h-4 bg-primary rounded-sm"></div>
+            <p class="text-sm text-muted">24px (p-6)</p>
+          </div>
+          <div class="flex items-center gap-4">
+            <div class="w-8 h-4 bg-primary rounded-sm"></div>
+            <p class="text-sm text-muted">32px (p-8)</p>
+          </div>
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-4 bg-primary rounded-sm"></div>
+            <p class="text-sm text-muted">48px (p-12)</p>
+          </div>
+          <div class="flex items-center gap-4">
+            <div class="w-16 h-4 bg-primary rounded-sm"></div>
+            <p class="text-sm text-muted">64px (p-16)</p>
+          </div>
+          <div class="flex items-center gap-4">
+            <div class="w-24 h-4 bg-primary rounded-sm"></div>
+            <p class="text-sm text-muted">96px (p-24)</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Accent usage -->
+      <section class="space-y-4">
+        <h2>Accent Stripes</h2>
+        <div class="space-y-4">
+          <div
+            class="border-l-4 border-accent-warm bg-surface p-4 rounded-r-md border-t border-r border-b border-t-default border-r-default border-b-default"
+          >
+            <p class="font-medium">Experience section</p>
+            <p class="text-sm text-muted">Uses warm accent for left stripe</p>
+          </div>
+          <div
+            class="border-l-4 border-accent-creative bg-surface p-4 rounded-r-md border-t border-r border-b border-t-default border-r-default border-b-default"
+          >
+            <p class="font-medium">Project section</p>
+            <p class="text-sm text-muted">
+              Uses creative accent for left stripe
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Buttons -->
+      <section class="space-y-4">
+        <h2>Buttons</h2>
+        <div class="flex flex-wrap gap-4">
+          <button
+            class="rounded-md bg-primary px-4 py-2 text-sm font-medium text-white
+                         hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2
+                         focus-visible:outline-primary cursor-pointer"
+          >
+            Primary CTA
+          </button>
+          <button
+            class="rounded-md border border-primary px-4 py-2 text-sm font-medium
+                         text-primary hover:bg-primary/10 focus-visible:outline-2
+                         focus-visible:outline-offset-2 focus-visible:outline-primary cursor-pointer"
+          >
+            Secondary CTA
+          </button>
+        </div>
+      </section>
+    </div>
+
+    <script is:inline>
+      document.getElementById("theme-toggle")?.addEventListener("click", () => {
+        document.documentElement.classList.toggle("dark");
+        const isDark = document.documentElement.classList.contains("dark");
+        localStorage.setItem("theme", isDark ? "dark" : "light");
+      });
+    </script>
+  </body>
+</html>
