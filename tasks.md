@@ -55,13 +55,15 @@
 
 > Completed: Playwright 1.58.2 with Chromium. Config in `playwright.config.ts` points at Astro dev server (localhost:4321) with `webServer` auto-start. Smoke test in `e2e/smoke.spec.ts` asserts 200 status and heading. Script: `test:e2e`.
 
-### 0.6 Configure oxlint + Prettier
+### 0.6 Configure oxlint + Prettier ✅
 
-- Install `oxlint` and `prettier`.
-- Create `.prettierrc` (consistent with repo conventions — e.g., single quotes, trailing commas, 2-space indent).
-- Create `oxlint` config (or use default sensible rules).
-- Add `lint` and `format` scripts to `package.json`.
-- Run lint + format on all existing files; fix any issues.
+- ~~Install `oxlint` and `prettier`.~~
+- ~~Create `.prettierrc` (consistent with repo conventions — e.g., single quotes, trailing commas, 2-space indent).~~
+- ~~Create `oxlint` config (or use default sensible rules).~~
+- ~~Add `lint` and `format` scripts to `package.json`.~~
+- ~~Run lint + format on all existing files; fix any issues.~~
+
+> Completed: oxlint + Prettier + prettier-plugin-astro installed. `.prettierrc` configured (single quotes, trailing commas, 2-space indent, Astro parser). `.oxlintrc.json` with `correctness` (error), `suspicious` + `perf` (warn), plus `react` and `jsx-a11y` plugins. Scripts: `lint`, `format`, `format:check`. One lint fix applied (constant binary expression in test). All files formatted and passing.
 
 ### 0.7 Validate bootstrap
 
