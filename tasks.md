@@ -46,12 +46,14 @@
 
 > Completed: Vitest 4.0.18 with jsdom environment, `@testing-library/react`, and `@testing-library/jest-dom/vitest` setup. Path alias `@/*` configured. Setup file at `src/test/setup.ts`. Trivial `cn()` utility tests passing (3 tests). Scripts: `test` (single run), `test:watch` (watch mode).
 
-### 0.5 Configure Playwright
+### 0.5 Configure Playwright ✅
 
-- Install Playwright: `npm init playwright@latest`.
-- Create a minimal config (`playwright.config.ts`) pointing at the local dev server.
-- Add a smoke test that loads `/` and asserts a 200 status.
-- Add `test:e2e` script to `package.json`.
+- ~~Install Playwright: `npm init playwright@latest`.~~
+- ~~Create a minimal config (`playwright.config.ts`) pointing at the local dev server.~~
+- ~~Add a smoke test that loads `/` and asserts a 200 status.~~
+- ~~Add `test:e2e` script to `package.json`.~~
+
+> Completed: Playwright 1.58.2 with Chromium. Config in `playwright.config.ts` points at Astro dev server (localhost:4321) with `webServer` auto-start. Smoke test in `e2e/smoke.spec.ts` asserts 200 status and heading. Script: `test:e2e`.
 
 ### 0.6 Configure oxlint + Prettier
 
