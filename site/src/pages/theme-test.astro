@@ -1,5 +1,14 @@
 ---
 import "../styles/global.css";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardContent,
+  CardFooter,
+} from "@/components/ui/card";
 ---
 
 <html lang="en">
@@ -8,7 +17,6 @@ import "../styles/global.css";
     <meta name="viewport" content="width=device-width" />
     <title>Theme Test — Clearcraft</title>
     <script is:inline>
-      // Apply theme before paint (prevents flash)
       const stored = localStorage.getItem("theme");
       const prefersDark = window.matchMedia(
         "(prefers-color-scheme: dark)",
@@ -18,7 +26,7 @@ import "../styles/global.css";
       }
     </script>
   </head>
-  <body class="min-h-screen bg-background text-foreground p-8">
+  <body class="min-h-screen p-8">
     <div class="mx-auto max-w-3xl space-y-12">
       <!-- Theme toggle -->
       <div class="flex items-center justify-between">
@@ -26,7 +34,7 @@ import "../styles/global.css";
         <button
           id="theme-toggle"
           class="rounded-md border border-default bg-surface px-4 py-2 text-sm font-medium
-                 hover:bg-muted/20 focus-visible:outline-2 focus-visible:outline-offset-2
+                 hover:bg-muted focus-visible:outline-2 focus-visible:outline-offset-2
                  focus-visible:outline-primary cursor-pointer"
           aria-label="Toggle theme"
         >
@@ -41,35 +49,37 @@ import "../styles/global.css";
           <div class="space-y-2">
             <div class="h-16 rounded-md bg-background border border-default">
             </div>
-            <p class="text-sm text-muted">bg-background</p>
+            <p class="text-sm text-muted-foreground">bg-background</p>
           </div>
           <div class="space-y-2">
-            <div class="h-16 rounded-md bg-surface border border-default"></div>
-            <p class="text-sm text-muted">bg-surface</p>
+            <div class="h-16 rounded-md bg-surface border border-default">
+            </div>
+            <p class="text-sm text-muted-foreground">bg-surface</p>
           </div>
           <div class="space-y-2">
             <div class="h-16 rounded-md bg-primary"></div>
-            <p class="text-sm text-muted">bg-primary</p>
+            <p class="text-sm text-muted-foreground">bg-primary</p>
           </div>
           <div class="space-y-2">
             <div class="h-16 rounded-md bg-accent-warm"></div>
-            <p class="text-sm text-muted">bg-accent-warm</p>
+            <p class="text-sm text-muted-foreground">bg-accent-warm</p>
           </div>
           <div class="space-y-2">
             <div class="h-16 rounded-md bg-accent-creative"></div>
-            <p class="text-sm text-muted">bg-accent-creative</p>
+            <p class="text-sm text-muted-foreground">bg-accent-creative</p>
           </div>
           <div class="space-y-2">
-            <div class="h-16 rounded-md bg-default border border-default"></div>
-            <p class="text-sm text-muted">border-default</p>
+            <div class="h-16 rounded-md bg-default border border-default">
+            </div>
+            <p class="text-sm text-muted-foreground">border-default</p>
           </div>
           <div class="space-y-2">
             <div class="h-16 rounded-md bg-foreground"></div>
-            <p class="text-sm text-muted">bg-foreground (text)</p>
+            <p class="text-sm text-muted-foreground">bg-foreground (text)</p>
           </div>
           <div class="space-y-2">
-            <div class="h-16 rounded-md bg-muted"></div>
-            <p class="text-sm text-muted">bg-muted (text-muted)</p>
+            <div class="h-16 rounded-md bg-muted border border-default"></div>
+            <p class="text-sm text-muted-foreground">bg-muted</p>
           </div>
         </div>
       </section>
@@ -79,7 +89,9 @@ import "../styles/global.css";
         <h2>Text Colours</h2>
         <div class="space-y-2 rounded-md bg-surface p-6 border border-default">
           <p class="text-foreground">text-foreground — Primary text colour</p>
-          <p class="text-muted">text-muted — Secondary / caption text</p>
+          <p class="text-muted-foreground">
+            text-muted-foreground — Secondary / caption text
+          </p>
           <p class="text-primary">
             text-primary — Links, CTAs, active indicators
           </p>
@@ -95,19 +107,19 @@ import "../styles/global.css";
         <h2>Typography Scale</h2>
         <div class="space-y-6 rounded-md bg-surface p-6 border border-default">
           <div>
-            <p class="text-sm text-muted mb-1">H1 — 2.25rem / 500</p>
+            <p class="text-sm text-muted-foreground mb-1">H1 — 2.25rem / 500</p>
             <h1>The quick brown fox jumps over the lazy dog</h1>
           </div>
           <div>
-            <p class="text-sm text-muted mb-1">H2 — 1.5rem / 600</p>
+            <p class="text-sm text-muted-foreground mb-1">H2 — 1.5rem / 600</p>
             <h2>The quick brown fox jumps over the lazy dog</h2>
           </div>
           <div>
-            <p class="text-sm text-muted mb-1">H3 — 1.25rem / 600</p>
+            <p class="text-sm text-muted-foreground mb-1">H3 — 1.25rem / 600</p>
             <h3>The quick brown fox jumps over the lazy dog</h3>
           </div>
           <div>
-            <p class="text-sm text-muted mb-1">Body — 1rem / 400</p>
+            <p class="text-sm text-muted-foreground mb-1">Body — 1rem / 400</p>
             <p>
               The quick brown fox jumps over the lazy dog. This is body text at
               the default reading size with 1.6 line-height for comfortable
@@ -115,26 +127,32 @@ import "../styles/global.css";
             </p>
           </div>
           <div>
-            <p class="text-sm text-muted mb-1">Small — 0.875rem / 400</p>
+            <p class="text-sm text-muted-foreground mb-1">
+              Small — 0.875rem / 400
+            </p>
             <p class="text-sm">
               The quick brown fox jumps over the lazy dog. Meta info, tags,
               timestamps.
             </p>
           </div>
           <div>
-            <p class="text-sm text-muted mb-1">Nav links — 0.875rem / 500</p>
+            <p class="text-sm text-muted-foreground mb-1">
+              Nav links — 0.875rem / 500
+            </p>
             <p class="text-sm font-medium">
               CV &nbsp; Projects &nbsp; Theme Toggle
             </p>
           </div>
           <div>
-            <p class="text-sm text-muted mb-1">
+            <p class="text-sm text-muted-foreground mb-1">
               Name (navbar) — 1.125rem / 500
             </p>
             <p class="text-lg font-medium">Clearcraft</p>
           </div>
           <div>
-            <p class="text-sm text-muted mb-1">Monospace — JetBrains Mono</p>
+            <p class="text-sm text-muted-foreground mb-1">
+              Monospace — JetBrains Mono
+            </p>
             <code class="font-mono text-sm bg-background rounded px-2 py-1"
               >const result = await fetchData();</code
             >
@@ -170,31 +188,31 @@ import "../styles/global.css";
         <div class="space-y-2 rounded-md bg-surface p-6 border border-default">
           <div class="flex items-center gap-4">
             <div class="w-2 h-4 bg-primary rounded-sm"></div>
-            <p class="text-sm text-muted">8px (p-2)</p>
+            <p class="text-sm text-muted-foreground">8px (p-2)</p>
           </div>
           <div class="flex items-center gap-4">
             <div class="w-4 h-4 bg-primary rounded-sm"></div>
-            <p class="text-sm text-muted">16px (p-4)</p>
+            <p class="text-sm text-muted-foreground">16px (p-4)</p>
           </div>
           <div class="flex items-center gap-4">
             <div class="w-6 h-4 bg-primary rounded-sm"></div>
-            <p class="text-sm text-muted">24px (p-6)</p>
+            <p class="text-sm text-muted-foreground">24px (p-6)</p>
           </div>
           <div class="flex items-center gap-4">
             <div class="w-8 h-4 bg-primary rounded-sm"></div>
-            <p class="text-sm text-muted">32px (p-8)</p>
+            <p class="text-sm text-muted-foreground">32px (p-8)</p>
           </div>
           <div class="flex items-center gap-4">
             <div class="w-12 h-4 bg-primary rounded-sm"></div>
-            <p class="text-sm text-muted">48px (p-12)</p>
+            <p class="text-sm text-muted-foreground">48px (p-12)</p>
           </div>
           <div class="flex items-center gap-4">
             <div class="w-16 h-4 bg-primary rounded-sm"></div>
-            <p class="text-sm text-muted">64px (p-16)</p>
+            <p class="text-sm text-muted-foreground">64px (p-16)</p>
           </div>
           <div class="flex items-center gap-4">
             <div class="w-24 h-4 bg-primary rounded-sm"></div>
-            <p class="text-sm text-muted">96px (p-24)</p>
+            <p class="text-sm text-muted-foreground">96px (p-24)</p>
           </div>
         </div>
       </section>
@@ -207,22 +225,99 @@ import "../styles/global.css";
             class="border-l-4 border-accent-warm bg-surface p-4 rounded-r-md border-t border-r border-b border-t-default border-r-default border-b-default"
           >
             <p class="font-medium">Experience section</p>
-            <p class="text-sm text-muted">Uses warm accent for left stripe</p>
+            <p class="text-sm text-muted-foreground">
+              Uses warm accent for left stripe
+            </p>
           </div>
           <div
             class="border-l-4 border-accent-creative bg-surface p-4 rounded-r-md border-t border-r border-b border-t-default border-r-default border-b-default"
           >
             <p class="font-medium">Project section</p>
-            <p class="text-sm text-muted">
+            <p class="text-sm text-muted-foreground">
               Uses creative accent for left stripe
             </p>
           </div>
         </div>
       </section>
 
-      <!-- Buttons -->
+      <!-- shadcn/ui Button variants -->
       <section class="space-y-4">
-        <h2>Buttons</h2>
+        <h2>shadcn/ui Buttons</h2>
+        <div class="flex flex-wrap gap-4">
+          <Button>Default</Button>
+          <Button variant="secondary">Secondary</Button>
+          <Button variant="outline">Outline</Button>
+          <Button variant="ghost">Ghost</Button>
+          <Button variant="link">Link</Button>
+          <Button variant="destructive">Destructive</Button>
+        </div>
+        <div class="flex flex-wrap gap-4 mt-4">
+          <Button size="xs">Extra Small</Button>
+          <Button size="sm">Small</Button>
+          <Button size="default">Default Size</Button>
+          <Button size="lg">Large</Button>
+        </div>
+      </section>
+
+      <!-- shadcn/ui Card -->
+      <section class="space-y-4">
+        <h2>shadcn/ui Card</h2>
+        <div class="grid gap-4 sm:grid-cols-2">
+          <Card>
+            <CardHeader>
+              <CardTitle>Experience Card</CardTitle>
+              <CardDescription>
+                A sample card styled with design tokens via shadcn/ui.
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <p class="text-sm">
+                This card uses <code class="font-mono text-xs">bg-card</code>
+                and <code class="font-mono text-xs">text-card-foreground</code>,
+                both mapped to our design tokens.
+              </p>
+            </CardContent>
+            <CardFooter>
+              <Button variant="outline" size="sm">View Details</Button>
+            </CardFooter>
+          </Card>
+
+          <Card>
+            <CardHeader>
+              <CardTitle>Project Card</CardTitle>
+              <CardDescription>
+                Confirms design token integration works in both themes.
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div class="flex flex-wrap gap-2">
+                <span
+                  class="rounded-full bg-muted px-2.5 py-0.5 text-xs font-mono text-muted-foreground"
+                >
+                  TypeScript
+                </span>
+                <span
+                  class="rounded-full bg-muted px-2.5 py-0.5 text-xs font-mono text-muted-foreground"
+                >
+                  React
+                </span>
+                <span
+                  class="rounded-full bg-muted px-2.5 py-0.5 text-xs font-mono text-muted-foreground"
+                >
+                  Tailwind
+                </span>
+              </div>
+            </CardContent>
+            <CardFooter>
+              <Button size="sm">Open Project</Button>
+            </CardFooter>
+          </Card>
+        </div>
+      </section>
+
+      <!-- Legacy manual buttons (for reference / comparison) -->
+      <section class="space-y-4">
+        <h2>Manual Buttons (pre-shadcn)</h2>
         <div class="flex flex-wrap gap-4">
           <button
             class="rounded-md bg-primary px-4 py-2 text-sm font-medium text-white

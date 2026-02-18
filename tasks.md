@@ -29,11 +29,13 @@
 
 > Completed: Tokens in `site/src/styles/global.css` with `@theme inline` for Tailwind v4. Inter Variable + JetBrains Mono Variable via `@fontsource-variable`. Dark mode via `@custom-variant dark`. Theme test page at `/theme-test`.
 
-### 0.3 Set up shadcn/ui
+### 0.3 Set up shadcn/ui ✅
 
-- Initialise shadcn/ui for Astro + React + Tailwind (`npx shadcn@latest init`).
-- Add initial primitives: `button`, `card`.
-- Confirm components render correctly with the custom theme tokens.
+- ~~Initialise shadcn/ui for Astro + React + Tailwind (`npx shadcn@latest init`).~~
+- ~~Add initial primitives: `button`, `card`.~~
+- ~~Confirm components render correctly with the custom theme tokens.~~
+
+> Completed: shadcn/ui (new-york style, Tailwind v4) initialised with `button` and `card` primitives. shadcn CSS variables mapped to existing design tokens in `global.css`. Theme test page updated with shadcn component demos. `text-muted` → `text-muted-foreground` convention adopted (shadcn standard). Path aliases (`@/*`) added to `tsconfig.json`.
 
 ### 0.4 Configure Vitest + React Testing Library
 
