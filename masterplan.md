@@ -83,12 +83,11 @@ Explicit non-feature: **No “Now” section**.
 
 ## Technical posture (constraints + stack)
 
-- **Astro** for pages and rendering.
-- **React islands** only for interactive components.
+- **Astro** for pages and rendering. Prefer Astro components with inline scripts over React islands — React is a build-time dependency (shadcn/ui) but should not ship to the client.
 - **Tailwind CSS** + **shadcn/ui** for consistent, composable UI primitives.
 - **Sanity CMS** for content modeling and editing; studio hosted by Sanity.
 - **Vercel** for deployment.
-- **Vitest + React Testing Library** for logic and component behavior.
+- **Vitest** (with `jsdom` and `@testing-library/jest-dom` matchers) for logic and component behavior.
 - **Playwright** for smoke-level integration coverage of key flows.
 
 Testing philosophy: **test business logic and content-shaping; avoid trivial UI tests**.

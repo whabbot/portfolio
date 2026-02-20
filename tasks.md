@@ -37,14 +37,16 @@
 
 > Completed: shadcn/ui (new-york style, Tailwind v4) initialised with `button` and `card` primitives. shadcn CSS variables mapped to existing design tokens in `global.css`. Theme test page updated with shadcn component demos. `text-muted` → `text-muted-foreground` convention adopted (shadcn standard). Path aliases (`@/*`) added to `tsconfig.json`.
 
-### 0.4 Configure Vitest + React Testing Library ✅
+### 0.4 Configure Vitest ✅
 
-- ~~Install `vitest`, `@testing-library/react`, `@testing-library/jest-dom`, `jsdom`.~~
+- ~~Install `vitest`, `@testing-library/jest-dom`, `jsdom`.~~
 - ~~Create `vitest.config.ts` (environment: `jsdom`, include `src/**/*.test.{ts,tsx}`).~~
 - ~~Add a trivial passing test to confirm the harness works.~~
 - ~~Add `test` script to `package.json`.~~
 
-> Completed: Vitest 4.0.18 with jsdom environment, `@testing-library/react`, and `@testing-library/jest-dom/vitest` setup. Path alias `@/*` configured. Setup file at `src/test/setup.ts`. Trivial `cn()` utility tests passing (3 tests). Scripts: `test` (single run), `test:watch` (watch mode).
+> Completed: Vitest 4.0.18 with jsdom environment and `@testing-library/jest-dom/vitest` matchers. Path alias `@/*` configured. Setup file at `src/test/setup.ts`. Trivial `cn()` utility tests passing (3 tests). Scripts: `test` (single run), `test:watch` (watch mode).
+>
+> **Update**: Removed `@testing-library/react` and `@testing-library/user-event`. No components in this project require React rendering in tests — all interactive behavior (theme toggle, mobile nav) is implemented as pure Astro components with inline scripts, tested via plain DOM APIs in jsdom. React remains a build-time dependency for shadcn/ui but ships zero client JS.
 
 ### 0.5 Configure Playwright ✅
 
@@ -407,7 +409,7 @@ NOTE: IMPORTANT: confirm with user before progressing! We want to use a referral
 
 - Run Lighthouse audit.
 - Optimise font loading: subset Inter, preload critical font files.
-- Ensure minimal JS bundle (only React islands: ThemeToggle, MobileNav).
+- Ensure minimal JS bundle (no React islands — ThemeToggle and MobileNav are pure Astro with inline scripts).
 - Verify no layout shift (CLS): reserve space for dynamic content.
 - Image optimisation (if any images are added): use Astro's `<Image>` component.
 

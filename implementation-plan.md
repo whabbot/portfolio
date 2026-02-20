@@ -22,7 +22,7 @@
 - Initialise Astro with React integration.
 - Configure Tailwind CSS with the project's design tokens (colours, type scale, spacing) including light and dark mode colour palettes.
 - Set up shadcn/ui primitives (button, card, etc.).
-- Configure Vitest + React Testing Library.
+- Configure Vitest (with `jsdom` and `@testing-library/jest-dom` matchers).
 - Configure Playwright (basic smoke harness).
 - Configure oxlint + Prettier (aligned with repo rules).
 - Vercel project linked; deploys on push to `main`.
@@ -44,7 +44,7 @@
 - Responsive behaviour: mobile nav approach decided and stubbed.
 - Playwright smoke: navbar links navigate correctly; active state renders.
 
-**Key decision**: Navbar is an Astro component (no client JS needed). Mobile nav toggle and theme toggle are small React islands.
+**Key decision**: Navbar is an Astro component (no client JS needed). Mobile nav toggle and theme toggle are pure Astro components with inline scripts — no React islands needed for simple DOM state toggles.
 
 ---
 
