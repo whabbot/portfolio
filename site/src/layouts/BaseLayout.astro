@@ -1,0 +1,33 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+}
+
+const { title = 'Clearcraft' } = Astro.props;
+---
+
+<html lang="en" class="no-transitions">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <script is:inline>
+      (function initTheme() {
+        const stored = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (stored === 'dark' || (!stored && prefersDark)) {
+          document.documentElement.classList.add('dark');
+        }
+        requestAnimationFrame(function enableTransitions() {
+          document.documentElement.classList.remove('no-transitions');
+        });
+      })();
+    </script>
+  </head>
+  <body class="min-h-screen bg-background text-foreground">
+    <slot />
+  </body>
+</html>

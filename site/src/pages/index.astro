@@ -1,18 +1,10 @@
 ---
-import '../styles/global.css';
+import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>Clearcraft</title>
-  </head>
-  <body class="min-h-screen bg-background text-foreground">
-    <main class="mx-auto max-w-3xl px-6 py-16">
-      <h1>Clearcraft</h1>
-      <p class="mt-4 text-muted-foreground">Portfolio site — under construction.</p>
-    </main>
-  </body>
-</html>
+<BaseLayout>
+  <main class="mx-auto max-w-3xl px-6 py-16">
+    <h1>Clearcraft</h1>
+    <p class="mt-4 text-muted-foreground">Portfolio site — under construction.</p>
+  </main>
+</BaseLayout>
