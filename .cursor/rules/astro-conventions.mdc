@@ -9,7 +9,8 @@ alwaysApply: false
 ## Astro-first
 
 - Prefer `.astro` components for pages and presentational UI.
-- Use React only for interactive islands; keep islands small and isolated.
+- Use Astro components with inline scripts (`is:inline`) for simple client-side interactivity (toggles, class swaps, attribute changes).
+- React is a build-time dependency (shadcn/ui) — do not hydrate React islands on the client unless complexity genuinely requires it (e.g. real-time filtering with multiple state dependencies).
 
 ## Accessibility + UX
 

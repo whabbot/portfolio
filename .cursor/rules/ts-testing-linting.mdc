@@ -17,6 +17,8 @@ alwaysApply: false
 - Keep tests deterministic: avoid real network; mock time/IDs when needed.
 - Prefer clear test names: `it('returnsFeaturedProjectsSortedByOrder', ...)`.
 
-## React (only when needed)
+## React (build-time only)
 
-- If interactive UI is required, use React islands; keep logic testable and covered with Vitest with react testing library.
+- React is a build-time dependency for shadcn/ui — do not ship React to the client.
+- For interactive UI, prefer Astro components with inline scripts; test via plain DOM APIs in jsdom.
+- If a future feature genuinely requires React on the client, test it with `@testing-library/react` (re-add as needed).

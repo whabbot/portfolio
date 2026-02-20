@@ -127,7 +127,7 @@ Colours are defined as CSS custom properties on `:root` (light) and `.dark` (dar
 - **Right**: CV, Projects links + theme toggle icon.
 - **Active page**: persistent accent underline.
 - **Hover**: soft underline slide animation (200ms ease-in-out).
-- **Mobile**: collapsible menu (React island for toggle).
+- **Mobile**: collapsible menu (Astro component with inline script for toggle).
 - Sticky top; subtle border-bottom or shadow on scroll.
 
 ### Hero (home page)
