@@ -76,12 +76,14 @@
 
 ## Phase 1 — Layout shell & navigation
 
-### 1.1 Create BaseLayout.astro
+### 1.1 Create BaseLayout.astro ✅
 
-- Create `src/layouts/BaseLayout.astro`.
-- Include `<html>`, `<head>` (with charset, viewport, font links, global CSS import), and `<body>` with a `<slot />`.
-- Add a blocking inline `<script>` in `<head>` that reads `localStorage` for the theme preference (or falls back to `prefers-color-scheme`) and applies/removes the `.dark` class on `<html>` before first paint.
-- Add smooth theme-transition CSS (`transition: color 200ms, background-color 200ms` on `*`).
+- ~~Create `src/layouts/BaseLayout.astro`.~~
+- ~~Include `<html>`, `<head>` (with charset, viewport, font links, global CSS import), and `<body>` with a `<slot />`.~~
+- ~~Add a blocking inline `<script>` in `<head>` that reads `localStorage` for the theme preference (or falls back to `prefers-color-scheme`) and applies/removes the `.dark` class on `<html>` before first paint.~~
+- ~~Add smooth theme-transition CSS (`transition: color 200ms, background-color 200ms` on `*`).~~
+
+> Completed: Layout at `src/layouts/BaseLayout.astro` with `title` prop (default "Clearcraft"), blocking `is:inline` theme script, and `no-transitions` class to suppress FODT on initial load (removed via `requestAnimationFrame` after theme applies). Theme-transition CSS was already in `global.css`. Refactored `index.astro` and `theme-test.astro` to use the shared layout.
 
 ### 1.2 Build the Navbar component
 
