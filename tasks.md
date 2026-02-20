@@ -65,10 +65,12 @@
 
 > Completed: oxlint + Prettier + prettier-plugin-astro installed. `.prettierrc` configured (single quotes, trailing commas, 2-space indent, Astro parser). `.oxlintrc.json` with `correctness` (error), `suspicious` + `perf` (warn), plus `react` and `jsx-a11y` plugins. Scripts: `lint`, `format`, `format:check`. One lint fix applied (constant binary expression in test). All files formatted and passing.
 
-### 0.7 Validate bootstrap
+### 0.7 Validate bootstrap ✅
 
-- Run `npm run build`, `npm run test`, `npm run lint` — all must pass.
-- Confirm the project deploys to Vercel (or at least builds successfully for deployment).
+- ~~Run `npm run build`, `npm run test`, `npm run lint` — all must pass.~~
+- ~~Confirm the project deploys to Vercel (or at least builds successfully for deployment).~~
+
+> Completed: All three commands pass with zero errors. Tuned `.oxlintrc.json` to disable overly pedantic rules (`sort-keys`, `sort-imports`, `no-ternary`, `no-magic-numbers`, `no-implicit-coercion`, `func-style`, `react/jsx-props-no-spreading`). Prettier format check clean. Playwright e2e tests pass. Static build output in `dist/` is Vercel-ready.
 
 ---
 
