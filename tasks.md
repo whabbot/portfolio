@@ -98,21 +98,24 @@
 
 > Completed: `src/components/Navbar.astro` with sticky header, backdrop blur, active page detection via `Astro.url.pathname`, pseudo-element underline slide animation, and placeholder slots for ThemeToggle (1.3) and MobileNav (1.4). Wired into `BaseLayout.astro`.
 
-### 1.3 Build the ThemeToggle React island
+### 1.3 Build the ThemeToggle component ✅
 
-- Create `src/components/ThemeToggle.tsx`.
-- Renders a sun/moon icon button (use Lucide icons: `Sun`, `Moon`).
-- On click: toggles `.dark` class on `<html>`, persists preference to `localStorage`.
-- ARIA: `aria-label="Toggle theme"`.
-- Write a unit test: toggling updates `document.documentElement.classList` and `localStorage`.
+- ~~Create `src/components/ThemeToggle.astro` (Astro component, not React — no state needed).~~
+- ~~Renders sun/moon icon button (inline Lucide SVGs, CSS `dark:hidden`/`hidden dark:block` for zero-flash swap).~~
+- ~~On click: toggles `.dark` class on `<html>`, persists preference to `localStorage` via inline `<script>`.~~
+- ~~ARIA: `aria-label="Toggle theme"`.~~
+- ~~Write a unit test: toggling updates `document.documentElement.classList` and `localStorage`.~~
 
-### 1.4 Build the MobileNav React island
+> Completed: Pure Astro component with inline SVGs and `is:inline` script. No React island — CSS handles icon swap based on `.dark` class set by BaseLayout's blocking script, so no pop-in on load. Vitest DOM-level tests (4 tests) cover toggle logic. Eliminated the ThemeToggle JS island from the client bundle entirely.
 
-- Create `src/components/MobileNav.tsx`.
+### 1.4 Build the MobileNav component
+
+- Create `src/components/MobileNav.astro` (Astro component, not React — toggle state is a simple class/attribute swap).
 - Hamburger button (hidden on desktop, visible below 640px).
-- Opens an overlay or slide-in with the same links (CV, Projects) + ThemeToggle.
+- Opens an overlay or slide-in with the same links (CV, Projects) + a second theme toggle button.
 - Close on link click or close button.
 - ARIA: `aria-expanded`, `aria-controls`, `aria-label`.
+- Inline `<script>` for toggle logic.
 - Write a unit test: toggle open/close state, correct ARIA attributes.
 
 ### 1.5 Build the Footer component

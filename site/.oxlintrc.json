@@ -15,7 +15,9 @@
     "no-magic-numbers": "off",
     "no-implicit-coercion": "off",
     "func-style": "off",
-    "react/jsx-props-no-spreading": "off"
+    "react/jsx-props-no-spreading": "off",
+    "react/react-in-jsx-scope": "off",
+    "max-lines-per-function": "off"
   },
   "settings": {
     "jsx-a11y": {
