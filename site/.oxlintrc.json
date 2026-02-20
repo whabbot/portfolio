@@ -8,7 +8,15 @@
     "style": "warn",
     "pedantic": "warn"
   },
-  "rules": {},
+  "rules": {
+    "sort-keys": "off",
+    "sort-imports": "off",
+    "no-ternary": "off",
+    "no-magic-numbers": "off",
+    "no-implicit-coercion": "off",
+    "func-style": "off",
+    "react/jsx-props-no-spreading": "off"
+  },
   "settings": {
     "jsx-a11y": {
       "polymorphicPropName": null,
