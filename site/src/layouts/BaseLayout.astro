@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import Navbar from '../components/Navbar.astro';
 
 interface Props {
   title?: string;
@@ -28,6 +29,7 @@ const { title = 'Clearcraft' } = Astro.props;
     </script>
   </head>
   <body class="min-h-screen bg-background text-foreground">
+    <Navbar />
     <slot />
   </body>
 </html>
