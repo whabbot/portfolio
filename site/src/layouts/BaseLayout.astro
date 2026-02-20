@@ -18,7 +18,7 @@ const { title = 'Clearcraft' } = Astro.props;
     <script is:inline>
       (function initTheme() {
         const stored = localStorage.getItem('theme');
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const prefersDark = matchMedia('(prefers-color-scheme: dark)').matches;
         if (stored === 'dark' || (!stored && prefersDark)) {
           document.documentElement.classList.add('dark');
         }
