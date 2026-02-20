@@ -85,16 +85,18 @@
 
 > Completed: Layout at `src/layouts/BaseLayout.astro` with `title` prop (default "Clearcraft"), blocking `is:inline` theme script, and `no-transitions` class to suppress FODT on initial load (removed via `requestAnimationFrame` after theme applies). Theme-transition CSS was already in `global.css`. Refactored `index.astro` and `theme-test.astro` to use the shared layout.
 
-### 1.2 Build the Navbar component
+### 1.2 Build the Navbar component ✅
 
-- Create `src/components/Navbar.astro`.
-- **Left**: site owner name, links to `/`.
-- **Right**: "CV" link (`/cv`), "Projects" link (`/projects`), theme toggle placeholder.
-- Active page detection: use `Astro.url.pathname` to apply a persistent accent underline on the current page's link.
-- Style: sticky top, subtle bottom border. Typography per design guidelines (name 18px/500, links 14px/500).
-- Hover: underline slides in (200ms ease-in-out).
-- Keyboard: all links focusable with visible 2px accent outline.
-- Semantic HTML: `<header>`, `<nav>`, `aria-current="page"` on active link.
+- ~~Create `src/components/Navbar.astro`.~~
+- ~~**Left**: site owner name, links to `/`.~~
+- ~~**Right**: "CV" link (`/cv`), "Projects" link (`/projects`), theme toggle placeholder.~~
+- ~~Active page detection: use `Astro.url.pathname` to apply a persistent accent underline on the current page's link.~~
+- ~~Style: sticky top, subtle bottom border. Typography per design guidelines (name 18px/500, links 14px/500).~~
+- ~~Hover: underline slides in (200ms ease-in-out).~~
+- ~~Keyboard: all links focusable with visible 2px accent outline.~~
+- ~~Semantic HTML: `<header>`, `<nav>`, `aria-current="page"` on active link.~~
+
+> Completed: `src/components/Navbar.astro` with sticky header, backdrop blur, active page detection via `Astro.url.pathname`, pseudo-element underline slide animation, and placeholder slots for ThemeToggle (1.3) and MobileNav (1.4). Wired into `BaseLayout.astro`.
 
 ### 1.3 Build the ThemeToggle React island
 

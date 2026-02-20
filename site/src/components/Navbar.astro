@@ -1,0 +1,83 @@
+---
+const { pathname } = Astro.url;
+
+const links = [
+  { href: '/cv', label: 'CV' },
+  { href: '/projects', label: 'Projects' },
+];
+
+function isActive(href: string): boolean {
+  if (href === '/') {
+    return pathname === '/' || pathname === '';
+  }
+  return pathname === href || pathname === `${href}/`;
+}
+---
+
+<header
+  class="sticky top-0 z-40 w-full border-b border-default bg-background/95 backdrop-blur-sm supports-backdrop-filter:bg-background/80"
+>
+  <nav
+    class="mx-auto flex h-14 max-w-4xl items-center justify-between px-6 md:px-8"
+    aria-label="Main"
+  >
+    <a href="/" class="text-lg font-medium text-foreground hover:text-primary transition-colors">
+      Clearcraft
+    </a>
+
+    <div class="hidden items-center gap-6 sm:flex">
+      {
+        links.map(({ href, label }) => (
+          <a
+            href={href}
+            class:list={['nav-link', { active: isActive(href) }]}
+            aria-current={isActive(href) ? 'page' : undefined}
+          >
+            {label}
+          </a>
+        ))
+      }
+      <!-- ThemeToggle placeholder — replaced in step 1.3 -->
+      <div id="theme-toggle-slot" class="h-9 w-9"></div>
+    </div>
+
+    <!-- MobileNav placeholder — replaced in step 1.4 -->
+    <div class="sm:hidden">
+      <div id="mobile-nav-slot" class="h-9 w-9"></div>
+    </div>
+  </nav>
+</header>
+
+<style>
+  .nav-link {
+    position: relative;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-text-muted);
+    transition: color 200ms ease-in-out;
+  }
+
+  .nav-link:hover,
+  .nav-link.active {
+    color: var(--color-text);
+  }
+
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    height: 2px;
+    width: 0;
+    background-color: var(--color-primary);
+    transition: width 200ms ease-in-out;
+  }
+
+  .nav-link:hover::after {
+    width: 100%;
+  }
+
+  .nav-link.active::after {
+    width: 100%;
+  }
+</style>
