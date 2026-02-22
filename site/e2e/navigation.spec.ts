@@ -27,7 +27,7 @@ test.describe('navigation', () => {
     await page.goto('/projects');
     await expect(page.getByRole('link', { name: 'Projects' })).toHaveAttribute(
       'aria-current',
-      'page'
+      'page',
     );
   });
 
