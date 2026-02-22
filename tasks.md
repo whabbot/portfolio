@@ -145,11 +145,20 @@
 
 > Completed: Layout already wired in BaseLayout.astro. Created cv.astro, projects/index.astro, projects/[slug].astro, experience/[slug].astro. Fixed index.astro nested `<main>` → `<div>`. Build generates all 6 pages; lint passes.
 
-### 1.7 Playwright smoke tests for navigation
+### 1.7 Build the 404 page
+
+- Create `src/pages/404.astro`.
+- Uses BaseLayout (same navbar + theme).
+- Brief message: "This page doesn't exist."
+- Single CTA: "Back to home →" linking to `/`.
+- Clean, on-brand, no clutter.
+
+### 1.8 Playwright smoke tests for navigation
 
 - Test: navbar links navigate to `/`, `/cv`, `/projects`.
 - Test: active page link has the accent underline class.
 - Test: theme toggle switches between light and dark (check `.dark` class on `<html>`).
+- Test: navigating to non-existent page shows 404.
 
 ---
 
@@ -446,35 +455,27 @@ NOTE: IMPORTANT: confirm with user before progressing! We want to use a referral
 
 ## Phase 8 — Launch
 
-### 8.1 Build the 404 page
-
-- Create `src/pages/404.astro`.
-- Uses BaseLayout (same navbar + theme).
-- Brief message: "This page doesn't exist."
-- Single CTA: "Back to home →" linking to `/`.
-- Clean, on-brand, no clutter.
-
-### 8.2 SEO & social meta
+### 8.1 SEO & social meta
 
 - Add OG meta tags to BaseLayout (title, description, image, url).
 - Add Twitter card meta tags.
 - Create or source an OG preview image.
 - Add `<title>` and `<meta name="description">` per page (passed as props to BaseLayout).
 
-### 8.3 Sitemap
+### 8.2 Sitemap
 
 - Add `@astrojs/sitemap` integration.
 - Configure `site` in `astro.config.mjs`.
 - Verify sitemap generates correctly at `/sitemap-index.xml`.
 
-### 8.4 Final cleanup
+### 8.3 Final cleanup
 
 - Remove any remaining placeholder content or TODO comments.
 - Run full lint + format pass (`npm run lint && npm run format`).
 - Run full test suite (`npm run test && npm run test:e2e`).
 - Verify build succeeds (`npm run build`).
 
-### 8.5 Production deploy
+### 8.4 Production deploy
 
 - Push to `main`; verify Vercel deployment succeeds.
 - Manual smoke test in production across Chrome, Safari, Firefox.
