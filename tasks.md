@@ -110,15 +110,17 @@
 
 > Completed: Pure Astro component with inline SVGs and `is:inline` script. No React island — CSS handles icon swap based on `.dark` class set by BaseLayout's blocking script, so no pop-in on load. Vitest DOM-level tests (4 tests) cover toggle logic. Eliminated the ThemeToggle JS island from the client bundle entirely.
 
-### 1.4 Build the MobileNav component
+### 1.4 Build the MobileNav component ✅
 
-- Create `src/components/MobileNav.astro` (Astro component, not React — toggle state is a simple class/attribute swap).
-- Hamburger button (hidden on desktop, visible below 640px).
-- Opens an overlay or slide-in with the same links (CV, Projects) + a second theme toggle button.
-- Close on link click or close button.
-- ARIA: `aria-expanded`, `aria-controls`, `aria-label`.
-- Inline `<script>` for toggle logic.
-- Write a unit test: toggle open/close state, correct ARIA attributes.
+- ~~Create `src/components/MobileNav.astro` (Astro component, not React — toggle state is a simple class/attribute swap).~~
+- ~~Hamburger button (hidden on desktop, visible below 640px).~~
+- ~~Opens an overlay or slide-in with the same links (CV, Projects) + a second theme toggle button.~~
+- ~~Close on link click or close button.~~
+- ~~ARIA: `aria-expanded`, `aria-controls`, `aria-label`.~~
+- ~~Inline `<script>` for toggle logic.~~
+- ~~Write a unit test: toggle open/close state, correct ARIA attributes.~~
+
+> Completed: `src/components/MobileNav.astro` wired into `Navbar.astro` (replacing the placeholder slot). Uses a small client initializer (`src/lib/client/mobile-nav.ts`) to toggle `hidden` + `aria-expanded`, closes on link click and on close/backdrop click. Added Vitest unit tests. Refactored `ThemeToggle.astro` to support multiple instances via `data-theme-toggle` + initializer (`src/lib/client/theme.ts`), with updated tests.
 
 ### 1.5 Build the Footer component
 

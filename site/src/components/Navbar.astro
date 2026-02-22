@@ -1,5 +1,6 @@
 ---
 import ThemeToggle from './ThemeToggle.astro';
+import MobileNav from './MobileNav.astro';
 
 const { pathname } = Astro.url;
 
@@ -42,9 +43,8 @@ function isActive(href: string): boolean {
       <ThemeToggle />
     </div>
 
-    <!-- MobileNav placeholder — replaced in step 1.4 -->
     <div class="sm:hidden">
-      <div id="mobile-nav-slot" class="h-9 w-9"></div>
+      <MobileNav />
     </div>
   </nav>
 </header>
