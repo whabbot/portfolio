@@ -130,7 +130,7 @@
 - ~~Minimal: small copyright line or a single external link (e.g., GitHub profile).~~
 - ~~Semantic HTML: `<footer>`.~~
 
-> Completed: `src/components/Footer.astro` with copyright line and GitHub link. Wired into `BaseLayout.astro` with flex layout so footer stays at bottom. Added semantic `<main>` wrapper for slot content.
+> Completed: `src/components/Footer.astro` with GitHub, Medium, and LinkedIn links (right-aligned on desktop, left-aligned on mobile). Wired into `BaseLayout.astro` with flex layout so footer stays at bottom. Added semantic `<main>` wrapper for slot content.
 
 ### 1.6 Wire layout + create route stubs
 
