@@ -1,0 +1,26 @@
+---
+description: How to run unit and e2e tests so they pass when executed by the agent
+alwaysApply: true
+---
+
+# Running tests
+
+## Why agent runs fail
+
+Tests fail when run by the Cursor agent but pass when run by the user in the terminal. Root causes:
+
+1. **Working directory**: `package.json`, `vitest.config.ts`, and `playwright.config.ts` live in `site/`. Running from the workspace root (`portfolio/`) fails.
+
+2. **localStorage (unit tests)**: Node 22+ provides a built-in `localStorage` that can override jsdom's, causing `TypeError: window.localStorage.clear is not a function`. Use `NODE_OPTIONS="--no-webstorage"` so jsdom's implementation is used.
+
+3. **E2E (Playwright)**: The sandbox uses a different cache path, so Playwright cannot find its browser executables. Set `PLAYWRIGHT_BROWSERS_PATH` to the user's cache so Playwright uses the installed browsers.
+
+## How to run tests
+
+Always run tests from `site/`:
+
+- **Unit tests**: `cd site && export NODE_OPTIONS="--no-webstorage" && npm run test`
+- **E2E tests**: `cd site && PLAYWRIGHT_BROWSERS_PATH=$HOME/Library/Caches/ms-playwright npm run test:e2e` (macOS; on Linux use `$HOME/.cache/ms-playwright`)
+- **Both**: `cd site && export NODE_OPTIONS="--no-webstorage" && npm run test && PLAYWRIGHT_BROWSERS_PATH=$HOME/Library/Caches/ms-playwright npm run test:e2e`
+
+When using the Shell tool, set `working_directory: /Users/user/portfolio/site`. For e2e, add `required_permissions: ["all"]` so the command can access the user's browser cache.
