@@ -124,11 +124,13 @@
 >
 > Update: Switched MobileNav to a shadcn/Radix-style React `Sheet` for better UX/accessibility (focus handling, ESC/outside click, scroll lock) and less custom logic. Implemented `site/src/components/MobileNav.tsx` + `site/src/components/ui/sheet.tsx` (Radix Dialog wrapper) + `site/src/components/ThemeToggleButton.tsx`, and hydrated only on mobile via `client:media="(max-width: 639px)"`. Removed the Astro/vanilla MobileNav implementation and replaced its unit test with `MobileNav.test.tsx`.
 
-### 1.5 Build the Footer component
+### 1.5 Build the Footer component ✅
 
-- Create `src/components/Footer.astro`.
-- Minimal: small copyright line or a single external link (e.g., GitHub profile).
-- Semantic HTML: `<footer>`.
+- ~~Create `src/components/Footer.astro`.~~
+- ~~Minimal: small copyright line or a single external link (e.g., GitHub profile).~~
+- ~~Semantic HTML: `<footer>`.~~
+
+> Completed: `src/components/Footer.astro` with copyright line and GitHub link. Wired into `BaseLayout.astro` with flex layout so footer stays at bottom. Added semantic `<main>` wrapper for slot content.
 
 ### 1.6 Wire layout + create route stubs
 
