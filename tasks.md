@@ -145,13 +145,15 @@
 
 > Completed: Layout already wired in BaseLayout.astro. Created cv.astro, projects/index.astro, projects/[slug].astro, experience/[slug].astro. Fixed index.astro nested `<main>` → `<div>`. Build generates all 6 pages; lint passes.
 
-### 1.7 Build the 404 page
+### 1.7 Build the 404 page ✅
 
-- Create `src/pages/404.astro`.
-- Uses BaseLayout (same navbar + theme).
-- Brief message: "This page doesn't exist."
-- Single CTA: "Back to home →" linking to `/`.
-- Clean, on-brand, no clutter.
+- ~~Create `src/pages/404.astro`.~~
+- ~~Uses BaseLayout (same navbar + theme).~~
+- ~~Brief message: "This page doesn't exist."~~
+- ~~Single CTA: "Back to home →" linking to `/`.~~
+- ~~Clean, on-brand, no clutter.~~
+
+> Completed: `src/pages/404.astro` with BaseLayout, H1 "Page not found", message, and primary-styled CTA link. Focus-visible styles for accessibility. Build outputs `/404.html`.
 
 ### 1.8 Playwright smoke tests for navigation
 
