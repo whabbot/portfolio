@@ -155,12 +155,14 @@
 
 > Completed: `src/pages/404.astro` with BaseLayout, H1 "Page not found", message, and primary-styled CTA link. Focus-visible styles for accessibility. Build outputs `/404.html`.
 
-### 1.8 Playwright smoke tests for navigation
+### 1.8 Playwright smoke tests for navigation ✅
 
-- Test: navbar links navigate to `/`, `/cv`, `/projects`.
-- Test: active page link has the accent underline class.
-- Test: theme toggle switches between light and dark (check `.dark` class on `<html>`).
-- Test: navigating to non-existent page shows 404.
+- ~~Test: navbar links navigate to `/`, `/cv`, `/projects`.~~
+- ~~Test: active page link has the accent underline class.~~
+- ~~Test: theme toggle switches between light and dark (check `.dark` class on `<html>`).~~
+- ~~Test: navigating to non-existent page shows 404.~~
+
+> Completed: `e2e/navigation.spec.ts` with 4 tests. Active-state test covers CV and Projects only (home link is branding, not nav). All 15 e2e tests pass across chromium, firefox, webkit.
 
 ---
 
