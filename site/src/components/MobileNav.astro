@@ -1,0 +1,98 @@
+---
+import { Menu, X } from '@lucide/astro';
+import ThemeToggle from './ThemeToggle.astro';
+
+const { pathname } = Astro.url;
+
+const links = [
+  { href: '/cv', label: 'CV' },
+  { href: '/projects', label: 'Projects' },
+];
+
+function isActive(href: string): boolean {
+  if (href === '/') {
+    return pathname === '/' || pathname === '';
+  }
+  return pathname === href || pathname === `${href}/`;
+}
+
+const panelId = 'mobile-nav-panel';
+---
+
+<div data-mobile-nav-root>
+  <button
+    type="button"
+    data-mobile-nav-toggle
+    aria-label="Open menu"
+    aria-controls={panelId}
+    aria-expanded="false"
+    class="inline-flex h-9 w-9 cursor-pointer items-center justify-center rounded-md text-muted-foreground hover:bg-muted hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary transition-colors"
+  >
+    <Menu size={18} />
+  </button>
+
+  <div
+    id={panelId}
+    data-mobile-nav-panel
+    hidden
+    class="fixed inset-0 z-60"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Mobile menu"
+  >
+    <button
+      type="button"
+      data-mobile-nav-close
+      aria-label="Close menu"
+      class="absolute inset-0 bg-black/40 backdrop-blur-sm"></button>
+
+    <div
+      class="absolute left-0 top-0 h-full w-72 max-w-[85vw] border-r border-default bg-surface shadow-lg"
+    >
+      <div class="flex items-center justify-between border-b border-default px-6 py-4">
+        <span class="text-sm font-medium text-foreground">Menu</span>
+        <button
+          type="button"
+          data-mobile-nav-close
+          aria-label="Close menu"
+          class="inline-flex h-9 w-9 cursor-pointer items-center justify-center rounded-md text-muted-foreground hover:bg-muted hover:text-foreground focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary transition-colors"
+        >
+          <X size={18} />
+        </button>
+      </div>
+
+      <nav aria-label="Mobile" class="px-6 py-5">
+        <div class="flex flex-col gap-4">
+          {
+            links.map(({ href, label }) => (
+              <a
+                href={href}
+                data-mobile-nav-link
+                class:list={[
+                  'text-sm font-medium transition-colors focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary',
+                  isActive(href)
+                    ? 'text-foreground'
+                    : 'text-muted-foreground hover:text-foreground',
+                ]}
+                aria-current={isActive(href) ? 'page' : undefined}
+              >
+                {label}
+              </a>
+            ))
+          }
+        </div>
+
+        <div class="mt-6 flex items-center justify-between border-t border-default pt-5">
+          <span class="text-sm font-medium text-muted-foreground">Theme</span>
+          <ThemeToggle />
+        </div>
+      </nav>
+    </div>
+  </div>
+
+  <script>
+    import { initMobileNav } from '../lib/client/mobile-nav';
+
+    initMobileNav(document);
+  </script>
+</div>
