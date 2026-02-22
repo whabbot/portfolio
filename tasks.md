@@ -132,16 +132,18 @@
 
 > Completed: `src/components/Footer.astro` with GitHub, Medium, and LinkedIn links (right-aligned on desktop, left-aligned on mobile). Wired into `BaseLayout.astro` with flex layout so footer stays at bottom. Added semantic `<main>` wrapper for slot content.
 
-### 1.6 Wire layout + create route stubs
+### 1.6 Wire layout + create route stubs ✅
 
-- Wrap BaseLayout with Navbar (top) and Footer (bottom).
-- Create route stub pages (each uses BaseLayout, renders a heading + placeholder text):
-  - `src/pages/index.astro` → Home
-  - `src/pages/cv.astro` → CV
-  - `src/pages/projects/index.astro` → Projects
-  - `src/pages/projects/[slug].astro` → Project detail (placeholder, `getStaticPaths` returns one dummy entry)
-  - `src/pages/experience/[slug].astro` → Experience detail (placeholder, `getStaticPaths` returns one dummy entry)
-- Verify: all routes render, navbar links work, active state displays.
+- ~~Wrap BaseLayout with Navbar (top) and Footer (bottom).~~
+- ~~Create route stub pages (each uses BaseLayout, renders a heading + placeholder text):~~
+  - ~~`src/pages/index.astro` → Home~~
+  - ~~`src/pages/cv.astro` → CV~~
+  - ~~`src/pages/projects/index.astro` → Projects~~
+  - ~~`src/pages/projects/[slug].astro` → Project detail (placeholder, `getStaticPaths` returns one dummy entry)~~
+  - ~~`src/pages/experience/[slug].astro` → Experience detail (placeholder, `getStaticPaths` returns one dummy entry)~~
+- ~~Verify: all routes render, navbar links work, active state displays.~~
+
+> Completed: Layout already wired in BaseLayout.astro. Created cv.astro, projects/index.astro, projects/[slug].astro, experience/[slug].astro. Fixed index.astro nested `<main>` → `<div>`. Build generates all 6 pages; lint passes.
 
 ### 1.7 Playwright smoke tests for navigation
 
