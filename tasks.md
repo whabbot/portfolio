@@ -121,6 +121,8 @@
 - ~~Write a unit test: toggle open/close state, correct ARIA attributes.~~
 
 > Completed: `src/components/MobileNav.astro` wired into `Navbar.astro` (replacing the placeholder slot). Uses a small client initializer (`src/lib/client/mobile-nav.ts`) to toggle `hidden` + `aria-expanded`, closes on link click and on close/backdrop click. Added Vitest unit tests. Refactored `ThemeToggle.astro` to support multiple instances via `data-theme-toggle` + initializer (`src/lib/client/theme.ts`), with updated tests.
+>
+> Update: Switched MobileNav to a shadcn/Radix-style React `Sheet` for better UX/accessibility (focus handling, ESC/outside click, scroll lock) and less custom logic. Implemented `site/src/components/MobileNav.tsx` + `site/src/components/ui/sheet.tsx` (Radix Dialog wrapper) + `site/src/components/ThemeToggleButton.tsx`, and hydrated only on mobile via `client:media="(max-width: 639px)"`. Removed the Astro/vanilla MobileNav implementation and replaced its unit test with `MobileNav.test.tsx`.
 
 ### 1.5 Build the Footer component
 
