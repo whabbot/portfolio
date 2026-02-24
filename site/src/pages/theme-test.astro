@@ -1,5 +1,9 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import AccentStripe from '@/components/AccentStripe.astro';
+import SectionHeading from '@/components/SectionHeading.astro';
+import TagPill from '@/components/TagPill.astro';
+import CardSurface from '@/components/CardSurface.astro';
 import { Button } from '@/components/ui/button';
 import {
   Card,
@@ -178,22 +182,61 @@ import {
       </div>
     </section>
 
-    <!-- Accent usage -->
+    <!-- Phase 2: Shared UI atoms -->
     <section class="space-y-4">
-      <h2>Accent Stripes</h2>
+      <h2>AccentStripe</h2>
       <div class="space-y-4">
-        <div
-          class="border-l-4 border-accent-warm bg-surface p-4 rounded-r-md border-t border-r border-b border-t-default border-r-default border-b-default"
-        >
+        <AccentStripe variant="warm">
           <p class="font-medium">Experience section</p>
           <p class="text-sm text-muted-foreground">Uses warm accent for left stripe</p>
-        </div>
-        <div
-          class="border-l-4 border-accent-creative bg-surface p-4 rounded-r-md border-t border-r border-b border-t-default border-r-default border-b-default"
-        >
+        </AccentStripe>
+        <AccentStripe variant="creative">
           <p class="font-medium">Project section</p>
           <p class="text-sm text-muted-foreground">Uses creative accent for left stripe</p>
-        </div>
+        </AccentStripe>
+      </div>
+    </section>
+
+    <section class="space-y-4">
+      <h2>SectionHeading</h2>
+      <div class="space-y-4">
+        <SectionHeading>Plain section heading</SectionHeading>
+        <SectionHeading href="/cv">Section heading as link</SectionHeading>
+      </div>
+    </section>
+
+    <section class="space-y-4">
+      <h2>TagPill</h2>
+      <div class="flex flex-wrap gap-2">
+        <TagPill>TypeScript</TagPill>
+        <TagPill>React</TagPill>
+        <TagPill>Tailwind</TagPill>
+      </div>
+    </section>
+
+    <section class="space-y-4">
+      <h2>CardSurface</h2>
+      <div class="grid gap-4 sm:grid-cols-2">
+        <CardSurface>
+          <p class="font-medium">Default card surface</p>
+          <p class="text-sm text-muted-foreground">No hover lift</p>
+        </CardSurface>
+        <CardSurface hoverLift>
+          <p class="font-medium">Card with hover lift</p>
+          <p class="text-sm text-muted-foreground">Uses transition-lift utility</p>
+        </CardSurface>
+      </div>
+    </section>
+
+    <section class="space-y-4">
+      <h2>Motion utilities</h2>
+      <div class="space-y-4">
+        <p class="text-sm text-muted-foreground">
+          <code class="font-mono">transition-lift</code> — hover the card above.
+          <code class="font-mono">transition-underline</code> — add to links.
+          <code class="font-mono">transition-theme</code> — color/background transitions.
+        </p>
+        <a href="/cv" class="transition-underline text-primary">Link with underline animation</a>
       </div>
     </section>
 

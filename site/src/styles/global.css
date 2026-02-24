@@ -224,4 +224,56 @@
   .no-transitions *::after {
     transition: none !important;
   }
+
+  /* Focus: 2px primary outline with offset on all interactive elements */
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible,
+  [tabindex]:not([tabindex='-1']):focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+}
+
+/* ═══════════════════════════════════════════════════
+   Motion utility classes
+   Design guidelines: 200–250ms, ease-in-out
+   ═══════════════════════════════════════════════════ */
+
+@utility transition-lift {
+  transition:
+    transform 200ms ease-in-out,
+    box-shadow 200ms ease-in-out;
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow:
+      0 4px 6px -1px rgb(0 0 0 / 0.1),
+      0 2px 4px -2px rgb(0 0 0 / 0.1);
+  }
+}
+
+@utility transition-underline {
+  position: relative;
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    height: 2px;
+    width: 0;
+    background-color: var(--color-primary);
+    transition: width 200ms ease-in-out;
+  }
+  &:hover::after,
+  &[aria-current='page']::after {
+    width: 100%;
+  }
+}
+
+@utility transition-theme {
+  transition:
+    color 200ms ease-in-out,
+    background-color 200ms ease-in-out;
 }

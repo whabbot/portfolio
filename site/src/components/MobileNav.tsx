@@ -35,8 +35,12 @@ function MobileNavLink({
 }) {
   const active = isActive(pathname, href);
   const className = [
-    'text-sm font-medium transition-colors focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary',
-    active ? 'text-foreground' : 'text-muted-foreground hover:text-foreground',
+    'text-sm font-medium transition-colors rounded-r-md rounded-l-none px-3 py-2 border-l-4',
+    'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary',
+    'hover:bg-primary/10 focus-visible:bg-primary/10 active:bg-primary/20',
+    active
+      ? 'text-foreground bg-primary/10 border-l-primary'
+      : 'text-muted-foreground hover:text-foreground border-l-transparent',
   ].join(' ');
 
   return (
