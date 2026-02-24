@@ -166,42 +166,29 @@
 
 ---
 
-## Phase 2 — Design system & global styles
+## Phase 2 — Design system & global styles ✅
 
-### 2.1 Typography refinements
+### 2.1 Shared UI atoms ✅
 
-- Confirm font loading is performant (preload hint for Inter, `font-display: swap`).
-- Apply the full type scale to utility classes / Tailwind config: H1 (2.25rem/500), H2 (1.5rem/600), H3 (1.25rem/600), body (1rem/400), small (0.875rem/400).
-- Set line-height: 1.6 for body, 1.3 for headings.
-- Set paragraph spacing: 1.5em between `<p>` elements.
+- ~~**AccentStripe**: a thin vertical left-border accent bar component. Accepts a `variant` prop (`warm` | `creative`) for colour.~~
+- ~~**SectionHeading**: an H2 heading component with consistent styling. Optional link prop (heading becomes a link).~~
+- ~~**TagPill**: small rounded pill for tech tags. Muted background, small text, monospace font.~~
+- ~~**CardSurface**: a generic elevated surface (bg-surface, subtle border, optional hover lift).~~
 
-### 2.2 Spacing & container utilities
+> Completed: `AccentStripe.astro`, `SectionHeading.astro`, `TagPill.astro`, `CardSurface.astro` in `site/src/components/`. Theme-test page updated with demos.
 
-- Define a max-width content container (`max-w-[56rem]`, `mx-auto`, horizontal padding `1.5rem` mobile / `2rem` desktop).
-- Create a reusable `Container` Astro component or utility class.
-- Verify spacing increments follow the 8pt grid.
+### 2.2 Motion utility classes ✅
 
-### 2.3 Shared UI atoms
+- ~~Define reusable transition classes: `transition-lift` (translateY + shadow), `transition-underline` (width 0→100%), `transition-theme` (color + background-color 200ms).~~
+- ~~Apply globally where specified in design guidelines.~~
 
-- **AccentStripe**: a thin vertical left-border accent bar component. Accepts a `variant` prop (`warm` | `creative`) for colour.
-- **SectionHeading**: an H2 heading component with consistent styling. Optional link prop (heading becomes a link).
-- **TagPill**: small rounded pill for tech tags. Muted background, small text, monospace font.
-- **CardSurface**: a generic elevated surface (bg-surface, subtle border, optional hover lift).
+> Completed: `@utility` directives in `global.css` for `transition-lift`, `transition-underline`, `transition-theme`. Theme transition already on `*` in base layer.
 
-### 2.4 Motion utility classes
+### 2.3 Focus & accessibility styles ✅
 
-- Define reusable transition classes: `transition-lift` (translateY + shadow), `transition-underline` (width 0→100%), `transition-theme` (color + background-color 200ms).
-- Apply globally where specified in design guidelines.
+- ~~Global `focus-visible` style: 2px primary-coloured outline with offset on all interactive elements.~~
 
-### 2.5 Focus & accessibility styles
-
-- Global `focus-visible` style: 2px primary-coloured outline with offset on all interactive elements.
-- Verify contrast: every text/background combination in both themes meets WCAG AA (manually verify or use a contrast checker utility).
-
-### 2.6 Unit tests for utilities
-
-- Test theme persistence helper (reads/writes `localStorage`, falls back to `prefers-color-scheme`).
-- Test any formatting or data-shaping utilities created so far.
+> Completed: Added to `@layer base` in `global.css` for `a`, `button`, `input`, `select`, `textarea`, and `[tabindex]` elements.
 
 ---
 

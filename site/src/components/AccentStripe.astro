@@ -1,0 +1,23 @@
+---
+/**
+ * AccentStripe — thin vertical left-border accent bar.
+ * Use for experience sections (warm) or project sections (creative).
+ */
+interface Props {
+  variant?: 'warm' | 'creative';
+  class?: string;
+}
+
+const { variant = 'warm', class: className } = Astro.props;
+const borderClass = variant === 'warm' ? 'border-l-accent-warm' : 'border-l-accent-creative';
+---
+
+<div
+  class:list={[
+    'border-l-4 rounded-r-md border-t border-r border-b border-t-default border-r-default border-b-default bg-surface p-4',
+    borderClass,
+    className,
+  ]}
+>
+  <slot />
+</div>

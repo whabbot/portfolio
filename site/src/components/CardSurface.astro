@@ -1,0 +1,21 @@
+---
+/**
+ * CardSurface — generic elevated surface.
+ */
+interface Props {
+  hoverLift?: boolean;
+  class?: string;
+}
+
+const { hoverLift = false, class: className } = Astro.props;
+---
+
+<div
+  class:list={[
+    'rounded-xl border border-default bg-surface p-6 shadow-sm',
+    hoverLift && 'transition-lift',
+    className,
+  ]}
+>
+  <slot />
+</div>

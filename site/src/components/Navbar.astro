@@ -33,7 +33,7 @@ function isActive(href: string): boolean {
         links.map(({ href, label }) => (
           <a
             href={href}
-            class:list={['nav-link', { active: isActive(href) }]}
+            class:list={['nav-link', 'transition-underline']}
             aria-current={isActive(href) ? 'page' : undefined}
           >
             {label}
@@ -51,7 +51,6 @@ function isActive(href: string): boolean {
 
 <style>
   .nav-link {
-    position: relative;
     font-size: 0.875rem;
     font-weight: 500;
     color: var(--color-text-muted);
@@ -59,26 +58,7 @@ function isActive(href: string): boolean {
   }
 
   .nav-link:hover,
-  .nav-link.active {
+  .nav-link[aria-current='page'] {
     color: var(--color-text);
-  }
-
-  .nav-link::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    height: 2px;
-    width: 0;
-    background-color: var(--color-primary);
-    transition: width 200ms ease-in-out;
-  }
-
-  .nav-link:hover::after {
-    width: 100%;
-  }
-
-  .nav-link.active::after {
-    width: 100%;
   }
 </style>

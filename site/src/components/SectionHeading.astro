@@ -1,0 +1,29 @@
+---
+/**
+ * SectionHeading
+ * Optional link prop: when provided, heading becomes a link.
+ */
+interface Props {
+  href?: string;
+  class?: string;
+}
+
+const { href, class: className } = Astro.props;
+const baseClass = 'text-2xl font-semibold leading-tight';
+const linkClass =
+  'text-foreground hover:text-primary transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary rounded-sm';
+---
+
+{
+  href ? (
+    <h2 class={baseClass}>
+      <a href={href} class:list={[linkClass, className]}>
+        <slot />
+      </a>
+    </h2>
+  ) : (
+    <h2 class:list={[baseClass, className]}>
+      <slot />
+    </h2>
+  )
+}
