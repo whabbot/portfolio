@@ -1,0 +1,58 @@
+---
+import SectionHeading from '@/components/SectionHeading.astro';
+
+const projects = [
+  { slug: 'design-system', title: 'Design system migration' },
+  { slug: 'checkout-flow', title: 'Checkout flow optimisation' },
+  { slug: 'api-gateway', title: 'API gateway redesign' },
+  { slug: 'analytics-dashboard', title: 'Analytics dashboard v2' },
+  { slug: 'mobile-app', title: 'Mobile app prototype' },
+];
+---
+
+<section aria-label="Projects preview">
+  <div class="mx-auto max-w-3xl px-6 py-20 md:px-8 md:py-24">
+    <SectionHeading href="/projects">Projects</SectionHeading>
+
+    <ul class="mt-8 list-none space-y-4 pl-0">
+      {
+        projects.map(({ slug, title }) => (
+          <li>
+            <a href={`/projects/${slug}`} class="projects-link">
+              {title}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<style>
+  .projects-link {
+    position: relative;
+    display: inline-block;
+    color: var(--color-text);
+    transition: color 200ms ease-in-out;
+  }
+
+  .projects-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    height: 2px;
+    width: 0;
+    background-color: var(--color-accent-creative);
+    transition: width 200ms ease-in-out;
+  }
+
+  .projects-link:hover {
+    color: var(--color-accent-creative);
+  }
+
+  .projects-link:hover::after,
+  .projects-link:focus-visible::after {
+    width: 100%;
+  }
+</style>
