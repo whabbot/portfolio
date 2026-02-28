@@ -17,7 +17,9 @@ Tests fail when run by the Cursor agent but pass when run by the user in the ter
 
 ## How to run tests
 
-Always run tests from `site/`:
+Always run tests from `site/`
+
+Always run tests with `env -u NO_COLOR` to stop colour-related warnings
 
 - **Unit tests**: `cd site && export NODE_OPTIONS="--no-webstorage" && npm run test`
 - **E2E tests**: `cd site && PLAYWRIGHT_BROWSERS_PATH=$HOME/Library/Caches/ms-playwright npm run test:e2e` (macOS; on Linux use `$HOME/.cache/ms-playwright`)

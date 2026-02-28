@@ -3,19 +3,25 @@ import { test, expect } from '@playwright/test';
 test.describe('navigation', () => {
   test('navbar links navigate to /, /cv, /projects', async ({ page }) => {
     await page.goto('/');
+    const nav = page.getByRole('navigation', { name: 'Main' });
 
     // Home link (Clearcraft)
-    await page.getByRole('link', { name: 'Clearcraft' }).click();
+    await nav.getByRole('link', { name: 'Clearcraft' }).click();
     await expect(page).toHaveURL('/');
-    await expect(page.getByRole('heading', { name: 'Clearcraft', level: 1 })).toBeVisible();
+    await expect(
+      page.getByRole('heading', {
+        level: 1,
+        name: 'Frontend leaning fullstack engineer building user-centric products.',
+      }),
+    ).toBeVisible();
 
     // CV link
-    await page.getByRole('link', { name: 'CV' }).click();
+    await nav.getByRole('link', { name: 'CV' }).click();
     await expect(page).toHaveURL('/cv');
     await expect(page.getByRole('heading', { name: 'CV', level: 1 })).toBeVisible();
 
     // Projects link
-    await page.getByRole('link', { name: 'Projects' }).click();
+    await nav.getByRole('link', { name: 'Projects' }).click();
     await expect(page).toHaveURL('/projects');
     await expect(page.getByRole('heading', { name: 'Projects', level: 1 })).toBeVisible();
   });

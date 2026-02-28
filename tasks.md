@@ -194,14 +194,16 @@
 
 ## Phase 3 — Home page (`/`)
 
-### 3.1 Build the Hero section
+### 3.1 Build the Hero section ✅
 
-- Create `src/components/home/Hero.astro`.
-- 2–3 line narrative philosophy statement (hard-coded placeholder).
-- Primary CTA: "View CV →" button linking to `/cv`.
-- Secondary CTA: "Explore Projects →" button linking to `/projects`.
-- Layout: generous whitespace, subtle asymmetry (e.g., off-centre text or a faint accent shape).
-- Typography: H1 for the statement, buttons styled per design guidelines.
+- ~~Create `src/components/home/Hero.astro`.~~
+- ~~2–3 line narrative philosophy statement (hard-coded placeholder).~~
+- ~~Primary CTA: "View CV →" button linking to `/cv`.~~
+- ~~Secondary CTA: "Explore Projects →" button linking to `/projects`.~~
+- ~~Layout: generous whitespace, subtle asymmetry (e.g., off-centre text or a faint accent shape).~~
+- ~~Typography: H1 for the statement, buttons styled per design guidelines.~~
+
+> Completed: `Hero.astro` in `site/src/components/home/`. Philosophy statement, primary/secondary CTAs using shadcn Button, subtle asymmetry (off-centre text + faint accent blob). Playwright hero specs in `e2e/hero.spec.ts`.
 
 ### 3.2 Build the ExperiencePreview section
 
