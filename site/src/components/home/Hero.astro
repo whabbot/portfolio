@@ -1,0 +1,28 @@
+---
+import { Button } from '@/components/ui/button';
+---
+
+<section aria-label="Hero" class="relative overflow-hidden">
+  <div class="mx-auto max-w-3xl px-6 py-20 md:px-8 md:py-24">
+    <div class="relative md:pl-12">
+      <div
+        aria-hidden="true"
+        class="pointer-events-none absolute -left-10 top-4 h-28 w-28 rounded-full bg-primary/10 blur-2xl"
+      >
+      </div>
+
+      <h1 class="max-w-[32ch] text-balance">
+        Frontend leaning fullstack engineer building user-centric products.
+      </h1>
+
+      <div class="mt-10 flex flex-wrap gap-3">
+        <Button asChild>
+          <a href="/cv">View CV →</a>
+        </Button>
+        <Button variant="outline" asChild>
+          <a href="/projects">Explore Projects →</a>
+        </Button>
+      </div>
+    </div>
+  </div>
+</section>
