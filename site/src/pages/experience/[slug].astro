@@ -2,7 +2,13 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
 export function getStaticPaths() {
-  return [{ params: { slug: 'placeholder' } }];
+  return [
+    { params: { slug: 'placeholder' } },
+    { params: { slug: 'lead-engineer' } },
+    { params: { slug: 'design-systems' } },
+    { params: { slug: 'product-engineering' } },
+    { params: { slug: 'scaling' } },
+  ];
 }
 
 const { slug } = Astro.params;
