@@ -1,0 +1,24 @@
+---
+description: Mark tasks complete in tasks.md only after verification
+alwaysApply: true
+---
+
+# tasks.md completion protocol
+
+When the user asks to implement a task from `tasks.md` (or references a task ID like “4.1”), treat updating `tasks.md` as part of the definition of done.
+
+## When to mark complete automatically
+
+- **Behavior/logic changes**: only mark the task complete after relevant **tests pass** (and lint/format if part of the repo workflow).
+- **Styling/layout-only changes**: only mark the task complete after either:
+  - the agent has **visually reviewed** light + dark mode, responsive breakpoints, and keyboard focus states
+
+## How to mark complete
+
+- Preserve the existing formatting/style of `tasks.md`.
+- Prefer the existing convention: strike checklist bullets with `~~...~~` and add a short `> Completed:` note under the task.
+
+## If verification can’t be done
+
+- Do **not** mark the task complete.
+- Instead, leave a short note under the task describing what is missing (e.g. failing test name, or “needs visual review confirmation”).
