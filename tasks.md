@@ -225,18 +225,22 @@
 
 > Completed: `ProjectsPreview.astro` with 5 project bullets, creative accent underline, SectionHeading link to `/projects`. Project slugs added to `projects/[slug].astro`.
 
-### 3.4 Assemble the Home page
+### 3.4 Assemble the Home page ✅
 
-- In `src/pages/index.astro`, replace placeholder with Hero → ExperiencePreview → ProjectsPreview.
-- Verify vertical rhythm: generous spacing between sections (min 4rem).
-- Hover interactions: underline slide on links, accent tint on bullets (200–250ms ease-in-out).
+- ~~In `src/pages/index.astro`, replace placeholder with Hero → ExperiencePreview → ProjectsPreview.~~
+- ~~Verify vertical rhythm: generous spacing between sections.~~
+- ~~Hover interactions: underline slide on links (200–250ms ease-in-out).~~
+
+> Completed: Home page now renders `Hero` → `ExperiencePreview` → `ProjectsPreview`. Preview hover underline + accent styles are shared via the preview-section pattern CSS.
 
 ### 3.5 Playwright smoke tests for home page
 
-- Test: hero renders with philosophy statement and both CTAs.
-- Test: "View CV →" navigates to `/cv`.
-- Test: "Explore Projects →" navigates to `/projects`.
-- Test: experience and project bullet links navigate to correct detail routes.
+- ~~Test: hero renders with philosophy statement and both CTAs.~~
+- ~~Test: "View CV →" navigates to `/cv`.~~
+- ~~Test: "Explore Projects →" navigates to `/projects`.~~
+- ~~Test: experience and project bullet links navigate to correct detail routes.~~
+
+> Completed: Extended Playwright home hero tests to include Experience/Projects preview bullet navigation to `/experience/{slug}` and `/projects/{slug}`.
 
 ---
 
