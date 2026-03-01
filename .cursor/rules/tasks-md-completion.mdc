@@ -1,29 +1,22 @@
 ---
-description: tasks.md completion policy (works with Cursor hook)
-globs: tasks.md
-alwaysApply: false
+description: Mark tasks complete in tasks.md only after verification
+alwaysApply: true
 ---
 
 # tasks.md completion protocol
 
-When the user asks to implement a task from `tasks.md` (or references a task ID like “4.1”), updating `tasks.md` is part of the definition of done.
+When the user asks to implement a task from `tasks.md` (or references a task ID like “4.1”), treat updating `tasks.md` as part of the definition of done.
 
-## When to mark complete
+## When to mark complete automatically
 
 - **Behavior/logic changes**: only mark the task complete after relevant **tests pass** (and lint/format if part of the repo workflow).
-- **Styling/layout-only changes**: only mark the task complete after **visual review is confirmed**.
+- **Styling/layout-only changes**: only mark the task complete after either:
+  - the agent has **visually reviewed** light + dark mode, responsive breakpoints, and keyboard focus states
 
-### Visual review confirmation (required phrase)
+## How to mark complete
 
-For styling-only tasks, the assistant must include the exact phrase:
-
-`Visual review: confirmed`
-
-Only use it after checking:
-
-- light + dark mode
-- responsive breakpoints
-- keyboard focus states
+- Preserve the existing formatting/style of `tasks.md`.
+- Prefer the existing convention: strike checklist bullets with `~~...~~` and add a short `> Completed:` note under the task.
 
 ## If verification can’t be done
 
