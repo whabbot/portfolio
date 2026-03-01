@@ -19,10 +19,8 @@ Content is managed separately through Sanity Studio (author role, not part of th
 ## Site map
 
 ```
-/                            Home (narrative hero + previews)
-├── /cv                      CV (curated roles + projects, links to deep dives)
-├── /experience/{slug}       Experience detail (role deep-dive, linked from /cv and /)
-├── /projects                Projects grid (all projects)
+/                            Home (hero + personal projects + brief background)
+├── /projects                Personal projects grid (all personal projects)
 │   └── /projects/{slug}     Project detail (single project deep-dive)
 └── (404)                    Not found page
 ```
@@ -36,7 +34,7 @@ No authentication walls. No gated content. Every page is reachable in ≤ 2 clic
 ### Navbar
 
 - **Left**: site owner's name (links to `/`).
-- **Right**: CV | Projects | theme toggle (sun/moon icon).
+- **Right**: Projects | theme toggle (sun/moon icon).
 - Active page has a persistent accent underline.
 - Mobile: collapses to hamburger menu; same links + theme toggle.
 
@@ -63,29 +61,37 @@ No authentication walls. No gated content. Every page is reachable in ≤ 2 clic
 
 1. **Hero**
    - 2–3 line narrative philosophy statement.
-   - Primary CTA: "View CV →" (navigates to `/cv`).
-   - Secondary CTA: "Explore Projects →" (navigates to `/projects`).
+   - Primary CTA: "Explore Projects →" (navigates to `/projects`).
+   - Secondary CTA: "View LinkedIn →" (opens LinkedIn in a new tab).
 
-2. **Experience preview**
-   - Section heading: "Experience" (links to `/cv`).
-   - 3–5 curated impact bullets drawn from top roles.
-   - Each bullet links to its role's detail page (`/experience/{slug}`).
-
-3. **Projects preview**
+2. **Selected projects preview**
    - Section heading: "Projects" (links to `/projects`).
-   - 3–5 curated project bullets.
-   - Each bullet links to its project detail page (`/projects/{slug}`).
+   - 3–5 curated personal projects.
+   - Each item links to its project detail page (`/projects/{slug}`).
+
+3. **Background / experience (brief)**
+   - 3–5 bullets.
+   - Each bullet is **generalized**: employer type + job title + years + brief scope/impact.
+   - No links to employer deep-dive pages (the public site does not host them).
+
+4. **Awards (brief)**
+   - Tight list format; optional omission of dates/venues if identifiability is a concern.
+
+5. **Interests (brief)**
+   - Tight list; relevant to how I work / what I like building.
+
+6. **LinkedIn callout**
+   - Explicit: “For full work history and messaging, see LinkedIn →”.
 
 #### Visitor actions on this page
 
 | Action                     | Target                   |
 | -------------------------- | ------------------------ |
-| Click primary CTA          | `/cv`                    |
-| Click secondary CTA        | `/projects`              |
-| Click "Experience" heading | `/cv`                    |
-| Click an experience bullet | `/experience/{slug}`     |
+| Click primary CTA          | `/projects`              |
+| Click secondary CTA        | LinkedIn (new tab)       |
 | Click "Projects" heading   | `/projects`              |
-| Click a project bullet     | `/projects/{slug}`       |
+| Click a project item       | `/projects/{slug}`       |
+| Click LinkedIn callout     | LinkedIn (new tab)       |
 | Toggle theme               | Switches light/dark mode |
 
 #### What the visitor should take away
@@ -96,82 +102,7 @@ No authentication walls. No gated content. Every page is reachable in ≤ 2 clic
 
 ---
 
-### 2. CV (`/cv`)
-
-**Purpose**: the **primary entry point for experience and projects** — a recruiter-friendly, single-page overview. This is the link you send when someone asks "what have you done?" Substantive enough to stand alone; each role and project links to a deep-dive for readers who want more.
-
-#### Content blocks (top to bottom)
-
-1. **Brief intro**
-   - Name, current title/focus, 1–2 sentence positioning statement.
-
-2. **Experience (curated)**
-   - Only the most relevant/high-impact roles. If a role isn't worth featuring, it doesn't appear.
-   - Each role shows: **role title, company, timeline, and 4–5 impact bullets**.
-   - Each role card links to its detail page (`/experience/{slug}`) for the full case study.
-
-3. **Projects (curated)**
-   - Top-pick projects only.
-   - Each project shows: **title, short description, tech tags**.
-   - Each project links to its detail page (`/projects/{slug}`).
-
-4. **Skills / technologies (optional)**
-   - Compact tag cloud or grouped list of key technologies.
-   - Kept brief — the projects and roles already demonstrate skill.
-
-#### Visitor actions on this page
-
-| Action                      | Target                   |
-| --------------------------- | ------------------------ |
-| Click a role card           | `/experience/{slug}`     |
-| Click a project card        | `/projects/{slug}`       |
-| Click "View all projects →" | `/projects`              |
-| Toggle theme                | Switches light/dark mode |
-
-#### What the visitor should take away
-
-- A **substantive, self-contained picture** of career trajectory, impact, and project work.
-- Enough detail to evaluate fit without needing to click through to deeper pages.
-- Clear path to drill deeper if they want the full case studies.
-
----
-
-### 3. Experience detail (`/experience/{slug}`)
-
-**Purpose**: a product-style case study of one role — demonstrating judgment, prioritisation, and systems thinking.
-
-#### Content sections (repeatable template)
-
-| Section                       | What it covers                                                   |
-| ----------------------------- | ---------------------------------------------------------------- |
-| **Role overview**             | Company context, team size, scope of responsibility              |
-| **High-leverage initiatives** | 2–4 key initiatives I led or shaped; framed as problems solved   |
-| **STAR case studies**         | 1–2 structured narratives (Situation, Task, Action, Result)      |
-| **Product decisions**         | Decisions about what to build (and what not to) and why          |
-| **Technical trade-offs**      | Architecture or implementation decisions with explicit reasoning |
-| **What I learned**            | Honest retrospective; what I'd do differently                    |
-
-#### Optional elements
-
-- Minimal diagrams (architecture, system context).
-- Clean code snippets where they illustrate a decision.
-
-#### Visitor actions on this page
-
-| Action                  | Target                     |
-| ----------------------- | -------------------------- |
-| Scroll through sections | Linear reading within page |
-| Navigate via navbar     | `/`, `/cv`, `/projects`    |
-
-#### What the visitor should take away
-
-- This person makes thoughtful trade-offs.
-- They can frame decisions in terms of business impact.
-- They reflect honestly on outcomes.
-
----
-
-### 4. Projects grid (`/projects`)
+### 2. Projects grid (`/projects`)
 
 **Purpose**: curated showcase of personal/side projects, each framed as a product decision — not a tech demo.
 
@@ -195,7 +126,7 @@ A **grid of project tiles**. Each tile contains:
 | -------------------- | --------------------------------------- |
 | Click a project tile | `/projects/{slug}`                      |
 | Click a GitHub icon  | External GitHub repo (new tab)          |
-| Use navbar           | Navigate to `/`, `/cv`, or toggle theme |
+| Use navbar           | Navigate to `/` or toggle theme         |
 
 #### What the visitor should take away
 
@@ -204,7 +135,7 @@ A **grid of project tiles**. Each tile contains:
 
 ---
 
-### 5. Project detail (`/projects/{slug}`)
+### 3. Project detail (`/projects/{slug}`)
 
 **Purpose**: a product case study for one project — demonstrating product awareness, not just technical execution.
 
@@ -233,7 +164,7 @@ A **grid of project tiles**. Each tile contains:
 | ----------------------- | -------------------------- |
 | Scroll through sections | Linear reading within page |
 | Click GitHub link       | External repo (new tab)    |
-| Navigate via navbar     | `/`, `/cv`, `/projects`    |
+| Navigate via navbar     | `/`, `/projects`           |
 
 #### What the visitor should take away
 
@@ -243,7 +174,7 @@ A **grid of project tiles**. Each tile contains:
 
 ---
 
-### 6. Not found (`404`)
+### 4. Not found (`404`)
 
 **Purpose**: gracefully handle broken/mistyped URLs.
 
@@ -258,23 +189,16 @@ A **grid of project tiles**. Each tile contains:
 
 These are the core document types that power the pages above.
 
-### Experience
+### Background item (brief experience)
 
-| Field                | Type                   | Notes                                               |
-| -------------------- | ---------------------- | --------------------------------------------------- |
-| `title`              | string                 | Role title                                          |
-| `company`            | string                 | Company name                                        |
-| `slug`               | slug                   | URL segment, derived from company + title           |
-| `timeline`           | string                 | e.g., "2022 – 2024"                                 |
-| `sortOrder`          | number                 | For manual ordering (reverse-chronological default) |
-| `impactBullets`      | array of strings       | 4–6 bullets for cv and home preview                 |
-| `overview`           | block content          | Role overview (rich text)                           |
-| `initiatives`        | array of block content | High-leverage initiatives                           |
-| `caseStudies`        | array of objects       | STAR narratives (situation, task, action, result)   |
-| `productDecisions`   | block content          | What to build / not build                           |
-| `technicalTradeoffs` | block content          | Architecture reasoning                              |
-| `learned`            | block content          | Retrospective                                       |
-| `featured`           | boolean                | Show on `/cv` and in home page preview              |
+| Field           | Type             | Notes                                                                 |
+| --------------- | ---------------- | --------------------------------------------------------------------- |
+| `employerType`  | string           | Generalized (e.g. “Fintech scale-up”, “Public sector”, “B2B SaaS”)    |
+| `jobTitle`      | string           | Role title                                                            |
+| `timeline`      | string           | e.g., "2022 – 2024"                                                   |
+| `summary`       | string           | 1–2 lines (privacy-first; avoid identifiable details)                 |
+| `bullets`       | array of strings | 2–4 bullets (privacy-first; avoid client names/internal system names) |
+| `sortOrder`     | number           | For manual ordering                                                   |
 
 ### Project
 
@@ -294,7 +218,7 @@ These are the core document types that power the pages above.
 | `tradeoffs`             | block content    | Trade-off reasoning                    |
 | `outcomes`              | block content    | Results                                |
 | `improve`               | block content    | Retrospective                          |
-| `featured`              | boolean          | Show on `/cv` and in home page preview |
+| `featured`              | boolean          | Show on home page preview              |
 
 ---
 
@@ -302,39 +226,34 @@ These are the core document types that power the pages above.
 
 These are the primary journeys a visitor is likely to take.
 
-### Path A — Experience-first (most common for hiring managers)
+### Path A — Projects-first (most common)
 
 ```
-/  →  click "View CV" CTA
-   →  /cv  →  scan role cards
-   →  /experience/{slug}  →  read case study
-   →  (navbar) /projects  →  browse grid  →  /projects/{slug}
+/  →  scan hero + selected projects
+   →  /projects  →  browse grid  →  /projects/{slug}
 ```
 
-### Path B — Projects-first (common for technical peers)
+### Path B — LinkedIn for work history
 
 ```
-/  →  click "Explore Projects" CTA
-   →  /projects  →  browse tiles
-   →  /projects/{slug}  →  read case study
-   →  (navbar) /cv  →  scan roles  →  /experience/{slug}
+/  →  click “View LinkedIn →”
+   →  LinkedIn (new tab)  →  messaging / full work history
 ```
 
-### Path C — Recruiter link (most common for recruiters)
+### Path C — Recruiter quick scan
 
 ```
-/cv  (shared link, direct entry)
-   →  scan roles + projects on one page
-   →  optionally click a role card  →  /experience/{slug}
-   →  close tab (has enough signal)
+/  (shared link, direct entry)
+   →  read background bullets + awards + 1–2 project summaries
+   →  click LinkedIn for full details if needed
 ```
 
-### Path D — Quick scan (time-constrained founder)
+### Path D — Deep-dive (time-constrained founder)
 
 ```
-/  →  read hero + previews  →  click 1 experience bullet
-   →  /experience/{slug}  →  skim high-leverage initiatives
-   →  close tab (has enough signal)
+/  →  click 1 selected project
+   →  /projects/{slug}  →  skim decisions + trade-offs
+   →  close tab
 ```
 
 Every path reaches meaningful content within 1–2 clicks. No dead ends.
@@ -347,8 +266,6 @@ Every path reaches meaningful content within 1–2 clicks. No dead ends.
 | ------------------ | ------------------------------------------------- |
 | Nav link hover     | Underline slides in (200ms ease-in-out)           |
 | Nav active state   | Persistent accent underline                       |
-| Role card hover    | Subtle accent tint                                |
-| Role card click    | Navigate to `/experience/{slug}`                  |
 | Project tile hover | Lift + accent highlight + "See decisions →"       |
 | Project tile click | Navigate to `/projects/{slug}`                    |
 | GitHub icon click  | Opens external repo in new tab                    |

@@ -244,47 +244,30 @@
 
 ---
 
-## Phase 4 — CV page & Experience detail
+## Phase 4 — Privacy-first restructure (remove CV/experience)
 
-> Can be run in parallel with Phase 5 once Phase 3 is complete: independent page sets, no shared file conflicts.
+> **Update (privacy-first direction)**: earlier phases created `/cv` and `/experience/...` stubs and tests. This phase replaces that plan: we remove those routes and instead keep a brief, generalized background section on `/`, with LinkedIn as the destination for full work history and messaging.
 
-### 4.1 Build the RoleCard component
+### 4.1 Update home hero CTAs (Projects-first + LinkedIn)
 
-- Create `src/components/cv/RoleCard.astro`.
-- Displays: role title, company, timeline, 4–6 impact bullets.
-- Soft left accent stripe (warm accent).
-- Entire card is clickable → `/experience/{slug}`.
-- Hover: subtle accent tint.
+- Update `Hero` so the **primary CTA** goes to `/projects`.
+- Replace the CV CTA with a **LinkedIn** CTA (external, opens in new tab, labelled for accessibility).
+- Update Playwright hero tests accordingly.
 
-### 4.2 Build the CV page
+### 4.2 Replace Experience preview with Background / Awards / Interests (home)
 
-- Create content in `src/pages/cv.astro`.
-- **Brief intro**: name, title, 1–2 sentence positioning (hard-coded).
-- **Experience section**: 2–3 RoleCard instances (hard-coded placeholder data).
-- **Projects section**: 2–3 project tiles (reuse the ProjectTile component from Phase 5, or build a shared version now). Each shows title, description, tech tags. Links to `/projects/{slug}`.
-- "View all projects →" link at the bottom of the projects section.
-- Optional skills/tech section: grouped TagPill components.
-- No hero block — straight to substance.
+- Remove the home `ExperiencePreview` section.
+- Add a **Background** section with 3–5 bullets:
+  - generalized employer type + job title + years + brief scope/impact (privacy-first).
+- Add **Awards** and **Interests** brief lists (tight format, minimal identifiability).
+- Add a LinkedIn callout line: “For full work history and messaging, see LinkedIn →”.
 
-### 4.3 Build the ExperienceDetail layout
+### 4.3 Remove `/cv` and `/experience/[slug]` routes
 
-- Create `src/components/experience/ExperienceDetail.astro` (or a layout).
-- Repeatable section template with slots for: Role Overview, High-Leverage Initiatives, STAR Case Studies, Product Decisions, Technical Trade-offs, What I Learned.
-- Each section uses SectionHeading + body content.
-- Left accent stripe (warm) on key sections.
-- Optional slots for diagrams and code snippets (monospace, lightly shaded background).
-
-### 4.4 Build a sample experience detail page
-
-- In `src/pages/experience/[slug].astro`, implement `getStaticPaths` returning at least one hard-coded role.
-- Populate with realistic placeholder content to validate the template.
-- Verify all sections render correctly in both themes.
-
-### 4.5 Playwright tests for CV & experience flow
-
-- Test: `/cv` renders intro, role cards, and project tiles.
-- Test: clicking a role card navigates to `/experience/{slug}`.
-- Test: experience detail page renders all expected sections.
+- Remove the navbar “CV” link and mobile nav entry.
+- Remove (or redirect) `src/pages/cv.astro`.
+- Remove `src/pages/experience/[slug].astro`.
+- Update navigation Playwright tests to stop asserting `/cv` and `/experience` behaviour.
 
 ---
 
@@ -320,10 +303,9 @@
 - Populate with realistic placeholder content.
 - Verify all sections render in both themes.
 
-### 5.5 Refactor shared ProjectTile for CV page reuse
+### 5.5 Ensure ProjectTile reuse on Home preview
 
-- If the ProjectTile from 5.1 isn't already reused on `/cv`, wire it up now.
-- Ensure the same component renders identically on both `/cv` and `/projects`.
+- N/A (no `/cv` page). Ensure the same component renders consistently on `/projects` and any “selected projects” preview on `/`.
 
 ### 5.6 Playwright tests for projects flow
 
@@ -344,10 +326,10 @@ NOTE: IMPORTANT: confirm with user before progressing! We want to use a referral
 - Configure the Sanity Studio with the project ID and dataset.
 - Studio is hosted by Sanity (no self-hosted route in the Astro app).
 
-### 6.2 Define Experience schema
+### 6.2 Define Background (brief experience) schema
 
-- Create a Sanity document type for `experience` with all fields from the content model:
-  - `title` (string), `company` (string), `slug` (slug), `timeline` (string), `sortOrder` (number), `impactBullets` (array of strings), `overview` (block content), `initiatives` (array of block content), `caseStudies` (array of objects with situation/task/action/result), `productDecisions` (block content), `technicalTradeoffs` (block content), `learned` (block content), `featured` (boolean).
+- Create a Sanity document type for brief background items (no deep-dive pages):
+  - `employerType` (string, generalized), `jobTitle` (string), `timeline` (string), `summary` (string), `bullets` (array of strings), `sortOrder` (number).
 
 ### 6.3 Define Project schema
 
@@ -359,11 +341,9 @@ NOTE: IMPORTANT: confirm with user before progressing! We want to use a referral
 - Install `@sanity/client` and `@portabletext/react` (for rendering block content).
 - Create a Sanity client helper (`src/lib/sanity.ts`) configured with project ID, dataset, API version, and `useCdn: true`.
 - Create GROQ query helpers for:
-  - All featured experiences (sorted by `sortOrder`).
-  - All featured projects (sorted by `sortOrder`).
-  - Single experience by slug.
+  - All background items (sorted by `sortOrder`).
+  - Featured personal projects (sorted by `sortOrder`).
   - Single project by slug.
-  - All experiences (for `getStaticPaths`).
   - All projects (for `getStaticPaths`).
 
 ### 6.5 Data-shaping helpers + unit tests
@@ -377,9 +357,7 @@ NOTE: IMPORTANT: confirm with user before progressing! We want to use a referral
 ### 6.6 Wire pages to Sanity data
 
 - Replace hard-coded content on every page with Sanity-fetched data:
-  - Home: experience preview bullets + project preview bullets from featured items.
-  - CV: featured experiences + featured projects.
-  - `/experience/[slug]`: single experience document.
+  - Home: background section + selected/featured personal projects (and optional awards/interests).
   - `/projects` grid: all projects.
   - `/projects/[slug]`: single project document.
 - Update `getStaticPaths` on dynamic routes to query Sanity for all slugs.
@@ -447,9 +425,8 @@ NOTE: IMPORTANT: confirm with user before progressing! We want to use a referral
 
 ### 7.8 Playwright integration tests for key journeys
 
-- Path A: `/` → "View CV" → `/cv` → click role card → `/experience/{slug}` → navbar → `/projects` → click tile → `/projects/{slug}`.
-- Path B: `/` → "Explore Projects" → `/projects` → click tile → `/projects/{slug}` → navbar → `/cv`.
-- Path C: direct entry to `/cv` → scan → click role card → `/experience/{slug}`.
+- Path A: `/` → "Explore Projects" → `/projects` → click tile → `/projects/{slug}`.
+- Path B: `/` → click LinkedIn CTA → verify it opens LinkedIn in new tab.
 - Verify theme toggle persists across navigation.
 
 ---

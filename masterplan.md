@@ -10,7 +10,7 @@ It’s a **curated, timeless body of work** (not a feed). The experience should 
 
 - **Founders / early leaders** evaluating whether I can navigate ambiguity, make trade-offs, and ship durable product.
 - **Engineering managers** assessing judgment, prioritization, communication, and ability to deliver impact through systems.
-- **Recruiters** looking for a quick, shareable overview of experience and impact (the `/cv` page).
+- **Recruiters** looking for quick signal: personal project depth + a brief background summary, with LinkedIn as the source of full work history.
 - **Peers / collaborators** looking for how I approach architecture and product decisions (secondary audience).
 
 ## What users get out of it
@@ -35,27 +35,26 @@ If a section doesn’t strengthen one of these, it’s a candidate for removal.
 
 ## Content pillars (what we’re showcasing)
 
-- **Experience**: roles as impact summaries, with drill-down case studies.
-- **Projects**: curated product case studies (problem → decisions → outcomes).
+- **Background**: brief role summaries (generalized employer type, job title, years, short scope/impact). No deep-dive employer case studies on the public site.
+- **Personal projects**: curated case studies (problem → decisions → trade-offs → outcomes).
 - **Decision quality**: explicit constraints, trade-offs, and “what I’d do next.”
 
 ## Primary navigation & information architecture (high-level)
 
-- **Home (`/`)**: narrative hero + signal previews for Experience and Projects.
-- **CV (`/cv`)**: the primary experience and projects overview — curated top roles with impact bullets and top projects, each linking to a deep-dive.
-- **Experience detail (`/experience/{slug}`)**: case-study style breakdown of a single role.
-- **Projects (`/projects`)**: curated grid; each project links to a deep-dive.
+- **Home (`/`)**: narrative hero + projects-first preview + brief background + awards/interests + LinkedIn callout.
+- **Projects (`/projects`)**: curated grid of personal projects; each links to a deep-dive.
 - **Project detail (`/projects/{project}`)**: product case study format.
 
 Explicit non-feature: **No “Now” section**.
 
-## Experience principles (how it should feel)
+## Privacy principles (how it should feel)
 
 - **Signal over decoration**: generous whitespace, clear hierarchy, minimal chrome.
 - **Warm restraint**: subtle expressiveness (small asymmetry, gentle accents), never loud.
 - **Product engineer’s workspace**: calm, structured, intentional.
 - **Minimal JavaScript**: interactivity only where it meaningfully improves UX.
 - **Accessible by default**: semantic structure, keyboard navigation, clear focus.
+- **Privacy-first**: avoid unnecessary personally identifiable information; generalized employers; LinkedIn as the “full details + messaging” destination.
 
 ## Success criteria (what “good” looks like)
 
@@ -74,8 +73,8 @@ Explicit non-feature: **No “Now” section**.
 
 ## Key design decisions (that shape implementation)
 
-- **Case-study formats** for experience and projects (not generic descriptions).
-- **Impact bullets first**; drill-down pages provide the nuance and narrative.
+- **Case-study formats** for personal projects (not generic descriptions).
+- **Impact bullets first** for background; no public employer deep dives.
 - **Controlled motion**: subtle transitions (200–250ms, ease-in-out), no spectacle.
 - **Color accents as hierarchy**: one accent per section; avoid “color chaos.”
 - **Light & dark mode**: both themes supported; respect `prefers-color-scheme`, allow manual toggle, persist preference.
