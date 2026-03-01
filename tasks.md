@@ -268,16 +268,16 @@
 
 ### 4.3 Remove `/cv` and `/experience/[slug]` routes
 
-- Remove the navbar “CV” link and mobile nav entry.
-- Remove (or redirect) `src/pages/cv.astro`.
-- Remove `src/pages/experience/[slug].astro`.
-- Update navigation Playwright tests to stop asserting `/cv` and `/experience` behaviour.
+- ~~Remove the navbar “CV” link and mobile nav entry.~~
+- ~~Remove (or redirect) `src/pages/cv.astro`.~~
+- ~~Remove `src/pages/experience/[slug].astro`.~~
+- ~~Update navigation Playwright tests to stop asserting `/cv` and `/experience` behaviour.~~
+
+> Completed: Removed CV from desktop + mobile nav, deleted the `/cv` and `/experience/[slug]` pages, and updated Playwright navigation coverage. Verified via format/lint, unit tests, and e2e suite.
 
 ---
 
 ## Phase 5 — Projects pages
-
-> Can be run in parallel with Phase 4 once Phase 3 is complete: independent page sets, no shared file conflicts.
 
 ### 5.1 Build the ProjectTile component
 

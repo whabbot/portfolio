@@ -12,10 +12,7 @@ import {
 } from '@/components/ui/sheet';
 import { ThemeToggleButton } from '@/components/ThemeToggleButton';
 
-const links = [
-  { href: '/cv', label: 'CV' },
-  { href: '/projects', label: 'Projects' },
-];
+const links = [{ href: '/projects', label: 'Projects' }];
 
 function isActive(pathname: string, href: string): boolean {
   if (href === '/') {
