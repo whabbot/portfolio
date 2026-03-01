@@ -4,6 +4,7 @@ import AccentStripe from '@/components/AccentStripe.astro';
 import SectionHeading from '@/components/SectionHeading.astro';
 import TagPill from '@/components/TagPill.astro';
 import CardSurface from '@/components/CardSurface.astro';
+import ProjectTile from '@/components/projects/ProjectTile.astro';
 import { Button } from '@/components/ui/button';
 import {
   Card,
@@ -226,6 +227,17 @@ import {
           <p class="text-sm text-muted-foreground">Uses transition-lift utility</p>
         </CardSurface>
       </div>
+    </section>
+
+    <section class="space-y-4">
+      <h2>ProjectTile</h2>
+      <ProjectTile
+        slug="placeholder"
+        title="Project Tile Playground"
+        description="Clickable card with overlay link + GitHub icon link."
+        techTags={['Astro', 'Tailwind', 'Playwright']}
+        githubUrl="https://github.com/example/repo"
+      />
     </section>
 
     <section class="space-y-4">
