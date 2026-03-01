@@ -6,6 +6,7 @@
 @import 'tailwindcss';
 @import 'tw-animate-css';
 @import 'shadcn/tailwind.css';
+@import './patterns/preview-section.css';
 
 /* ── Dark mode: class strategy (.dark on <html>) ── */
 @custom-variant dark (&:where(.dark, .dark *));

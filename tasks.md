@@ -205,21 +205,25 @@
 
 > Completed: `Hero.astro` in `site/src/components/home/`. Philosophy statement, primary/secondary CTAs using shadcn Button, subtle asymmetry (off-centre text + faint accent blob). Playwright hero specs in `e2e/hero.spec.ts`.
 
-### 3.2 Build the ExperiencePreview section
+### 3.2 Build the ExperiencePreview section ✅
 
-- Create `src/components/home/ExperiencePreview.astro`.
-- Section heading: "Experience" — links to `/cv`.
-- 3–5 impact bullet items (hard-coded placeholder data).
-- Each bullet links to `/experience/{slug}`.
-- Uses warm accent for any accent indicators.
+- ~~Create `src/components/home/ExperiencePreview.astro`.~~
+- ~~Section heading: "Experience" — links to `/cv`.~~
+- ~~3–5 impact bullet items (hard-coded placeholder data).~~
+- ~~Each bullet links to `/experience/{slug}`.~~
+- ~~Uses warm accent for any accent indicators.~~
 
-### 3.3 Build the ProjectsPreview section
+> Completed: `ExperiencePreview.astro` with 4 impact bullets, warm accent stripe and underline, SectionHeading link to `/cv`. Experience slugs added to `experience/[slug].astro`.
 
-- Create `src/components/home/ProjectsPreview.astro`.
-- Section heading: "Projects" — links to `/projects`.
-- 3–5 project bullet items (hard-coded placeholder data).
-- Each bullet links to `/projects/{slug}`.
-- Uses creative accent for any accent indicators.
+### 3.3 Build the ProjectsPreview section ✅
+
+- ~~Create `src/components/home/ProjectsPreview.astro`.~~
+- ~~Section heading: "Projects" — links to `/projects`.~~
+- ~~3–5 project bullet items (hard-coded placeholder data).~~
+- ~~Each bullet links to `/projects/{slug}`.~~
+- ~~Uses creative accent for any accent indicators.~~
+
+> Completed: `ProjectsPreview.astro` with 5 project bullets, creative accent underline, SectionHeading link to `/projects`. Project slugs added to `projects/[slug].astro`.
 
 ### 3.4 Assemble the Home page
 
