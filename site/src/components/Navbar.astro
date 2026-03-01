@@ -4,10 +4,7 @@ import MobileNav from './MobileNav';
 
 const { pathname } = Astro.url;
 
-const links = [
-  { href: '/cv', label: 'CV' },
-  { href: '/projects', label: 'Projects' },
-];
+const links = [{ href: '/projects', label: 'Projects' }];
 
 function isActive(href: string): boolean {
   if (href === '/') {

@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 
 test.describe('navigation', () => {
-  test('navbar links navigate to /, /cv, /projects', async ({ page }) => {
+  test('navbar links navigate to / and /projects', async ({ page }) => {
     await page.goto('/');
     const nav = page.getByRole('navigation', { name: 'Main' });
 
@@ -15,11 +15,6 @@ test.describe('navigation', () => {
       }),
     ).toBeVisible();
 
-    // CV link
-    await nav.getByRole('link', { name: 'CV' }).click();
-    await expect(page).toHaveURL('/cv');
-    await expect(page.getByRole('heading', { name: 'CV', level: 1 })).toBeVisible();
-
     // Projects link
     await nav.getByRole('link', { name: 'Projects' }).click();
     await expect(page).toHaveURL('/projects');
@@ -27,11 +22,16 @@ test.describe('navigation', () => {
   });
 
   test('active page link has accent underline (aria-current)', async ({ page }) => {
-    await page.goto('/cv');
-    await expect(page.getByRole('link', { name: 'CV' })).toHaveAttribute('aria-current', 'page');
+    await page.goto('/');
+    const nav = page.getByRole('navigation', { name: 'Main' });
+
+    await expect(nav.getByRole('link', { name: 'Projects' })).not.toHaveAttribute(
+      'aria-current',
+      'page',
+    );
 
     await page.goto('/projects');
-    await expect(page.getByRole('link', { name: 'Projects' })).toHaveAttribute(
+    await expect(nav.getByRole('link', { name: 'Projects' })).toHaveAttribute(
       'aria-current',
       'page',
     );

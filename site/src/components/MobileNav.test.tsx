@@ -36,8 +36,8 @@ describe('MobileNav (React)', () => {
     const trigger = screen.getByRole('button', { name: /open menu/i });
     await user.click(trigger);
 
-    const cvLink = screen.getByRole('link', { name: /cv/i });
-    await user.click(cvLink);
+    const projectsLink = screen.getByRole('link', { name: /projects/i });
+    await user.click(projectsLink);
 
     expect(trigger).toHaveAttribute('aria-expanded', 'false');
   });
