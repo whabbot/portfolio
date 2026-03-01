@@ -1,16 +1,16 @@
 import { test, expect } from '@playwright/test';
 
 test.describe('home previews', () => {
-  test('experience preview bullet navigates to correct detail route', async ({ page }) => {
+  test('background renders and includes LinkedIn callout', async ({ page }) => {
     await page.goto('/');
 
-    const experience = page.getByRole('region', { name: 'Experience preview' });
-    await experience
-      .getByRole('link', { name: 'Led platform migration reducing deployment time by 60%.' })
-      .click();
+    const background = page.getByRole('region', { name: 'Background' });
+    await expect(background).toBeVisible();
 
-    await expect(page).toHaveURL('/experience/lead-engineer');
-    await expect(page.getByRole('heading', { level: 1, name: 'lead-engineer' })).toBeVisible();
+    await expect(
+      background.getByRole('link', { name: /LinkedIn/ }),
+      'Expected LinkedIn callout link in Background section',
+    ).toHaveAttribute('target', '_blank');
   });
 
   test('projects preview bullet navigates to correct detail route', async ({ page }) => {
