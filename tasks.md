@@ -281,11 +281,13 @@
 
 ### 5.1 Build the ProjectTile component
 
-- Create `src/components/projects/ProjectTile.astro`.
-- Displays: title, short description, tech tags (TagPill), GitHub icon link.
-- Entire tile clickable → `/projects/{slug}`.
-- Hover: subtle lift (`translateY(-2px)`), soft accent highlight (creative), "See decisions →" microcopy fades in.
-- GitHub icon: opens in new tab, `aria-label="View source on GitHub"`.
+- ~~Create `src/components/projects/ProjectTile.astro`.~~
+- ~~Displays: title, short description, tech tags (TagPill), GitHub icon link.~~
+- ~~Entire tile clickable → `/projects/{slug}`.~~
+- ~~Hover: subtle lift (`translateY(-2px)`), soft accent highlight (creative), "See decisions →" microcopy fades in.~~
+- ~~GitHub icon: opens in new tab, `aria-label="View source on GitHub"`.~~
+
+> Completed: Added `ProjectTile.astro` using an overlay link for whole-card clicks, plus a separate GitHub icon link with correct a11y and hover/focus motion. Added a small Vitest render test using AstroContainer (`ProjectTile.test.ts`) to lock in the key link/ARIA attributes. Verified via lint/format + unit tests.
 
 ### 5.2 Build the Projects grid page
 
