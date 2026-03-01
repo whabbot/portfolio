@@ -25,3 +25,6 @@ pnpm-debug.log*
 
 # worktrees
 .worktrees/
+
+# Cursor hook state (local)
+.cursor/hooks/tasks-md-state.json
