@@ -78,32 +78,27 @@
 
 ---
 
-## Phase 4 — CV & Experience pages
+## Phase 4 — Privacy-first restructure (remove CV/experience)
 
-**Goal**: CV overview and experience detail template.
+**Goal**: pivot the site to minimize PII and make personal projects the primary depth surface.
 
-### `/cv`
+### Home (`/`) content updates
 
-- The primary experience and projects overview — curated top roles and projects on one page.
-- Brief intro: name, title, 1–2 sentence positioning.
-- Curated experience cards: role, company, timeline, 4–5 impact bullets.
-- Curated project cards: title, description, tech tags. Same tile component as `/projects` (reused).
-- "View all projects →" link.
-- Optional compact skills/tech section.
-- Hard-coded content initially; fed from `featured` flag after CMS integration.
+- Replace the “View CV” CTA with a **LinkedIn** CTA (new tab) as the destination for full work history + messaging.
+- Replace “Experience preview” with a brief **Background** section (generalized employer type + title + years + short scope/impact).
+- Add **Awards** and **Interests** as tight lists.
+- Add a LinkedIn callout line: “For full work history and messaging, see LinkedIn →”.
 
-### `/experience/{slug}` (detail template)
+### Routes and navigation cleanup
 
-- Sections: Role Overview, High-Leverage Initiatives, STAR Case Studies, Product Decisions, Technical Trade-offs, What I Learned.
-- Repeatable structure enforced by a shared Astro component/layout.
-- Optional slots for diagrams and code snippets.
-- Hard-coded content for at least one role to validate the template.
+- Remove `/cv` and `/experience/{slug}` routes from public navigation and code.
+- Update Playwright coverage to remove `/cv` and `/experience` path assertions.
 
 ---
 
 ## Phase 5 — Projects pages
 
-**Goal**: projects grid + detail template.
+**Goal**: personal projects grid + detail template.
 
 ### `/projects`
 
@@ -114,23 +109,25 @@
 ### `/projects/{project}` (detail template)
 
 - Sections: Problem, Why It Mattered, Constraints, Architecture Decisions, Trade-offs, Outcomes, What I'd Improve.
-- Same repeatable-structure approach as experience details.
-- Hard-coded content for at least one project.
+- Repeatable structure enforced by a shared Astro component/layout.
+- Optional slots for diagrams and code snippets.
+- Hard-coded content for at least one project to validate the template.
 
 ---
 
-## Phase 6 — Sanity CMS integration
+## Phase 6 — Sanity CMS integration (optional, later)
 
-**Goal**: all page content sourced from Sanity; studio ready for editing.
+**Goal**: site content sourced from Sanity; studio ready for editing.
 
-- Define Sanity schemas: Experience, Project (fields mirror the section structures above, including `featured` flags).
-- Set up Sanity client in Astro (build-time fetching via `astro.config` or helper).
+- Define Sanity schemas for:
+  - Personal projects (deep-dive content)
+  - Background items (brief role summaries; generalized employer type; no deep-dive pages)
+  - Optional: awards and interests (either as simple documents or fields on a singleton “site settings” doc)
+- Set up Sanity client in Astro (build-time fetching).
 - Data-shaping TS helpers with unit tests (transform raw Sanity responses → page props).
 - Migrate hard-coded content into Sanity.
 - Sanity Studio hosted on Sanity (no self-hosted studio route).
 - Verify pages render identically from CMS content.
-
-**Key decision**: fetch at build time (SSG) by default. Only add ISR/on-demand revalidation if content update latency becomes a real pain point.
 
 ---
 
@@ -143,8 +140,10 @@
 - Lighthouse performance pass: image optimisation, font subsetting, minimal JS bundle.
 - Responsive QA: mobile, tablet, desktop breakpoints.
 - Motion: confirm all transitions feel "intelligent and restrained."
-- Content review: trim any section that doesn't reinforce the 4 core-identity signals.
-- Playwright integration tests for key user journeys (home → experience detail, home → project detail, /cv → experience detail).
+- Content review: ensure no unnecessary PII; trim any section that doesn't reinforce the 4 core-identity signals.
+- Playwright integration tests for key user journeys (home → project detail, home → LinkedIn).
+
+**Key decision**: fetch at build time (SSG) by default. Only add ISR/on-demand revalidation if content update latency becomes a real pain point.
 
 ---
 
@@ -173,14 +172,8 @@
 ## Dependency graph (simplified)
 
 ```
-Phase 0  →  Phase 1  →  Phase 2  →  Phase 3  →  Phase 4  →  Phase 5
-                                                                 ↓
-                                                            Phase 6
-                                                                 ↓
-                                                            Phase 7  →  Phase 8
+Phase 0  →  Phase 1  →  Phase 2  →  Phase 3  →  Phase 4  →  Phase 5  →  Phase 6  →  Phase 7  →  Phase 8
 ```
-
-Phases 4 and 5 can run in parallel once Phase 3 is complete (independent page sets, no shared file conflicts).
 
 ---
 

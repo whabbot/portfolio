@@ -18,6 +18,15 @@ If it doesn't help the visitor understand judgment, impact, or decision quality 
 
 ---
 
+## Privacy-first content rules
+
+- **Minimize PII**: avoid publishing personal email/phone/address, exact employer names (default), client names, internal system names, or overly identifying anecdotes.
+- **Generalize employers** in the public “Background” section (e.g. “Fintech scale-up”, “Public sector”, “B2B SaaS”).
+- **Employer work** stays brief (titles + years + scope/impact). Deep technical case studies live under **personal projects**.
+- **LinkedIn is the contact hub**: use it for full work history + messaging.
+
+---
+
 ## Typography
 
 ### Font stack
@@ -77,7 +86,7 @@ Colours are defined as CSS custom properties on `:root` (light) and `.dark` (dar
 
 ### Rules
 
-- **One accent per section.** Experience sections use warm; project sections use creative. Primary for navigation and CTAs.
+- **One accent per section.** Background sections use warm; personal project sections use creative. Primary for navigation and CTAs.
 - **WCAG AA minimum** on every text/background combination in both themes.
 - **No stacked colour chaos.** Accents guide hierarchy; they never compete.
 - Transitions between themes should be smooth (`transition: color 200ms, background-color 200ms`).
@@ -124,7 +133,7 @@ Colours are defined as CSS custom properties on `:root` (light) and `.dark` (dar
 ### Navbar
 
 - **Left**: name (medium weight, slightly larger than links).
-- **Right**: CV, Projects links + theme toggle icon.
+- **Right**: Projects link + theme toggle icon.
 - **Active page**: persistent accent underline.
 - **Hover**: soft underline slide animation (200ms ease-in-out).
 - **Mobile**: collapsible menu (Astro component with inline script for toggle).
@@ -133,34 +142,22 @@ Colours are defined as CSS custom properties on `:root` (light) and `.dark` (dar
 ### Hero (home page)
 
 - 2–3 line narrative philosophy statement.
-- Primary CTA ("View CV") + secondary CTA ("Explore Projects").
+- Primary CTA ("Explore Projects") + secondary CTA ("View LinkedIn").
 - Slight layout asymmetry (e.g., off-centre text, accent shape behind a line).
 - No oversized dramatic typography.
 - Generous whitespace above and below.
 
 ### Section preview (home page)
 
-- Section heading links to the relevant overview page.
-- 3–5 impact-driven bullets; each links to a detail page.
+- Section heading links to the projects overview page.
+- 3–5 curated personal projects; each links to a project detail page.
 - Subtle staggered rhythm (slight offset or varied spacing) — expressive but controlled.
 
-### CV page (`/cv`)
+### Background section (home page)
 
-- Brief intro block: name, title, 1–2 sentence positioning. Clean and compact.
-- Reuses **role card** component for curated experience entries.
-- Reuses **project tile** component for curated project entries (same visual language as `/projects`).
-- "View all projects →" link at projects section bottom.
-- Optional compact skills section: grouped tag pills, muted styling.
-- Page should feel **self-contained** — a recruiter should get a full picture without clicking further.
-- No hero block or narrative statement (that's the home page's job). Straight to substance.
-
-### Role card (`/cv`)
-
-- Role title, company, timeline.
-- 4–6 impact bullets.
-- Soft left accent stripe (warm accent).
-- No heavy card borders; relies on spacing and the accent stripe.
-- Entire card clickable to detail page.
+- Brief bullets only (privacy-first, generalized employers).
+- Uses **warm** accent for hierarchy.
+- No drill-down pages.
 
 ### Project tile (`/projects`)
 
@@ -169,12 +166,12 @@ Colours are defined as CSS custom properties on `:root` (light) and `.dark` (dar
 - Click → detail page.
 - Hover: subtle lift (`translateY(-2px)`), soft accent highlight, "See decisions →" microcopy fades in.
 
-### Detail page sections (experience + project)
+### Detail page sections (projects)
 
 - Repeatable structure: heading + body content per section.
 - Optional slots for diagrams and code snippets (monospace, lightly shaded background).
 - Clear section dividers (whitespace or thin rule, not heavy borders).
-- Accent stripe on left of key sections (varies by context: warm for experience, creative for projects).
+- Accent stripe on left of key sections (creative accent).
 
 ### Tag / pill
 
