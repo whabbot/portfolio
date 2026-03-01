@@ -250,9 +250,11 @@
 
 ### 4.1 Update home hero CTAs (Projects-first + LinkedIn)
 
-- Update `Hero` so the **primary CTA** goes to `/projects`.
-- Replace the CV CTA with a **LinkedIn** CTA (external, opens in new tab, labelled for accessibility).
-- Update Playwright hero tests accordingly.
+- ~~Update `Hero` so the **primary CTA** goes to `/projects`.~~
+- ~~Replace the CV CTA with a **LinkedIn** CTA (external, opens in new tab, labelled for accessibility).~~
+- ~~Update Playwright hero tests accordingly.~~
+
+> Completed: Hero primary CTA is now Projects, secondary CTA is LinkedIn (new tab + a11y label). Updated Playwright hero + smoke tests.
 
 ### 4.2 Replace Experience preview with Background / Awards / Interests (home)
 

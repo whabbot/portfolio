@@ -10,6 +10,6 @@ test('home page returns 200 and renders hero', async ({ page }) => {
       name: 'Frontend leaning fullstack engineer building user-centric products.',
     }),
   ).toBeVisible();
-  await expect(page.getByRole('link', { name: 'View CV →' })).toBeVisible();
   await expect(page.getByRole('link', { name: 'Explore Projects →' })).toBeVisible();
+  await expect(page.getByRole('link', { name: /LinkedIn →/ })).toBeVisible();
 });

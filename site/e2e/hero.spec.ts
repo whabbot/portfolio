@@ -11,19 +11,24 @@ test.describe('home hero', () => {
       }),
     ).toBeVisible();
 
-    await expect(page.getByRole('link', { name: 'View CV →' })).toBeVisible();
     await expect(page.getByRole('link', { name: 'Explore Projects →' })).toBeVisible();
-  });
-
-  test('"View CV →" navigates to /cv', async ({ page }) => {
-    await page.goto('/');
-    await page.getByRole('link', { name: 'View CV →' }).click();
-    await expect(page).toHaveURL('/cv');
+    await expect(page.getByRole('link', { name: /LinkedIn →/ })).toBeVisible();
   });
 
   test('"Explore Projects →" navigates to /projects', async ({ page }) => {
     await page.goto('/');
     await page.getByRole('link', { name: 'Explore Projects →' }).click();
     await expect(page).toHaveURL('/projects');
+  });
+
+  test('"LinkedIn →" opens in a new tab', async ({ page }) => {
+    await page.goto('/');
+
+    const [popup] = await Promise.all([
+      page.waitForEvent('popup'),
+      page.getByRole('link', { name: /LinkedIn →/ }).click(),
+    ]);
+
+    await expect(popup).toHaveURL(/^https:\/\/(www\.)?linkedin\.com/);
   });
 });
