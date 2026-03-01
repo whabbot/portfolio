@@ -11,8 +11,7 @@ When the user asks to implement a task from `tasks.md` (or references a task ID 
 ## When to mark complete automatically
 
 - **Behavior/logic changes**: only mark the task complete after relevant **tests pass** (and lint/format if part of the repo workflow).
-- **Styling/layout-only changes**: only mark the task complete after either:
-  - the agent has **visually reviewed** light + dark mode, responsive breakpoints, and keyboard focus states
+- **Styling/layout-only changes**: only mark the task complete after user has inspected and signed off
 
 ## How to mark complete
 
