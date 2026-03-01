@@ -1,6 +1,7 @@
 ---
 description: Mark tasks complete in tasks.md only after verification
-alwaysApply: true
+globs: tasks.md
+alwaysApply: false
 ---
 
 # tasks.md completion protocol
