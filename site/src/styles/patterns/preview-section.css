@@ -1,0 +1,43 @@
+/* ═══════════════════════════════════════════════════
+   Preview section (Experience / Projects)
+   Shared layout + accent via --preview-accent
+   ═══════════════════════════════════════════════════ */
+
+.preview-section--warm {
+  --preview-accent: var(--color-accent-warm);
+}
+
+.preview-section--creative {
+  --preview-accent: var(--color-accent-creative);
+}
+
+.preview-section .preview-item {
+  border-left: 4px solid var(--preview-accent);
+  padding-left: 1rem;
+}
+
+.preview-section .preview-link {
+  position: relative;
+  transition: color 200ms ease-in-out;
+}
+
+.preview-section .preview-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  height: 2px;
+  width: 0;
+  background-color: currentColor;
+  transition: width 200ms ease-in-out;
+}
+
+.preview-section .preview-link:hover,
+.preview-section .preview-link:focus-visible {
+  color: var(--preview-accent);
+}
+
+.preview-section .preview-link:hover::after,
+.preview-section .preview-link:focus-visible::after {
+  width: 100%;
+}

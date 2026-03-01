@@ -22,3 +22,6 @@ pnpm-debug.log*
 
 # editor
 *.sw?
+
+# worktrees
+.worktrees/

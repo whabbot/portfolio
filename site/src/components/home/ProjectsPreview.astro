@@ -1,25 +1,31 @@
 ---
 import SectionHeading from '@/components/SectionHeading.astro';
 
-const projects = [
-  { slug: 'design-system', title: 'Design system migration' },
-  { slug: 'checkout-flow', title: 'Checkout flow optimisation' },
-  { slug: 'api-gateway', title: 'API gateway redesign' },
-  { slug: 'analytics-dashboard', title: 'Analytics dashboard v2' },
-  { slug: 'mobile-app', title: 'Mobile app prototype' },
+const sectionHref = '/projects';
+const sectionTitle = 'Projects';
+const basePath = '/projects';
+
+const items = [
+  { slug: 'design-system', text: 'Design system migration' },
+  { slug: 'checkout-flow', text: 'Checkout flow optimisation' },
+  { slug: 'api-gateway', text: 'API gateway redesign' },
+  { slug: 'analytics-dashboard', text: 'Analytics dashboard v2' },
+  { slug: 'mobile-app', text: 'Mobile app prototype' },
 ];
 ---
 
-<section aria-label="Projects preview">
-  <div class="mx-auto max-w-3xl px-6 py-20 md:px-8 md:py-24">
-    <SectionHeading href="/projects">Projects</SectionHeading>
+<section aria-label="Projects preview" class="preview-section preview-section--creative">
+  <div class="mx-auto max-w-3xl px-6 py-6 md:px-8 md:py-8">
+    <div class="mb-10">
+      <SectionHeading href={sectionHref}>{sectionTitle}</SectionHeading>
+    </div>
 
-    <ul class="mt-8 list-none space-y-4 pl-0">
+    <ul class="space-y-4" role="list">
       {
-        projects.map(({ slug, title }) => (
-          <li>
-            <a href={`/projects/${slug}`} class="projects-link">
-              {title}
+        items.map(({ slug, text }) => (
+          <li class="preview-item">
+            <a href={`${basePath}/${slug}`} class="preview-link">
+              {text}
             </a>
           </li>
         ))
@@ -27,32 +33,3 @@ const projects = [
     </ul>
   </div>
 </section>
-
-<style>
-  .projects-link {
-    position: relative;
-    display: inline-block;
-    color: var(--color-text);
-    transition: color 200ms ease-in-out;
-  }
-
-  .projects-link::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    height: 2px;
-    width: 0;
-    background-color: var(--color-accent-creative);
-    transition: width 200ms ease-in-out;
-  }
-
-  .projects-link:hover {
-    color: var(--color-accent-creative);
-  }
-
-  .projects-link:hover::after,
-  .projects-link:focus-visible::after {
-    width: 100%;
-  }
-</style>

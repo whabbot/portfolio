@@ -1,29 +1,32 @@
 ---
 import SectionHeading from '@/components/SectionHeading.astro';
 
+const sectionHref = '/cv';
+const sectionTitle = 'Experience';
+const basePath = '/experience';
+
 const items = [
   { slug: 'lead-engineer', text: 'Led platform migration reducing deployment time by 60%.' },
   { slug: 'design-systems', text: 'Established design system adopted across 4 product teams.' },
   {
     slug: 'product-engineering',
-    text: 'Shipped user research–driven features that improved retention.',
+    text: 'Shipped user research-driven features that improved retention.',
   },
   { slug: 'scaling', text: 'Scaled frontend architecture to support 10x traffic growth.' },
 ];
 ---
 
-<section aria-label="Experience preview">
-  <div class="mx-auto max-w-3xl px-6 py-20 md:px-8 md:py-24">
-    <SectionHeading href="/cv" class="mb-8"> Experience </SectionHeading>
+<section aria-label="Experience preview" class="preview-section preview-section--warm">
+  <div class="mx-auto max-w-3xl px-6 py-6 md:px-8 md:py-8">
+    <div class="mb-10">
+      <SectionHeading href={sectionHref}>{sectionTitle}</SectionHeading>
+    </div>
 
     <ul class="space-y-4" role="list">
       {
         items.map(({ slug, text }) => (
-          <li class="border-l-4 border-l-accent-warm pl-4">
-            <a
-              href={`/experience/${slug}`}
-              class="experience-link text-foreground hover:text-accent-warm transition-colors duration-200 ease-in-out"
-            >
+          <li class="preview-item">
+            <a href={`${basePath}/${slug}`} class="preview-link">
               {text}
             </a>
           </li>
@@ -32,22 +35,3 @@ const items = [
     </ul>
   </div>
 </section>
-
-<style>
-  .experience-link {
-    position: relative;
-  }
-  .experience-link::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    height: 2px;
-    width: 0;
-    background-color: var(--color-accent-warm);
-    transition: width 200ms ease-in-out;
-  }
-  .experience-link:hover::after {
-    width: 100%;
-  }
-</style>
