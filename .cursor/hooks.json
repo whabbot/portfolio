@@ -1,0 +1,44 @@
+{
+  "version": 1,
+  "hooks": {
+    "sessionStart": [
+      {
+        "command": "node .cursor/hooks/tasks-md-hook.mjs sessionStart"
+      }
+    ],
+    "beforeSubmitPrompt": [
+      {
+        "command": "node .cursor/hooks/tasks-md-hook.mjs beforeSubmitPrompt"
+      }
+    ],
+    "afterAgentResponse": [
+      {
+        "command": "node .cursor/hooks/tasks-md-hook.mjs afterAgentResponse"
+      }
+    ],
+    "afterFileEdit": [
+      {
+        "command": "node .cursor/hooks/tasks-md-hook.mjs afterFileEdit"
+      }
+    ],
+    "postToolUse": [
+      {
+        "command": "node .cursor/hooks/tasks-md-hook.mjs postToolUse",
+        "matcher": "Shell"
+      }
+    ],
+    "postToolUseFailure": [
+      {
+        "command": "node .cursor/hooks/tasks-md-hook.mjs postToolUseFailure",
+        "matcher": "Shell"
+      }
+    ],
+    "stop": [
+      {
+        "command": "node .cursor/hooks/tasks-md-hook.mjs stop",
+        "loop_limit": 5
+      }
+    ]
+  }
+}
+
