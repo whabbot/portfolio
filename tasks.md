@@ -258,11 +258,13 @@
 
 ### 4.2 Replace Experience preview with Background / Awards / Interests (home)
 
-- Remove the home `ExperiencePreview` section.
-- Add a **Background** section with 3–5 bullets:
+- ~~Remove the home `ExperiencePreview` section.~~
+- ~~Add a **Background** section with 3–5 bullets:~~
   - generalized employer type + job title + years + brief scope/impact (privacy-first).
-- Add **Awards** and **Interests** brief lists (tight format, minimal identifiability).
-- Add a LinkedIn callout line: “For full work history and messaging, see LinkedIn →”.
+- ~~Add **Awards** and **Interests** brief lists (tight format, minimal identifiability).~~
+- ~~Add a LinkedIn callout line: “For full work history and messaging, see LinkedIn →”.~~
+
+> Completed: Replaced home experience preview with a privacy-first Background section plus Awards/Interests and a LinkedIn callout. Updated Playwright coverage accordingly.
 
 ### 4.3 Remove `/cv` and `/experience/[slug]` routes
 

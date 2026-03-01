@@ -1,0 +1,67 @@
+---
+import SectionHeading from '@/components/SectionHeading.astro';
+
+const backgroundItems = [
+  'Fintech scale-up · Senior frontend engineer · 2021–2024 — built product UI with an emphasis on performance, accessibility, and maintainable systems.',
+  'Public sector · Fullstack engineer · 2019–2021 — delivered user-facing workflows with a focus on reliability and privacy-aware design.',
+  'B2B SaaS · Frontend engineer · 2017–2019 — scaled design patterns and component architecture across multiple product surfaces.',
+  'Early-stage startup · Generalist engineer · 2015–2017 — shipped end-to-end features, balancing speed with long-term maintainability.',
+];
+
+const awards = [
+  'Product impact recognition',
+  'Open-source contributions',
+  'Engineering mentorship',
+];
+
+const interests = ['Design systems', 'Privacy-first UX', 'Performance', 'Developer tooling'];
+
+const linkedinHref = 'https://linkedin.com';
+---
+
+<section aria-label="Background" class="preview-section preview-section--warm">
+  <div class="mx-auto max-w-3xl px-6 py-6 md:px-8 md:py-8">
+    <div class="mb-10">
+      <SectionHeading>Background</SectionHeading>
+    </div>
+
+    <ul class="space-y-4" role="list">
+      {
+        backgroundItems.map((text) => (
+          <li class="preview-item">
+            <p class="text-sm text-muted-foreground md:text-base">{text}</p>
+          </li>
+        ))
+      }
+    </ul>
+
+    <div class="mt-10 grid gap-10 md:grid-cols-2">
+      <div>
+        <h3 class="text-base font-semibold leading-tight">Awards</h3>
+        <ul class="mt-4 space-y-2 text-sm text-muted-foreground" role="list">
+          {awards.map((text) => <li>{text}</li>)}
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-base font-semibold leading-tight">Interests</h3>
+        <ul class="mt-4 space-y-2 text-sm text-muted-foreground" role="list">
+          {interests.map((text) => <li>{text}</li>)}
+        </ul>
+      </div>
+    </div>
+
+    <p class="mt-10 text-sm text-muted-foreground">
+      For full work history and messaging, see{' '}
+      <a
+        href={linkedinHref}
+        class="inline-flex items-center gap-1 font-medium text-foreground hover:text-accent-warm focus-visible:text-accent-warm"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        LinkedIn → <span class="sr-only">(opens in a new tab)</span>
+      </a>
+      .
+    </p>
+  </div>
+</section>
