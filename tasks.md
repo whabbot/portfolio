@@ -291,9 +291,11 @@
 
 ### 5.2 Build the Projects grid page
 
-- In `src/pages/projects/index.astro`, create a responsive grid of ProjectTile components.
-- Grid layout: single column on mobile, 2 columns on tablet+.
-- Hard-coded placeholder data for 3–4 projects.
+- ~~In `src/pages/projects/index.astro`, create a responsive grid of ProjectTile components.~~
+- ~~Grid layout: single column on mobile, 2 columns on tablet+.~~
+- ~~Hard-coded placeholder data for 3–4 projects.~~
+
+> Completed: Added a shared placeholder projects data module and replaced the `/projects` placeholder copy with a semantic `ProjectTile` grid that is one column on mobile and two columns from `md` up. Verified with lint, format check, and the Vitest suite including a new page-level projects grid test.
 
 ### 5.3 Build the ProjectDetail layout
 
