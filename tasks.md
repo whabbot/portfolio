@@ -309,9 +309,11 @@
 
 ### 5.4 Build a sample project detail page
 
-- In `src/pages/projects/[slug].astro`, implement `getStaticPaths` returning at least one hard-coded project.
-- Populate with realistic placeholder content.
-- Verify all sections render in both themes.
+- ~~In `src/pages/projects/[slug].astro`, implement `getStaticPaths` returning at least one hard-coded project.~~
+- ~~Populate with realistic placeholder content.~~
+- ~~Verify all sections render in both themes.~~
+
+> Completed: Replaced the project-detail stub with a shared-data-driven `ProjectDetail` page, including one fully authored sample case study plus graceful fallback content for the other current project slugs. Verified with lint, format check, the full Vitest suite, a focused `[slug]` page test, and a Playwright runtime check confirming the sample page sections render in both light and dark themes.
 
 ### 5.5 Ensure ProjectTile reuse on Home preview
 

@@ -1,23 +1,33 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProjectDetail from '../../components/projects/ProjectDetail.astro';
+import { getProjectDetailContent } from '../../data/projectDetails';
+import { projects } from '../../data/projects';
 
 export function getStaticPaths() {
-  return [
-    { params: { slug: 'placeholder' } },
-    { params: { slug: 'design-system' } },
-    { params: { slug: 'checkout-flow' } },
-    { params: { slug: 'api-gateway' } },
-    { params: { slug: 'analytics-dashboard' } },
-    { params: { slug: 'mobile-app' } },
-  ];
+  return projects.map(({ slug }) => ({
+    params: { slug },
+  }));
 }
 
 const { slug } = Astro.params;
+const project = projects.find((entry) => entry.slug === slug);
+
+if (!project) {
+  throw new Error(`Unknown project slug: ${slug}`);
+}
+
+const detail = getProjectDetailContent(project);
 ---
 
-<BaseLayout title={`${slug} — Clearcraft`}>
-  <div class="mx-auto max-w-3xl px-6 py-16">
-    <h1>{slug}</h1>
-    <p class="mt-4 text-muted-foreground">Project detail — content coming soon.</p>
+<BaseLayout title={`${detail.title} — Clearcraft`}>
+  <div class="mx-auto max-w-6xl px-6 py-16">
+    <ProjectDetail
+      title={detail.title}
+      summary={detail.summary}
+      sections={detail.sections}
+      githubUrl={detail.githubUrl}
+      liveDemoUrl={detail.liveDemoUrl}
+    />
   </div>
 </BaseLayout>
