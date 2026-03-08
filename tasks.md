@@ -299,11 +299,13 @@
 
 ### 5.3 Build the ProjectDetail layout
 
-- Create `src/components/projects/ProjectDetail.astro`.
-- Repeatable section template: Problem, Why It Mattered, Constraints, Architecture Decisions, Trade-offs, Outcomes, What I'd Improve.
-- Each section uses SectionHeading + body content.
-- Left accent stripe (creative) on key sections.
-- Optional slots for diagrams, code snippets, live demo link, GitHub link.
+- ~~Create `src/components/projects/ProjectDetail.astro`.~~
+- ~~Repeatable section template: Problem, Why It Mattered, Constraints, Architecture Decisions, Trade-offs, Outcomes, What I'd Improve.~~
+- ~~Each section uses SectionHeading + body content.~~
+- ~~Left accent stripe (creative) on key sections.~~
+- ~~Optional slots for diagrams, code snippets, live demo link, GitHub link.~~
+
+> Completed: Added a reusable `ProjectDetail.astro` hybrid layout with repeatable case-study sections, conditional rich-content slots/actions, and accent support for key sections. Verified with lint, format check, the full Vitest suite, and a focused `ProjectDetail` component test covering both rich and minimal optional-content states.
 
 ### 5.4 Build a sample project detail page
 

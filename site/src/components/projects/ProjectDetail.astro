@@ -1,0 +1,126 @@
+---
+import SectionHeading from '../SectionHeading.astro';
+
+export interface ProjectDetailSection {
+  id: string;
+  title: string;
+  body: string;
+  accent?: boolean;
+}
+
+interface Props {
+  title: string;
+  summary: string;
+  sections: readonly ProjectDetailSection[];
+  liveDemoUrl?: string;
+  githubUrl?: string;
+  class?: string;
+}
+
+const { title, summary, sections, liveDemoUrl, githubUrl, class: className } = Astro.props;
+
+const hasDiagramSlot = Astro.slots.has('diagram');
+const hasCodeSlot = Astro.slots.has('code');
+const hasLinksSlot = Astro.slots.has('links');
+const hasRichContent = hasDiagramSlot || hasCodeSlot || hasLinksSlot;
+const hasActions = Boolean(liveDemoUrl || githubUrl);
+---
+
+<article
+  class:list={['rounded-3xl border border-default bg-card/80 p-6 shadow-sm sm:p-8', className]}
+>
+  <div
+    class:list={[
+      'flex flex-col gap-8',
+      hasRichContent && 'md:grid md:grid-cols-[minmax(0,2fr)_minmax(0,1fr)] md:items-start',
+    ]}
+  >
+    <header class="space-y-4">
+      <h1 class="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">{title}</h1>
+      <p class="max-w-3xl text-base leading-7 text-muted-foreground sm:text-lg">{summary}</p>
+
+      {
+        hasActions && (
+          <div class="flex flex-wrap gap-3 pt-2">
+            {liveDemoUrl && (
+              <a
+                href={liveDemoUrl}
+                target="_blank"
+                rel="noreferrer"
+                class="inline-flex items-center gap-2 rounded-full bg-accent-creative px-4 py-2 text-sm font-medium text-accent-creative-foreground transition-opacity hover:opacity-90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+              >
+                <span>Live demo</span>
+                <span aria-hidden="true">↗</span>
+              </a>
+            )}
+
+            {githubUrl && (
+              <a
+                href={githubUrl}
+                target="_blank"
+                rel="noreferrer"
+                class="inline-flex items-center gap-2 rounded-full border border-default bg-muted/40 px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-muted focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+              >
+                <span>GitHub</span>
+                <span aria-hidden="true">↗</span>
+              </a>
+            )}
+          </div>
+        )
+      }
+    </header>
+
+    {
+      hasRichContent && (
+        <aside class="space-y-4 rounded-2xl border border-default bg-background/80 p-4 sm:p-5">
+          {hasDiagramSlot && (
+            <section data-project-detail-slot="diagram" class="space-y-3">
+              <SectionHeading class="text-xl">Diagram</SectionHeading>
+              <div class="text-sm leading-6 text-muted-foreground">
+                <slot name="diagram" />
+              </div>
+            </section>
+          )}
+
+          {hasCodeSlot && (
+            <section data-project-detail-slot="code" class="space-y-3">
+              <SectionHeading class="text-xl">Code</SectionHeading>
+              <div class="overflow-x-auto rounded-2xl border border-default bg-muted/40 p-4 text-sm leading-6 text-muted-foreground">
+                <slot name="code" />
+              </div>
+            </section>
+          )}
+
+          {hasLinksSlot && (
+            <section data-project-detail-slot="links" class="space-y-3">
+              <SectionHeading class="text-xl">Links</SectionHeading>
+              <div class="text-sm leading-6 text-muted-foreground">
+                <slot name="links" />
+              </div>
+            </section>
+          )}
+        </aside>
+      )
+    }
+  </div>
+
+  <div class="mt-10 space-y-6 sm:space-y-8">
+    {
+      sections.map((section) => (
+        <section
+          id={section.id}
+          data-accented={section.accent ? 'true' : undefined}
+          class:list={[
+            'rounded-2xl border border-default bg-background/70 px-5 py-6 sm:px-6 sm:py-7',
+            section.accent && 'border-l-4 border-l-accent-creative pl-4 sm:pl-5',
+          ]}
+        >
+          <SectionHeading class="text-xl sm:text-2xl">{section.title}</SectionHeading>
+          <p class="mt-3 max-w-3xl text-sm leading-7 text-muted-foreground sm:text-base">
+            {section.body}
+          </p>
+        </section>
+      ))
+    }
+  </div>
+</article>
