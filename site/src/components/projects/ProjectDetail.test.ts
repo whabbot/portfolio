@@ -4,6 +4,16 @@ import { JSDOM } from 'jsdom';
 import { describe, expect, it } from 'vitest';
 import ProjectDetail from './ProjectDetail.astro';
 
+const expectedSectionTitles = [
+  'Problem',
+  'Why It Mattered',
+  'Constraints',
+  'Architecture Decisions',
+  'Trade-offs',
+  'Outcomes',
+  "What I'd Improve",
+] as const;
+
 const sections = [
   {
     id: 'problem',
@@ -43,68 +53,82 @@ const sections = [
   },
 ] as const;
 
+async function renderProjectDetail() {
+  const container = await AstroContainer.create();
+
+  return container.renderToString(ProjectDetail, {
+    props: {
+      title: 'Checkout flow redesign',
+      summary:
+        'A case-study layout that keeps the story readable on mobile while adding richer content when needed.',
+      liveDemoUrl: 'https://example.com/demo',
+      githubUrl: 'https://github.com/example/checkout-flow',
+      sections,
+    },
+    slots: {
+      diagram: '<div>Architecture diagram slot</div>',
+      code: '<pre><code>const checkout = improveFlow();</code></pre>',
+      links: '<ul><li><a href="https://example.com/spec">Spec doc</a></li></ul>',
+    },
+  });
+}
+
+function assertProjectDetailStructure(article: Element, html: string) {
+  const accentedSection = article.querySelector('#architecture-decisions');
+  const summary = article.querySelector('header > p');
+  const firstBody = article.querySelector('section[id] p');
+
+  expect(article.getAttribute('class')).toContain('space-y-8');
+  expect(article.getAttribute('class')).not.toContain('border-default');
+  expect(article.querySelector('h1')?.textContent).toContain('Checkout flow redesign');
+  expect(article.textContent).toContain(
+    'A case-study layout that keeps the story readable on mobile while adding richer content when needed.',
+  );
+  expect(
+    [...article.querySelectorAll('section[id] h2')].map((heading) => heading.textContent?.trim()),
+  ).toEqual(expectedSectionTitles);
+  expect(summary?.getAttribute('class')).toContain('text-sm');
+  expect(summary?.getAttribute('class')).toContain('leading-6');
+  expect(firstBody?.getAttribute('class')).toContain('text-sm');
+  expect(firstBody?.getAttribute('class')).toContain('leading-6');
+  expect(firstBody?.getAttribute('class')).toContain('sm:text-base');
+  expect(firstBody?.getAttribute('class')).toContain('sm:leading-7');
+  expect(html).toContain('border-l-4');
+  expect(accentedSection?.getAttribute('class')).toContain('rounded-l-none');
+}
+
+function assertProjectDetailActions(article: Element) {
+  expect(article.querySelector('a[href="https://example.com/demo"]')?.textContent).toContain(
+    'Live demo',
+  );
+  expect(
+    article.querySelector('a[href="https://github.com/example/checkout-flow"]')?.textContent,
+  ).toContain('GitHub');
+}
+
+function assertProjectDetailSlots(article: Element) {
+  expect(article.querySelector('[data-project-detail-slot="diagram"]')?.textContent).toContain(
+    'Architecture diagram slot',
+  );
+  expect(article.querySelector('[data-project-detail-slot="code"]')?.textContent).toContain(
+    'const checkout = improveFlow();',
+  );
+  expect(article.querySelector('[data-project-detail-slot="links"]')?.textContent).toContain(
+    'Spec doc',
+  );
+}
+
 describe('ProjectDetail', () => {
   it('renders the case-study structure, optional actions, and rich-content slots', async () => {
-    const container = await AstroContainer.create();
-    const html = await container.renderToString(ProjectDetail, {
-      props: {
-        title: 'Checkout flow redesign',
-        summary:
-          'A case-study layout that keeps the story readable on mobile while adding richer content when needed.',
-        liveDemoUrl: 'https://example.com/demo',
-        githubUrl: 'https://github.com/example/checkout-flow',
-        sections,
-      },
-      slots: {
-        diagram: '<div>Architecture diagram slot</div>',
-        code: '<pre><code>const checkout = improveFlow();</code></pre>',
-        links: '<ul><li><a href="https://example.com/spec">Spec doc</a></li></ul>',
-      },
-    });
+    const html = await renderProjectDetail();
 
     const { document } = new JSDOM(html).window;
     const article = document.querySelector('article');
 
     expect(article).not.toBeNull();
-    expect(article?.querySelector('h1')?.textContent).toContain('Checkout flow redesign');
-    expect(article?.textContent).toContain(
-      'A case-study layout that keeps the story readable on mobile while adding richer content when needed.',
-    );
-
-    const expectedSectionTitles = [
-      'Problem',
-      'Why It Mattered',
-      'Constraints',
-      'Architecture Decisions',
-      'Trade-offs',
-      'Outcomes',
-      "What I'd Improve",
-    ];
-
-    expect(
-      [...article!.querySelectorAll('section[id] h2')].map((heading) =>
-        heading.textContent?.trim(),
-      ),
-    ).toEqual(expectedSectionTitles);
-
-    expect(article?.querySelector('a[href="https://example.com/demo"]')?.textContent).toContain(
-      'Live demo',
-    );
-    expect(
-      article?.querySelector('a[href="https://github.com/example/checkout-flow"]')?.textContent,
-    ).toContain('GitHub');
-
-    expect(article?.querySelector('[data-project-detail-slot="diagram"]')?.textContent).toContain(
-      'Architecture diagram slot',
-    );
-    expect(article?.querySelector('[data-project-detail-slot="code"]')?.textContent).toContain(
-      'const checkout = improveFlow();',
-    );
-    expect(article?.querySelector('[data-project-detail-slot="links"]')?.textContent).toContain(
-      'Spec doc',
-    );
-
-    expect(html).toContain('border-l-4');
+    assertProjectDetailStructure(article!, html);
+    assertProjectDetailActions(article!);
+    assertProjectDetailSlots(article!);
   });
 
   it('omits optional actions, rich-content wrappers, and desktop split classes when optional content is absent', async () => {
