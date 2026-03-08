@@ -1,10 +1,25 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProjectTile from '../../components/projects/ProjectTile.astro';
+import { projects } from '../../data/projects';
 ---
 
 <BaseLayout title="Projects — Clearcraft">
-  <div class="mx-auto max-w-3xl px-6 py-16">
+  <div class="mx-auto max-w-6xl px-6 py-16">
     <h1>Projects</h1>
-    <p class="mt-4 text-muted-foreground">Project grid — content coming soon.</p>
+    <p class="mt-4 max-w-2xl text-muted-foreground">
+      A selection of recent product, platform, and frontend work focused on clarity, performance,
+      and maintainable delivery.
+    </p>
+
+    <ul class="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2">
+      {
+        projects.map((project) => (
+          <li class="h-full">
+            <ProjectTile {...project} />
+          </li>
+        ))
+      }
+    </ul>
   </div>
 </BaseLayout>
