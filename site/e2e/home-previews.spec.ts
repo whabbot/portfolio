@@ -17,9 +17,10 @@ test.describe('home previews', () => {
     await page.goto('/');
 
     const projects = page.getByRole('region', { name: 'Projects preview' });
-    await projects.getByRole('link', { name: 'Design system migration' }).click();
+    const expectedTitle = 'Design system migration';
+    await projects.getByRole('link', { name: expectedTitle }).click();
 
     await expect(page).toHaveURL('/projects/design-system');
-    await expect(page.getByRole('heading', { level: 1, name: 'design-system' })).toBeVisible();
+    await expect(page.getByRole('heading', { level: 1, name: expectedTitle })).toBeVisible();
   });
 });
