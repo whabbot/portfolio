@@ -19,6 +19,7 @@
     "react/jsx-max-depth": "off",
     "react/react-in-jsx-scope": "off",
     "max-lines-per-function": "off",
+    "prefer-destructuring": "off",
     "max-statements": ["warn", 20]
   },
   "settings": {
