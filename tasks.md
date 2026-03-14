@@ -315,16 +315,14 @@
 
 > Completed: Replaced the project-detail stub with a shared-data-driven `ProjectDetail` page, including one fully authored sample case study plus graceful fallback content for the other current project slugs. Verified with lint, format check, the full Vitest suite, a focused `[slug]` page test, and a Playwright runtime check confirming the sample page sections render in both light and dark themes.
 
-### 5.5 Ensure ProjectTile reuse on Home preview
+### 5.5 Playwright tests for projects flow
 
-- N/A (no `/cv` page). Ensure the same component renders consistently on `/projects` and any “selected projects” preview on `/`.
+- ~~Test: `/projects` renders a grid of project tiles.~~
+- ~~Test: clicking a tile navigates to `/projects/{slug}`.~~
+- ~~Test: project detail page renders all expected sections.~~
+- ~~Test: GitHub icon link opens in new tab.~~
 
-### 5.6 Playwright tests for projects flow
-
-- Test: `/projects` renders a grid of project tiles.
-- Test: clicking a tile navigates to `/projects/{slug}`.
-- Test: project detail page renders all expected sections.
-- Test: GitHub icon link opens in new tab.
+> Completed: Added a Playwright projects flow suite covering the `/projects` grid, tile click-through to `/projects/{slug}`, expected detail-page section headings, and verifying the GitHub icon link opens in a new tab. Verified with `npm run test:e2e`.
 
 ---
 
