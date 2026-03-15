@@ -332,9 +332,11 @@
 
 NOTE: IMPORTANT: confirm with user before progressing! We want to use a referral here.
 
-- Create a new Sanity project (`npm create sanity@latest` or via `sanity init`) in a `studio/` subdirectory (or a separate repo — decide and document).
-- Configure the Sanity Studio with the project ID and dataset.
-- Studio is hosted by Sanity (no self-hosted route in the Astro app).
+- ~~Create a new Sanity project (`npm create sanity@latest` or via `sanity init`) in a `studio/` subdirectory (or a separate repo — decide and document).~~
+- ~~Configure the Sanity Studio with the project ID and dataset.~~
+- ~~Studio is hosted by Sanity (no self-hosted route in the Astro app).~~
+
+> Completed: Sanity Studio initialized under `sanity/` (not `studio/`) with `projectId` + `dataset` configured in `sanity.config.ts`/`sanity.cli.ts`. Verified Studio build via `cd sanity && npm run build`.
 
 ### 6.2 Define Background (brief experience) schema
 
