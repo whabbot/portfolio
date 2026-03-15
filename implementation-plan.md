@@ -152,6 +152,7 @@
 **Goal**: live, verified, and ready for sharing.
 
 - Final Vercel production deploy.
+- Enable **Vercel Web Analytics** and **Vercel Speed Insights**; verify data is flowing in the Vercel dashboard after deploy.
 - OG / social meta tags and preview images.
 - 404 page (clean, on-brand).
 - Sitemap and basic SEO meta.
