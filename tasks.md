@@ -340,8 +340,10 @@ NOTE: IMPORTANT: confirm with user before progressing! We want to use a referral
 
 ### 6.2 Define Background (brief experience) schema
 
-- Create a Sanity document type for brief background items (no deep-dive pages):
-  - `employerType` (string, generalized), `jobTitle` (string), `timeline` (string), `summary` (string), `bullets` (array of strings), `sortOrder` (number).
+- ~~Create a Sanity document type for brief background items (no deep-dive pages):~~
+  - ~~`employerType` (string, generalized), `jobTitle` (string), `startDate` (date), `endDate` (date, optional), `timelineLabel` (string, optional), `summary` (text), `bullets` (array of strings), `sortOrder` (number).~~
+
+> Completed: Added `background` schema in `sanity/schemaTypes/background.ts` with structured dates (`startDate`/`endDate`) + optional `timelineLabel`, validation, preview, and ordering. Registered in `sanity/schemaTypes/index.ts`. Verified Studio build via `cd sanity && env -u NO_COLOR npm run build`.
 
 ### 6.3 Define Project schema
 
