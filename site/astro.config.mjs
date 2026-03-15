@@ -5,9 +5,23 @@ import react from '@astrojs/react';
 
 import tailwindcss from '@tailwindcss/vite';
 
+import { loadEnv } from 'vite';
+
+import sanity from '@sanity/astro';
+
+const env = loadEnv(process.env.NODE_ENV || 'production', process.cwd(), '');
+
 // https://astro.build/config
 export default defineConfig({
-  integrations: [react()],
+  integrations: [
+    react(),
+    sanity({
+      projectId: env.SANITY_PROJECT_ID,
+      dataset: env.SANITY_DATASET,
+      apiVersion: env.SANITY_API_VERSION,
+      useCdn: true,
+    }),
+  ],
 
   vite: {
     plugins: [tailwindcss()],
