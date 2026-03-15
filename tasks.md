@@ -470,14 +470,38 @@ NOTE: IMPORTANT: confirm with user before progressing! We want to use a referral
 - Configure `site` in `astro.config.mjs`.
 - Verify sitemap generates correctly at `/sitemap-index.xml`.
 
-### 8.3 Final cleanup
+### 8.3 Add Vercel Web Analytics
+
+- Enable **Web Analytics** for the project in the Vercel dashboard (adds routes under `/_vercel/insights/*` after the next deploy).
+- Install the package in `site/`: `npm i @vercel/analytics`.
+- Add the `Analytics` component to the base layout head:
+  - In `site/src/layouts/BaseLayout.astro`, add:
+    - `import Analytics from '@vercel/analytics/astro';`
+    - `<Analytics />` inside `<head>` (per Vercel docs).
+- Deploy and verify:
+  - Confirm the tracking script is present and requests are being made (Network tab / `/_vercel/insights/*`).
+  - Confirm data appears in Vercel → Analytics after some traffic.
+
+### 8.4 Add Vercel Speed Insights
+
+- Enable **Speed Insights** for the project in the Vercel dashboard (adds routes under `/_vercel/speed-insights/*` after the next deploy).
+- Install the package in `site/`: `npm i @vercel/speed-insights`.
+- Add the `SpeedInsights` component to the base layout head:
+  - In `site/src/layouts/BaseLayout.astro`, add:
+    - `import SpeedInsights from '@vercel/speed-insights/astro';`
+    - `<SpeedInsights />` near the bottom of `<head>` (per Vercel docs).
+- Deploy and verify:
+  - Confirm the script is present in `<head>` and requests hit `/_vercel/speed-insights/*`.
+  - Confirm metrics appear in Vercel → Speed Insights after some traffic.
+
+### 8.5 Final cleanup
 
 - Remove any remaining placeholder content or TODO comments.
 - Run full lint + format pass (`npm run lint && npm run format`).
 - Run full test suite (`npm run test && npm run test:e2e`).
 - Verify build succeeds (`npm run build`).
 
-### 8.4 Production deploy
+### 8.6 Production deploy
 
 - Push to `main`; verify Vercel deployment succeeds.
 - Manual smoke test in production across Chrome, Safari, Firefox.
