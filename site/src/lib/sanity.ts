@@ -1,4 +1,5 @@
 import { createClient, type SanityClient } from '@sanity/client';
+import { SANITY_API_VERSION, SANITY_DATASET, SANITY_PROJECT_ID } from 'astro:env/server';
 
 export type SanityConfig = {
   projectId: string;
@@ -17,18 +18,18 @@ export function getSanityConfigFromEnv(
   const dataset = env.SANITY_DATASET?.trim();
   const apiVersion = env.SANITY_API_VERSION?.trim();
 
-  const missing: string[] = [];
-  if (!projectId) {
-    missing.push('SANITY_PROJECT_ID');
-  }
-  if (!dataset) {
-    missing.push('SANITY_DATASET');
-  }
-  if (!apiVersion) {
-    missing.push('SANITY_API_VERSION');
-  }
+  if (!projectId || !dataset || !apiVersion) {
+    const missing: string[] = [];
+    if (!projectId) {
+      missing.push('SANITY_PROJECT_ID');
+    }
+    if (!dataset) {
+      missing.push('SANITY_DATASET');
+    }
+    if (!apiVersion) {
+      missing.push('SANITY_API_VERSION');
+    }
 
-  if (missing.length) {
     throw new Error(`Missing required Sanity env var(s): ${missing.join(', ')}`);
   }
 
@@ -55,7 +56,11 @@ export const queries = {
 let cachedClient: SanityClient | undefined = undefined;
 
 export function getSanityClient(
-  env: Record<string, string | undefined> = import.meta.env as Record<string, string | undefined>,
+  env: Record<string, string | undefined> = {
+    SANITY_PROJECT_ID,
+    SANITY_DATASET,
+    SANITY_API_VERSION,
+  },
 ): SanityClient {
   if (!cachedClient) {
     const config = getSanityConfigFromEnv(env);

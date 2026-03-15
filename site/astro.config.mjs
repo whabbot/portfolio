@@ -1,5 +1,5 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
+import { defineConfig, envField } from 'astro/config';
 
 import react from '@astrojs/react';
 
@@ -11,5 +11,13 @@ export default defineConfig({
 
   vite: {
     plugins: [tailwindcss()],
+  },
+
+  env: {
+    schema: {
+      SANITY_PROJECT_ID: envField.string({ context: 'server', access: 'public' }),
+      SANITY_DATASET: envField.string({ context: 'server', access: 'public' }),
+      SANITY_API_VERSION: envField.string({ context: 'server', access: 'public' }),
+    },
   },
 });
