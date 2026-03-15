@@ -347,8 +347,10 @@ NOTE: IMPORTANT: confirm with user before progressing! We want to use a referral
 
 ### 6.3 Define Project schema
 
-- Create a Sanity document type for `project` with all fields:
-  - `title` (string), `slug` (slug), `description` (string), `techTags` (array of strings), `githubUrl` (url), `demoUrl` (url), `sortOrder` (number), `problem` (block content), `whyItMattered` (block content), `constraints` (block content), `architectureDecisions` (block content), `tradeoffs` (block content), `outcomes` (block content), `improve` (block content), `featured` (boolean).
+- ~~Create a Sanity document type for `project` with all fields:~~
+  - ~~`title` (string), `slug` (slug), `description` (string), `techTags` (array of strings), `githubUrl` (url), `demoUrl` (url), `sortOrder` (number), `problem` (block content), `whyItMattered` (block content), `constraints` (block content), `architectureDecisions` (block content), `tradeoffs` (block content), `outcomes` (block content), `improve` (block content), `featured` (boolean).~~
+
+> Completed: Added `project` schema in `sanity/schemaTypes/project.ts` with validation, preview, and ordering. Registered in `sanity/schemaTypes/index.ts`. Verified Studio build via `cd sanity && env -u NO_COLOR npm run build`.
 
 ### 6.4 Set up Sanity client in Astro
 
