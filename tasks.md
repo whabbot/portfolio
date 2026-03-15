@@ -354,13 +354,21 @@ NOTE: IMPORTANT: confirm with user before progressing! We want to use a referral
 
 ### 6.4 Set up Sanity client in Astro
 
-- Install `@sanity/client` and `@portabletext/react` (for rendering block content).
-- Create a Sanity client helper (`src/lib/sanity.ts`) configured with project ID, dataset, API version, and `useCdn: true`.
-- Create GROQ query helpers for:
-  - All background items (sorted by `sortOrder`).
-  - Featured personal projects (sorted by `sortOrder`).
-  - Single project by slug.
-  - All projects (for `getStaticPaths`).
+- ~~Install `@sanity/client` and `@portabletext/react` (for rendering block content).~~
+- ~~Create a Sanity client helper (`src/lib/sanity.ts`) configured with project ID, dataset, API version, and `useCdn: true`.~~
+- ~~Create GROQ query helpers for:~~
+  - ~~All background items (sorted by `sortOrder`).~~
+  - ~~Featured personal projects (sorted by `sortOrder`).~~
+  - ~~Single project by slug.~~
+  - ~~All projects (for `getStaticPaths`).~~
+
+> Note: Treat `src/lib/sanity.ts` as server-only (only import from `.astro`/server code). If we ever need client-side Sanity calls, split into `sanity.server.ts` + `sanity.public.ts` and use `PUBLIC_` env vars for the latter.
+>
+> Note: This setup targets published content via CDN. Preview/visual editing later should add a second client (`useCdn: false` + token + drafts perspective) without changing the content model.
+>
+> Decisions: `docs/decisions/2026-03-15-sanity-client-in-astro.md`
+
+> Completed: Installed `@sanity/client` + `@portabletext/react`. Added `site/src/lib/sanity.ts` (env config + client getter + GROQ query helpers) and unit tests in `site/src/lib/sanity.test.ts`. Verified with `cd site && env -u NO_COLOR NODE_OPTIONS="--no-webstorage" npm run test && env -u NO_COLOR npm run build`.
 
 ### 6.5 Data-shaping helpers + unit tests
 
