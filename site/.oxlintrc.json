@@ -20,6 +20,7 @@
     "react/react-in-jsx-scope": "off",
     "max-lines-per-function": "off",
     "prefer-destructuring": "off",
+    "no-continue": "off",
     "max-statements": ["warn", 20]
   },
   "settings": {

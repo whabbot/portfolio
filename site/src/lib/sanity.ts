@@ -1,10 +1,53 @@
 import { sanityClient } from 'sanity:client';
 
 export const queries = {
-  backgroundItems: `*[_type == "background"] | order(sortOrder asc)`,
-  featuredProjects: `*[_type == "project" && featured == true] | order(sortOrder asc)`,
-  projectBySlug: `*[_type == "project" && slug.current == $slug][0]`,
-  allProjects: `*[_type == "project"] | order(sortOrder asc)`,
+  backgroundItems: `*[_type == "background"] | order(sortOrder asc){
+    employerType,
+    jobTitle,
+    startDate,
+    endDate,
+    timelineLabel,
+    summary,
+    bullets,
+    sortOrder
+  }`,
+  featuredProjects: `*[_type == "project" && featured == true] | order(sortOrder asc){
+    title,
+    "slug": slug.current,
+    description,
+    techTags,
+    githubUrl,
+    demoUrl,
+    sortOrder,
+    featured
+  }`,
+  projectBySlug: `*[_type == "project" && slug.current == $slug][0]{
+    title,
+    "slug": slug.current,
+    description,
+    techTags,
+    githubUrl,
+    demoUrl,
+    sortOrder,
+    featured,
+    problem,
+    whyItMattered,
+    constraints,
+    architectureDecisions,
+    tradeoffs,
+    outcomes,
+    improve
+  }`,
+  allProjects: `*[_type == "project"] | order(sortOrder asc){
+    title,
+    "slug": slug.current,
+    description,
+    techTags,
+    githubUrl,
+    demoUrl,
+    sortOrder,
+    featured
+  }`,
   allProjectSlugs: `*[_type == "project" && defined(slug.current)]{"slug": slug.current}`,
 } as const;
 

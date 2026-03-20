@@ -372,11 +372,12 @@ NOTE: IMPORTANT: confirm with user before progressing! We want to use a referral
 
 ### 6.5 Data-shaping helpers + unit tests
 
-- Create TypeScript helpers (`src/lib/mappers.ts` or similar) that transform raw Sanity responses into strongly-typed page props.
-- Write unit tests (Vitest) for each mapper:
-  - Featured items filtered and sorted correctly.
-  - Missing optional fields handled gracefully.
-  - Slug generation is correct.
+- Create TypeScript helpers (`src/lib/mappers.ts` or similar) that normalize Sanity responses into strongly-typed page props (defaults for optional fields, consistent null/empty handling, derived display fields).
+- Prefer shaping in GROQ (projections, filtering, ordering) so mappers stay small and predictable.
+- Write unit tests (Vitest) for each normalizer:
+  - Missing optional fields handled gracefully (e.g. `demoUrl`, `githubUrl`, `endDate`).
+  - Slugs are present/handled correctly (consume `slug.current`; do not “generate” slugs in the frontend).
+  - Derived display fields (if any) are stable.
 
 ### 6.6 Wire pages to Sanity data
 
