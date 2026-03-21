@@ -30,7 +30,8 @@ export const project = defineType({
       validation: (rule) =>
         rule.required().custom((value) => {
           if (!value?.current) return 'Slug is required'
-          if (!/^[a-z0-9-]+$/.test(value.current)) return 'Use lowercase letters, numbers, and hyphens'
+          if (!/^[a-z0-9-]+$/.test(value.current))
+            return 'Use lowercase letters, numbers, and hyphens'
           return true
         }),
     }),
@@ -38,22 +39,17 @@ export const project = defineType({
       name: 'description',
       title: 'Short description',
       type: 'string',
-      validation: (rule) =>
-        rule.required().max(180).warning('Keep this under 180 characters for cards and listings.'),
+      validation: (rule) => [
+        rule.required(),
+        rule.max(180).warning('Keep this under 180 characters for cards and listings'),
+      ],
     }),
     defineField({
       name: 'techTags',
       title: 'Tech tags',
       type: 'array',
       of: [defineArrayMember({type: 'string'})],
-      validation: (rule) =>
-        rule
-          .required()
-          .min(1)
-          .error('Add at least one tech tag.')
-          .max(12)
-          .warning('Consider keeping tags to 12 or fewer.')
-          .unique(),
+      validation: (rule) => rule.required().unique().max(5),
     }),
     defineField({
       name: 'githubUrl',
@@ -135,4 +131,3 @@ export const project = defineType({
     {title: 'Title', name: 'titleAsc', by: [{field: 'title', direction: 'asc'}]},
   ],
 })
-
