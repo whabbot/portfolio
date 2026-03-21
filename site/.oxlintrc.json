@@ -21,6 +21,7 @@
     "max-lines-per-function": "off",
     "prefer-destructuring": "off",
     "no-continue": "off",
+    "capitalized-comments": "off",
     "max-statements": ["warn", 20]
   },
   "settings": {

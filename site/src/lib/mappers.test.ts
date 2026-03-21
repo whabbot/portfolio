@@ -5,6 +5,7 @@ import {
   normalizeBackgroundPreviewLines,
   normalizeProjectCard,
   normalizeProjectCards,
+  normalizeProjectDetailPage,
   toBackgroundPreviewLine,
 } from './mappers';
 
@@ -126,5 +127,44 @@ describe('project card normalization', () => {
         demoUrl: undefined,
       },
     ]);
+  });
+});
+
+describe('normalizeProjectDetailPage', () => {
+  it('returns null when required fields are missing', () => {
+    expect(normalizeProjectDetailPage(null)).toBeNull();
+    expect(normalizeProjectDetailPage({ title: 'x', slug: 'y' })).toBeNull();
+  });
+
+  it('uses CMS plain text when present and marks architecture with accent', () => {
+    const detail = normalizeProjectDetailPage({
+      title: 'Example',
+      slug: 'example',
+      description: 'Short summary for the hero line.',
+      problemPlain: 'Real problem copy.',
+      architectureDecisionsPlain: 'Key decision.',
+    });
+
+    expect(detail).not.toBeNull();
+    expect(detail?.summary).toBe('Short summary for the hero line.');
+    expect(detail?.sections.find((section) => section.id === 'problem')?.body).toBe(
+      'Real problem copy.',
+    );
+    const arch = detail?.sections.find((section) => section.id === 'architecture-decisions');
+    expect(arch?.body).toBe('Key decision.');
+    expect(arch?.accent).toBe(true);
+  });
+
+  it('fills empty portable text fields with stable fallbacks', () => {
+    const detail = normalizeProjectDetailPage({
+      title: 'Example',
+      slug: 'example',
+      description: 'Summary here.',
+    });
+
+    expect(detail?.sections).toHaveLength(7);
+    expect(detail?.sections[0]?.body).toContain(
+      'Example is already represented on the projects grid',
+    );
   });
 });

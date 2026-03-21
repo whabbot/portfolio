@@ -1,7 +1,11 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ProjectTile from '../../components/projects/ProjectTile.astro';
-import { projects } from '../../data/projects';
+import { normalizeProjectCards } from '@/lib/mappers';
+import { fetchAllProjects } from '@/lib/sanity';
+
+const rawProjects = await fetchAllProjects();
+const projects = normalizeProjectCards(rawProjects);
 ---
 
 <BaseLayout title="Projects — Clearcraft">

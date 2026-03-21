@@ -34,4 +34,20 @@ describe('ProjectTile', () => {
       /<a[^>]*href="\/projects\/placeholder"[^>]*>[\s\S]*See decisions[\s\S]*→[\s\S]*<\/a>/,
     );
   });
+
+  it('omits the GitHub control when githubUrl is absent', async () => {
+    const container = await AstroContainer.create();
+    const html = await container.renderToString(ProjectTile, {
+      props: {
+        slug: 'no-repo',
+        title: 'Internal prototype',
+        description: 'No public repository for this tile.',
+        techTags: ['Astro'],
+      },
+    });
+
+    expect(html).not.toContain('aria-label="View source on GitHub"');
+    expect(html).not.toContain('https://github.com/');
+    expect(html).toContain('See decisions');
+  });
 });

@@ -3,10 +3,22 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '@/components/home/Hero.astro';
 import HomeBackground from '@/components/home/HomeBackground.astro';
 import ProjectsPreview from '@/components/home/ProjectsPreview.astro';
+import { normalizeBackgroundPreviewLines, normalizeProjectCards } from '@/lib/mappers';
+import { fetchBackgroundItems, fetchFeaturedProjects } from '@/lib/sanity';
+
+const backgroundRaw = await fetchBackgroundItems();
+const backgroundItems = normalizeBackgroundPreviewLines(backgroundRaw);
+
+const featuredRaw = await fetchFeaturedProjects();
+const featuredProjects = normalizeProjectCards(featuredRaw);
+const projectsPreviewItems = featuredProjects.map((project) => ({
+  slug: project.slug,
+  text: project.title,
+}));
 ---
 
 <BaseLayout>
   <Hero />
-  <HomeBackground />
-  <ProjectsPreview />
+  <HomeBackground backgroundItems={backgroundItems} />
+  <ProjectsPreview items={projectsPreviewItems} />
 </BaseLayout>

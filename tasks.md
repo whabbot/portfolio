@@ -381,11 +381,13 @@ NOTE: IMPORTANT: confirm with user before progressing! We want to use a referral
 
 ### 6.6 Wire pages to Sanity data
 
-- Replace hard-coded content on every page with Sanity-fetched data:
-  - Home: background section + selected/featured personal projects (and optional awards/interests).
-  - `/projects` grid: all projects.
-  - `/projects/[slug]`: single project document.
-- Update `getStaticPaths` on dynamic routes to query Sanity for all slugs.
+- ~~Replace hard-coded content on every page with Sanity-fetched data:~~
+  - ~~Home: background section + selected/featured personal projects (and optional awards/interests).~~
+  - ~~`/projects` grid: all projects.~~
+  - ~~`/projects/[slug]`: single project document.~~
+- ~~Update `getStaticPaths` on dynamic routes to query Sanity for all slugs.~~
+
+> Completed: Home (`index.astro`) loads background + featured projects via `fetchBackgroundItems` / `fetchFeaturedProjects` and mappers; `HomeBackground` / `ProjectsPreview` take props (awards/interests stay default props until a CMS shape exists). `/projects` uses `fetchAllProjects` + `normalizeProjectCards`. `/projects/[slug]` uses async `getStaticPaths` from `fetchAllProjectSlugs`, `fetchProjectBySlug`, and `normalizeProjectDetailPage` with GROQ `pt::text(...)` for case-study bodies. Added `fetchAllProjects`, moved page-level Vitest files out of `src/pages/` to `src/test/pages/` (Astro treats `.ts` under `pages/` as routes). Removed unused `src/data/projects.ts` and `src/data/projectDetails.ts` (seed in git history for task 6.7). Verified: `cd site && env -u NO_COLOR NODE_OPTIONS="--no-webstorage" npm run test && env -u NO_COLOR npm run lint && env -u NO_COLOR npm run build`.
 
 ### 6.7 Migrate placeholder content to Sanity
 

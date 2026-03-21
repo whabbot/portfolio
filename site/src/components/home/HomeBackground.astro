@@ -1,20 +1,26 @@
 ---
 import SectionHeading from '@/components/SectionHeading.astro';
 
-const backgroundItems = [
-  'Fintech scale-up · Senior frontend engineer · 2021–2024 — built product UI with an emphasis on performance, accessibility, and maintainable systems.',
-  'Public sector · Fullstack engineer · 2019–2021 — delivered user-facing workflows with a focus on reliability and privacy-aware design.',
-  'B2B SaaS · Frontend engineer · 2017–2019 — scaled design patterns and component architecture across multiple product surfaces.',
-  'Early-stage startup · Generalist engineer · 2015–2017 — shipped end-to-end features, balancing speed with long-term maintainability.',
-];
+interface Props {
+  backgroundItems: readonly string[];
+  awards?: readonly string[];
+  interests?: readonly string[];
+}
 
-const awards = [
+const defaultAwards = [
   'Product impact recognition',
   'Open-source contributions',
   'Engineering mentorship',
-];
+] as const;
 
-const interests = ['Design systems', 'Privacy-first UX', 'Performance', 'Developer tooling'];
+const defaultInterests = [
+  'Design systems',
+  'Privacy-first UX',
+  'Performance',
+  'Developer tooling',
+] as const;
+
+const { backgroundItems, awards = defaultAwards, interests = defaultInterests } = Astro.props;
 
 const linkedinHref = 'https://linkedin.com';
 ---
