@@ -1,23 +1,29 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ProjectDetail from '../../components/projects/ProjectDetail.astro';
-import { getProjectDetailContent } from '../../data/projectDetails';
-import { projects } from '../../data/projects';
+import { normalizeProjectDetailPage } from '@/lib/mappers';
+import { fetchAllProjectSlugs, fetchProjectBySlug } from '@/lib/sanity';
 
-export function getStaticPaths() {
-  return projects.map(({ slug }) => ({
-    params: { slug },
-  }));
+export async function getStaticPaths() {
+  const rows = await fetchAllProjectSlugs();
+  return rows.map(({ slug }) => ({ params: { slug } }));
 }
 
 const { slug } = Astro.params;
-const project = projects.find((entry) => entry.slug === slug);
 
-if (!project) {
-  throw new Error(`Unknown project slug: ${slug}`);
+if (!slug) {
+  throw new Error('Missing project slug param.');
 }
 
-const detail = getProjectDetailContent(project);
+const raw = await fetchProjectBySlug(slug);
+if (!raw) {
+  throw new Error(`Missing project data for slug: ${slug}`);
+}
+const detail = normalizeProjectDetailPage(raw);
+
+if (!detail) {
+  throw new Error(`Project slug "${slug}" failed normalization. Check required fields.`);
+}
 ---
 
 <BaseLayout title={`${detail.title} — Clearcraft`}>

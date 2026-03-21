@@ -1,17 +1,15 @@
 ---
 import SectionHeading from '@/components/SectionHeading.astro';
 
+interface Props {
+  items: readonly { slug: string; text: string }[];
+}
+
+const { items } = Astro.props;
+
 const sectionHref = '/projects';
 const sectionTitle = 'Projects';
 const basePath = '/projects';
-
-const items = [
-  { slug: 'design-system', text: 'Design system migration' },
-  { slug: 'checkout-flow', text: 'Checkout flow optimisation' },
-  { slug: 'api-gateway', text: 'API gateway redesign' },
-  { slug: 'analytics-dashboard', text: 'Analytics dashboard v2' },
-  { slug: 'mobile-app', text: 'Mobile app prototype' },
-];
 ---
 
 <section aria-label="Projects preview" class="preview-section preview-section--creative">

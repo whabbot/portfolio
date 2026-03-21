@@ -1,12 +1,6 @@
 ---
 import SectionHeading from '../SectionHeading.astro';
-
-export interface ProjectDetailSection {
-  id: string;
-  title: string;
-  body: string;
-  accent?: boolean;
-}
+import type { ProjectDetailSection } from '@/lib/mappers';
 
 interface Props {
   title: string;

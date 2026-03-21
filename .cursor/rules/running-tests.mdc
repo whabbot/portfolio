@@ -15,6 +15,8 @@ Tests fail when run by the Cursor agent but pass when run by the user in the ter
 
 3. **E2E (Playwright)**: The sandbox uses a different cache path, so Playwright cannot find its browser executables. Set `PLAYWRIGHT_BROWSERS_PATH` to the user's cache so Playwright uses the installed browsers.
 
+4. **E2E vs Sanity**: Playwright starts `npm run build && npm run preview -- --port 4322` with `PLAYWRIGHT_MOCK_SANITY=1` so the Astro build uses `src/lib/sanity.fixtures.ts` instead of the network. Preview uses **4322** so `astro dev` on 4321 can run in parallel. Only set `PW_REUSE_EXISTING_SERVER=1` if an existing preview on 4322 was built with the mock flag.
+
 ## How to run tests
 
 Always run tests from `site/`
