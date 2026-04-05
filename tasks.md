@@ -391,8 +391,10 @@ NOTE: IMPORTANT: confirm with user before progressing! We want to use a referral
 
 ### 6.7 Migrate placeholder content to Sanity
 
-- Enter the hard-coded placeholder content (or real content) into Sanity Studio.
-- Verify all pages render identically from CMS data as they did with hard-coded data.
+- ~~Enter the hard-coded placeholder content (or real content) into Sanity Studio.~~
+- ~~Verify all pages render identically from CMS data as they did with hard-coded data.~~
+
+> Completed: Placeholder (or production) content entered in Sanity Studio; pages match the prior hard-coded baseline (parity check complete).
 
 ### 6.8 Portable Text renderer
 
